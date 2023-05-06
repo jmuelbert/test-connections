@@ -2,20 +2,19 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+At the moment test-connections only considers the very latest commit to be supported.
+We combine that with our fast response to incidents and the automated updates
+to minimize the time between vulnerability publication and patch release.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| Version       | Supported          |
+| :------------ | :----------------- |
+| master        | :white_check_mark: |
+| other commits | :x:                |
+
+In the near future we will introduce versioning, so expect this section to change.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+**Do not submit an issue or pull request**: this might reveal the vulnerability.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+**Please submit your vulnerability report to** [Github](https://github.com/jmuelbert/test-connections/security/advisories/new).
