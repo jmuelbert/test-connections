@@ -1,6 +1,5 @@
 # test-connections
 
-
 [![Gitpod-Ready-Code][gitpod_badge]][gitpod]
 [![CI][ci_action_badge]][ci_action]
 [![Dependabot auto-merge][dependabot_action_badge]][depandabot_action]
@@ -8,6 +7,7 @@
 [![GitHub license][github_license_badge]][euplv1.2_license]
 
 ## Features
+
 Test connection to Webservers and npt-servers
 
 ## Requierements
@@ -18,6 +18,7 @@ Works on all Desktop Platform with Python
 ## Install
 
 Follow soon
+
 ## Options
 
 To get list of all available options, call
@@ -29,6 +30,7 @@ To get list of all available options, call
 ## Documentation
 
 i Follow soon...
+
 ## Contributing
 
 Please see the [contributing guide][contribution_guide]
@@ -61,7 +63,6 @@ Many thanks to everyone reporting issues.
 Code is under the [European Public License V1.2][license].
 
 [license]: https://github.com/jmuelbert/test-connections/blob/master/LICENSE
-
 [writegood_action_badge]: https://github.com/jmuelbert/test-connections/actions/workflows/write-good.yml/badge.svg
 [writegood_action]: https://github.com/jmuelbert/test-connections/actions/workflows/write-good.yml
 [sonarcloud_action_badge]: https://github.com/jmuelbert/test-connections/actions/workflows/sonarcloud-analysis.yml/badge.svg
