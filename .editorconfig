@@ -3,6 +3,10 @@
 # top-most EditorConfig file
 root = true
 
+# Unix-style newlines with a newline ending every file
+# -----------------
+# Source code
+# -----------------
 [*]
 indent_style = space
 indent_size = 4
@@ -10,12 +14,25 @@ end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
+max_line_length = 88
 
-[*.{py,toml}]
-indent_style = space
+# Override for Makefile
+[{Makefile, makefile, GNUmakefile}]
+indent_style = tab
+indent_size = 4
+
+[*.{py,c,cpp,h,toml}]
 indent_size = 4
 
 [*.{yml,yaml,json}]
-indent_style = space
 indent_size = 2
 
+[*.{bat,cmd}]
+end_of_line = crlf
+
+[*.{md,markdown,js.snap}]
+trim_trailing_whitespace = false
+max_line_length = 180
+
+[LICENSE]
+insert_final_newline = false

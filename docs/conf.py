@@ -1,4 +1,7 @@
 """Sphinx configuration."""
+from __future__ import annotations
+
+
 project = "test-connections"
 author = "Jürgen Mülbert"
 copyright = "2023, Jürgen Mülbert"

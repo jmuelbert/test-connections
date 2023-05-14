@@ -5,14 +5,14 @@ today! As a contributor, here are the guidelines we would like you to follow:
 
 <!--* [Code of Conduct](#coc)-->
 
-- [Question or Problem?](#question)
-- [Issues and Bugs](#issue)
-- [Feature Requests](#feature)
-- [Submission Guidelines](#submit)
-- [Development Setup](#development)
-- [Coding Rules](#rules)
-- [Commit Message Guidelines](#commit)
-  <!-- - [Signing the CLA](#cla) -->
+-   [Question or Problem?](#question)
+-   [Issues and Bugs](#issue)
+-   [Feature Requests](#feature)
+-   [Submission Guidelines](#submit)
+-   [Development Setup](#development)
+-   [Coding Rules](#rules)
+-   [Commit Message Guidelines](#commit)
+    <!-- - [Signing the CLA](#cla) -->
 
 <!-- ## <a name="coc"></a> Code of Conduct
 Help us keep test-connections open and inclusive. Please read and follow our [Code of Conduct][coc]. -->
@@ -25,8 +25,8 @@ Stack Overflow is a much better place to ask questions since:
 
 <!-- - there are thousands of people willing to help on Stack Overflow [maybe one day] -->
 
-- questions and answers stay available for public viewing so your question / answer might help someone else
-- Stack Overflow's voting system assures that the best answers are prominently visible.
+-   questions and answers stay available for public viewing so your question / answer might help someone else
+-   Stack Overflow's voting system assures that the best answers are prominently visible.
 
 To save your and our time, we will systematically close all issues that are requests for general support and redirect people to Stack Overflow.
 
@@ -43,10 +43,10 @@ Repository. If you would like to _implement_ a new feature, please submit an iss
 a proposal for your work first, to be sure that we can use it.
 Please consider what kind of change it is:
 
-- For a **Major Feature**, first open an issue and outline your proposal so that it can be
-  discussed. This will also allow us to better coordinate our efforts, prevent duplication of work,
-  and help you to craft the change so that it is successfully accepted into the project. For your issue name, please prefix your proposal with `[discussion]`, for example "[discussion]: your feature idea".
-- **Small Features** can be crafted and directly [submitted as a Pull Request](#submit-pr).
+-   For a **Major Feature**, first open an issue and outline your proposal so that it can be
+    discussed. This will also allow us to better coordinate our efforts, prevent duplication of work,
+    and help you to craft the change so that it is successfully accepted into the project. For your issue name, please prefix your proposal with `[discussion]`, for example "[discussion]: your feature idea".
+-   **Small Features** can be crafted and directly [submitted as a Pull Request](#submit-pr).
 
 ## <a name="submit"></a> Submission Guidelines
 
@@ -56,9 +56,9 @@ Before you submit an issue, please search the issue tracker, maybe an issue for 
 
 We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using a repository or [Gist](https://gist.github.com/). Having a live, reproducible scenario gives us wealth of important information without going back & forth to you with additional questions like:
 
-- version of test-connections used
-- 3rd-party libraries and their versions
-- and most importantly - a use-case that fails
+-   version of test-connections used
+-   3rd-party libraries and their versions
+-   and most importantly - a use-case that fails
 
 <!--
 // TODO we need to create a playground, similar to plunkr
@@ -87,9 +87,9 @@ We cannot accept code without this.
 1. Fork this repository.
 1. Make your changes in a new git branch:
 
-   ```shell
-   git checkout -b my-fix-branch main
-   ```
+    ```shell
+    git checkout -b my-fix-branch main
+    ```
 
 1. Create your patch, **including appropriate test cases**.
 1. Follow our [Coding Rules](#rules).
@@ -99,30 +99,30 @@ We cannot accept code without this.
    [commit message conventions](#commit). Adherence to these conventions
    is necessary because release notes are automatically generated from these messages.
 
-   ```shell
-   git commit -a
-   ```
+    ```shell
+    git commit -a
+    ```
 
-   Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
+    Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
 
 1. Push your branch to GitHub:
 
-   ```shell
-   git push origin my-fix-branch
-   ```
+    ```shell
+    git push origin my-fix-branch
+    ```
 
 1. In GitHub, send a pull request to `test-connections:main`.
 
-- If we suggest changes then:
+-   If we suggest changes then:
 
-  - Make the required updates.
-  - Re-run the test-connections test suites to ensure tests are still passing.
-  - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
+    -   Make the required updates.
+    -   Re-run the test-connections test suites to ensure tests are still passing.
+    -   Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
-    ```shell
-    git rebase main -i
-    git push -f
-    ```
+        ```shell
+        git rebase main -i
+        git push -f
+        ```
 
 That's it! Thank you for your contribution!
 
@@ -131,29 +131,29 @@ That's it! Thank you for your contribution!
 After your pull request is merged, you can safely delete your branch and pull the changes
 from the main (upstream) repository:
 
-- Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
+-   Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
 
-  ```shell
-  git push origin --delete my-fix-branch
-  ```
+    ```shell
+    git push origin --delete my-fix-branch
+    ```
 
-- Check out the main branch:
+-   Check out the main branch:
 
-  ```shell
-  git checkout main -f
-  ```
+    ```shell
+    git checkout main -f
+    ```
 
-- Delete the local branch:
+-   Delete the local branch:
 
-  ```shell
-  git branch -D my-fix-branch
-  ```
+    ```shell
+    git branch -D my-fix-branch
+    ```
 
-- Update your main with the latest upstream version:
+-   Update your main with the latest upstream version:
 
-  ```shell
-  git pull --ff upstream main
-  ```
+    ```shell
+    git pull --ff upstream main
+    ```
 
 ## <a name="development"></a> Development Setup
 
@@ -164,7 +164,7 @@ You will need [Python](https://www.python.org) version >= 3.8.
 ```bash
 $ pipx install poetry
 $ pipx install nox
-$ pipx inject nox nox-poetry 
+$ pipx inject nox nox-poetry
 ```
 
 2.In order to prepare your environment run `poetry build` shell script:
@@ -172,10 +172,12 @@ $ pipx inject nox nox-poetry
 ```bash
 $ poetry install
 ```
+
 x
 That will compile fresh packages and afterward, move them all to `sample` directories.
 
 3. Linting an Tests
+
 ### <a name="linitig-tests"></a>Liniting and Tests
 
 ```bash
@@ -197,9 +199,9 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
 // We're working on auto-documentation.
 * All public API methods **must be documented**. (Details TBC). -->
 
-- All features or bug fixes **must be tested** by one or more specs (unit-tests).
-- We follow [Google's Python Style Guide][python-style-guide], but wrap all code at
-  **100 characters**. 
+-   All features or bug fixes **must be tested** by one or more specs (unit-tests).
+-   We follow [Google's Python Style Guide][python-style-guide], but wrap all code at
+    **100 characters**.
 
 ## <a name="commit"></a> Commit Message Guidelines
 
@@ -235,17 +237,17 @@ If the commit reverts a previous commit, it should begin with `revert:`, followe
 
 Must be one of the following:
 
-- **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-- **chore**: Updating tasks etc; no production code change
-- **ci**: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
-- **docs**: Documentation only changes
-- **feat**: A new feature
-- **fix**: A bug fix
-- **perf**: A code change that improves performance
-- **refactor**: A code change that neither fixes a bug nor adds a feature
-- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- **test**: Adding missing tests or correcting existing tests
-- **sample**: A change to the samples
+-   **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+-   **chore**: Updating tasks etc; no production code change
+-   **ci**: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+-   **docs**: Documentation only changes
+-   **feat**: A new feature
+-   **fix**: A bug fix
+-   **perf**: A code change that improves performance
+-   **refactor**: A code change that neither fixes a bug nor adds a feature
+-   **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+-   **test**: Adding missing tests or correcting existing tests
+-   **sample**: A change to the samples
 
 ### Scope
 
@@ -253,27 +255,27 @@ The scope should have the name of the npm package affected (as perceived by pers
 
 The following is the list of supported scopes:
 
-- **common**: for changes made on `common` directory
-- **core**: for changes made on `core` directory
-- **sample**: for changes made on `sample` directory
-- **testing**: for changes made on `testing` directory
+-   **common**: for changes made on `common` directory
+-   **core**: for changes made on `core` directory
+-   **sample**: for changes made on `sample` directory
+-   **testing**: for changes made on `testing` directory
 
 If your change affect more than one package, separate the scopes with a comma (e.g. `common,core`).
 
 There are currently a few exceptions to the "use package name" rule:
 
-- **packaging**: used for changes that change the npm package layout in all of our packages, e.g. public path changes, package.json changes done to all packages, d.ts file/format changes, changes to bundles, etc.
-- **changelog**: used for updating the release notes in CHANGELOG.md
-- **sample/#**: for the example apps directory, replacing # with the example app number
-- none/empty string: useful for `style`, `test` and `refactor` changes that are done across all packages (e.g. `style: add missing semicolons`)
+-   **packaging**: used for changes that change the npm package layout in all of our packages, e.g. public path changes, package.json changes done to all packages, d.ts file/format changes, changes to bundles, etc.
+-   **changelog**: used for updating the release notes in CHANGELOG.md
+-   **sample/#**: for the example apps directory, replacing # with the example app number
+-   none/empty string: useful for `style`, `test` and `refactor` changes that are done across all packages (e.g. `style: add missing semicolons`)
 
 ### Subject
 
 The subject contains succinct description of the change:
 
-- use the imperative, present tense: "change" not "changed" nor "changes"
-- don't capitalize first letter
-- no dot (.) at the end
+-   use the imperative, present tense: "change" not "changed" nor "changes"
+-   don't capitalize first letter
+-   no dot (.) at the end
 
 ### Body
 
@@ -303,8 +305,10 @@ changes to be accepted, the CLA must be signed. It's a quick process, we promise
 <!-- [coc]: https://github.com/angular/code-of-conduct/blob/main/CODE_OF_CONDUCT.md -->
 
 [commit-message-format]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#
+
 <!-- [individual-cla]: http://code.google.com/legal/individual-cla-v1.0.html -->
 <!-- [corporate-cla]: http://code.google.com/legal/corporate-cla-v1.0.html -->
+
 [github]: https://github.com/jmuelbert/test-connections
 [stackoverflow]: https://stackoverflow.com/questions/tagged/test-connectionsjs
 [python-style-guide]: https://google.github.io/styleguide/pyguide.html

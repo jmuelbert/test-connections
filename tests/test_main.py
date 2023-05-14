@@ -1,8 +1,10 @@
 """Test cases for the __main__ module."""
-import pytest
-from click.testing import CliRunner
+from __future__ import annotations
 
-from test_connection import __main__
+import pytest
+
+from click.testing import CliRunner
+from test_connections import __main__
 
 
 @pytest.fixture

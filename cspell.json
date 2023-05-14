@@ -1,0 +1,52 @@
+{
+  "version": "0.2",
+  "language": "en-US",
+  "dictionaries": [
+    "bash",
+    "docker",
+    "project-words"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "project-words",
+      "path": "./project-words.txt"
+    }
+  ],
+  "ignorePaths": [
+    "cspell.json",
+    "s**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/**",
+    ".editorconfig",
+    ".github/labels.yml",
+    "docs/api-docs/**",
+    "*.gz",
+    "*.lock",
+    "*.svg",
+    ".gitignore",
+    ".gitattributes",
+    ".devcontainer/.dockerignore",
+    ".vscode",
+    "package-lock.json",
+    "dist/**",
+    "docs/**",
+    "build/**",
+    "out/**",
+    "LICENSE",
+    "LICENSES/**"
+  ],
+  "words": [
+    "autocrlf",
+    "autofix",
+    "Codacy",
+    "codeql",
+    "devcontainers",
+    "ghaction",
+    "jmuelbert",
+    "Jürgen",
+    "Mülbert"
+  ],
+  "flagWords": [
+    "hte"
+  ]
+}

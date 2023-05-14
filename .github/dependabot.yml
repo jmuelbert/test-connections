@@ -21,9 +21,9 @@ updates:
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-     interval: "daily"
+      interval: "daily"
     commit-message:
-     prefix: "fix: :rocket: docker"
+      prefix: "fix: :rocket: docker"
 
   - package-ecosystem: "bundler"
     directory: "/"
