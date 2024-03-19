@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import pytest
-
 from click.testing import CliRunner
 from test_connections import __main__
 

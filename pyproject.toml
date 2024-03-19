@@ -1,102 +1,246 @@
-[tool.poetry]
-name = "test-connections"
-version = "0.1.0"
-description = "Check websites and ntp-server of exists or connectivitiv"
-authors = [
-    "Jürgen Mülbert <juergen.muelbert@gmail.com>"]
-license = "EUPL-1.2"
-readme = "README.md"
-homepage = "https://github.com/jmuelbert/test-connections"
-repository = "https://github.com/jmuelbert/test-connections"
-documentation = "https://test-connections.readthedocs.io"
-packages = [{include = "test_connections", from="src"},
+# SPDX-FileCopyrightText: 2023 Jürgen Mülbert
+#
+# SPDX-License-Identifier: EUPL-1.2
+
+[build-system]
+build-backend = "hatchling.build"
+requires = [
+  "hatchling",
 ]
+
+[project]
+name = "test_connections"
+description = "Checks the availability of web addresses and NTP servers."
+readme = "README.md"
+keywords = [
+  "availability",
+  "check program",
+  "NTP server",
+  "testing",
+  "web address",
+]
+license = { file = "LICENSE" }
+maintainers = [
+    { name="Jürgen Mülbert" },
+    { email="juergen.muelbert@gmail" }
+]
+authors = [
+   { name="Jürgen Mülbert" },
+   { email="juergen.muelbert@gmail.com" }
+]
+requires-python = ">=3.7"
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
+    "Environment :: Console",
     "Intended Audience :: Developers",
     "Intended Audience :: Information Technology",
-    "License :: OSI Approved :: EUPL V1.2 License",
-    "Natural Language :: English",
+    "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Topic :: Internet",
+    "Topic :: Internet :: WWW/HTTP",
     "Topic :: Software Development :: Testing",
 ]
-
-keywords = [
-    "",
+dynamic = [
+  "version",
+]
+dependencies = [
+  "click>8.0",
+]
+[project.optional-dependencies]
+dev = [
+  "black",
+  "hatch",
+  "ipython",
+  "mypy",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "pytest-mock",
+  "PyYAML",
+  "ruff",
+  "types-jsonschema",
+  "types-setuptools",
+  'typing-extensions>=3.7.4; python_version < "3.10"',
+  "yargs",
+]
+doc = [
+  "docutils",
+  "furo",
+  "myst-parser",
+  "sphinx",
+  "sphinx-autobuild",
+  "sphinx-autodoc-typehints",
+  "sphinx-click",
+  "sphinx-contributors",
+  "sphinx-copybutton",
+  "sphinx-design",
+  "sphinxcontrib-spelling",
+  "sphinxext-opengraph",
 ]
 
-[tools.poetry.urls]
-Changelog = "https://github.com/jmuelbert/test-connections/releases"
-"Bug Tracker" = "https//github.com/jmuelbert/test-connections/issues"
+[project.urls]
+bugtracker = "https//github.com/jmuelbert/test-connections/issues"
+changelog = "https://github.com/jmuelbert/test-connections/releases"
+documentation = "https://jmuelbert.github.io/test-connections"
+homepage = "https://github.com/jmuelbert/test-connections"
+repository = "https://github.com/jmuelbert/test-connections"
 
-[tool.poetry.dependencies]
-python = "^3.8"
-click = ">=8.0.1"
-xdoctest = "^1.1.1"
-
-[tool.poetry.group.dev.dependencies]
-furo = ">=2021.11.12"
-sphinx = ">=4.3.2"
-sphinx-autobuild = ">=2021.3.14"
-sphinx-click = ">=3.0.2"
-pre-commit = "^3.3.1"
-pyrsistent = "^0.19.3"
-pytest = "^7.3.1"
-pytest-cov = "^4.0.0"
-pytest-mock = "^3.10.0"
-tox = "^4.5.1"
-vendoring = "^1.2.0"
-build = "^0.10.0"
-mypy = "^1.3.0"
-setuptools = "^67.7.2"
-tomli-w = "^1.0.0"
-types-jsonschema = "^4.17.0.8"
-types-setuptools = "^67.7.0.2"
+[project.scripts]
+test-connections = "test_connections:__main__"
 
 
-[tool.poetry.group.devs.dependencies]
-myst-parser = "^1.0.0"
+[tool.hatch.version]
+path = "src/test_connections/__init__.py"
 
-[tool.poetry.scripts]
-test_connections = "test_connections.__main__:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+allow-ambiguous-features = true # disable normalization (tox-to-nox) for back-compat
+
+[tool.hatch.build]
+include = [
+    "src/test_connections"
+]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/backend",
+  "/scripts",
+]
+
+[tool.hatch.envs.default]
+features = ["dev"]
+
+[tool.hatch.envs.default.scripts]
+test = [
+    # "black --diff --color --check .",
+    # "ruff check .",
+    # "mypy src/test_connections tests",
+    "python -m pytest -pyargs -doctest-modules tests"
+]
+
+test-coverage = "python -m pytest --pyargs --doctest-modules --cov=test_connections --cov-report term test_connections"
+test-coverage-html = "python -m pytest --pyargs --doctest-modules --cov=test_connections --cov-report html test_connections"
+
+[tool.hatch.envs.doc]
+features = ["dev", "doc"]
+
+[tool.hatch.envs.doc.scripts]
+clean = "rm -rf doc/_build"
+clean-generated = [
+    "rm -rf doc/user_guide/generated",
+    "rm -rf doc/gallery"
+]
+clean-all = [
+    "clean",
+    "clean-generated",
+    "rm -rf doc/_images"
+]
+build-html = [
+    "mkdir -p doc/_images",
+    "sphinx-build -b html -d doc/_build/doctrees doc doc/_build/html"
+]
+build-html-win = [
+    "if not exist doc\\_images md doc\\_images",
+    "sphinx-build -b html -d doc\\_build\\doctrees doc doc\\_build\\html"
+]
+doctest = "sphinx-build -b doctest -d doc/_build/doctrees doc doc/_build/doctest"
+coverage = "sphinx-build -b coverage -d doc/_build/doctrees doc doc/_build/coverage"
+serve = "(cd doc/_build/html && python -m http.server)"
+publish-clean-build = [
+    "clean-all",
+    "build-html",
+    "(cd doc && bash sync_website.sh)"
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py37", "py38", "py39", "py310", "py311"]
+include = '\.pyi?$'
+packages = ["test_connections"]
+extend-exclude = '.+/(dist|.venv|venv|build)/.+'
 
 [tool.ruff]
-fix = true
-unfixable = [
-    "ERA",  # do not autoremove commented out code
-]
-target-version = "py38"
+target-version = "py310"
 line-length = 88
-extend-select = [
+select = [
+    "A",
     "B",  # flake8-bugbear
+    "C",
     "C4",  # flake8-comprehensions
+    "DTZ",
+    "E",   # pycodestyle-error
+    "EM",
     "ERA",  # flake8-eradicate/eradicate
-    "PIE",  # flake8-pie
-    "SIM",  # flake8-simplify
-    "TID",  # flake8-tidy-imports
-    "TCH",  # flake8-type-checking
-    "N",  # pep8-naming
-    "RUF",  # ruff checks
-    "UP",  # pyupgrade
+    "F",
+    "FBT",
     "I",  # isort
+    "ICN",
+    "ISC",
+    "N",  # pep8-naming
     "PGH",  # pygrep
+    "PIE",  # flake8-pie
+    "PLC",
+    "PLE",
+    "PLR",
+    "PLW",
+    "Q",
+    "RUF",  # ruff checks
+    "S",
+    "SIM",  # flake8-simplify
+    "T",
+    "TCH",  # flake8-type-checking
+    "TID",  # flake8-tidy-imports
+    "UP",  # pyupgrade
+    "W",
+    "YTT",
 ]
 ignore = [
+    # E203, E266, W503 not yet supported by ruff,
+    # see https://github.com/charliermarsh/ruff/issues/2402
+    # Whitespace before ':'
+    # "E203",
+    # Too many leading '#' for block comment
+    # "E266",
+    # Line break occurred before a binary operator
+    # "W503",
+    # Line too long
+    # "E501",
+    # Relative imports are banned
+    # "TID252",
+    # zip() without an explicit strict= parameter set.
+    # python>=3.10 only
     "B904",  # use 'raise ... from err'
     "B905",  # use explicit 'strict=' parameter with 'zip()'
     "N818"  #  Exception name should be named with an Error suffix
 ]
-extend-exclude = [
-    "tests/fixtures/*",
-    "tests/**/fixtures/*"
+exclude = [
+    ".git",
+    "build",
+    "__pycache__",
+    "tests/examples_arguments_syntax",
+    "tests/examples_methods_syntax",
 ]
+fix = true
+unfixable = [
+    "ERA",  # do not autoremove commented out code
+]
+
+[tool.ruff.mccabe]
+max-complexity = 18
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "all"
@@ -105,19 +249,22 @@ ban-relative-imports = "all"
 force-single-line = true
 lines-between-types = 1
 lines-after-imports = 2
-known-first-party = ["poetry.core"]
-known-third-party = ["poetry.core._vendor"]
 required-imports = ["from __future__ import annotations"]
 
-
-[tool.black]
-line-length = 88
-preview = true
-include = '\.pyi?$'
-extend-exclude = "src/poetry/core/_vendor/*"
-
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = [ "-ra", "--strict-markers", "--strict-config" ]
+xfail_strict = true
+junit_family = "xunit2"
+filterwarnings = [ "error" ]
+log_cli_level = "info"
+testpaths = [ "tests" ]
+markers = [
+    "save_engine: marks some of the tests which are using an external package to save a chart to e.g. a png file. This mark is used to run those tests selectively in the build GitHub Action.",
+]
 
 [tool.mypy]
+python_version = "3.7"
 strict = true
 explicit_package_bases = true
 namespace_packages = true
@@ -128,36 +275,58 @@ enable_error_code = [
     "truthy-bool",
 ]
 mypy_path = "src"
-files = "src, tests"
+files = ["src/**/*.py",
+         "tests/***.py",
+          "noxfile.py"]
 exclude = "(?x)(^tests/.*/fixtures | ^src/poetry/core/_vendor)"
 
 [[tool.mypy.overrides]]
 module = [
-  'lark.*',
-  'virtualenv.*',
+    'lark.*',
+    'virtualenv.*',
 ]
 ignore_missing_imports = true
 
-[tool.vendoring]
-destination = "src/poetry/core/_vendor/"
-requirements = "src/poetry/core/_vendor/vendor.txt"
-namespace = ""
+[tool.tox]
+legacy_tox_ini = """
+    [tox]
+    labels =
+        test = py311, py310, py39
+        static = flake8, mypy
+    requires =
+        tox>4
+        virtualenv>20.2
+    env_list =
+        black
+        docs
+        ruff
 
-protected-files = ["vendor.txt"]
-patches-dir = "vendors/patches"
+    [testenv]
+    usedevelop = true
+    deps = pytest
+    changedir = tests
+    commands = pytest tests
 
-[tool.vendoring.transformations]
-drop = [
-    "bin/",
-    "*.so",
-    "typing.*",
-    "*/tests/"
-]
+    [testenv:black]
+    deps = mypy
+    changedir = {toxinidir}
+    commands = mypy src
 
-[tool.vendoring.license.fallback-urls]
-pyrsistent = "https://raw.githubusercontent.com/tobgu/pyrsistent/master/LICENSE.mit"
+    [testenv:docs]
+    basepython = python3
+    usedevelop = false
+    allowlist_externals =
+        make
+    deps =
+        Sphinx
+        pyenchant
+        sphinxcontrib-spelling
+    changedir = docs
+    commands =
+        make spelling
 
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+    [testenv:ruff]
+    deps = ruff
+    changedir = {toxinidir}
+    commands = ruff .
+"""

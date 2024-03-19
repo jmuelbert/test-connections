@@ -5,12 +5,13 @@
 [![Dependabot auto-merge][dependabot_action_badge]][depandabot_action]
 [![Dependency Review][dependency_review_action_badge]][dependency_review_action]
 [![GitHub license][github_license_badge]][euplv1.2_license]
+[![Ruff][ruff_badge]][ruff]
 
 ## Features
 
-Test connection to Webservers and npt-servers
+A program that checks the availability of web addresses and NTP servers is a program that verifies if a specific web address or NTP server is accessible on the internet. The program does this by sending requests to the web address or the NTP server and waiting for a response. If a response is received within a certain time, it means that the web address or the NTP server is available. If no response is received or an error occurs, it means that the web address or the NTP server is not available. The program can output the results of the check in a file or on the screen.
 
-## Requierements
+## Requirements
 
 Python 3.6+
 Works on all Desktop Platform with Python
@@ -87,3 +88,5 @@ Code is under the [European Public License V1.2][license].
 [euplv1.2_license]: https://joinup.ec.europa.eu/page/eupl-text-11-12
 [contribution_guide]: https://github.com/jmuelbert/test-connections/blob/master/.github/CONTRIBUTING.md
 [github_issues]: https://github.com/jmuelbert/test-connections/issues
+[ruff]: https://github.com/charliermarsh/ruff
+[ruff_badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json

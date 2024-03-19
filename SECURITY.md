@@ -7,7 +7,7 @@ We combine that with our fast response to incidents and the automated updates
 to minimize the time between vulnerability publication and patch release.
 
 | Version       | Supported          |
-| :------------ | :----------------- |
+|:--------------|:-------------------|
 | master        | :white_check_mark: |
 | other commits | :x:                |
 
