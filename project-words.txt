@@ -29,6 +29,7 @@ MSGSEND
 nativeproj
 NONNULL
 nslocalizedstring
+ntpdata
 objc
 Onone
 parallelizable

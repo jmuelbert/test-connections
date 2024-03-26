@@ -5,11 +5,12 @@
 [build-system]
 build-backend = "hatchling.build"
 requires = [
-  "hatchling",
+  "hatch-vcs>=0.3",
+  "hatchling>=1.22.2",
 ]
 
 [project]
-name = "test_connections"
+name = "test-connections"
 description = "Checks the availability of web addresses and NTP servers."
 readme = "README.md"
 keywords = [
@@ -19,314 +20,362 @@ keywords = [
   "testing",
   "web address",
 ]
-license = { file = "LICENSE" }
+license = "EUPL-1.2"
 maintainers = [
-    { name="Jürgen Mülbert" },
-    { email="juergen.muelbert@gmail" }
+  { name = "Jürgen Mülbert" },
+  { email = "juergen.muelbert@outlook.de" },
 ]
-authors = [
-   { name="Jürgen Mülbert" },
-   { email="juergen.muelbert@gmail.com" }
-]
-requires-python = ">=3.7"
+authors = [{ name = "Jürgen Mülbert", email = "juergen.muelbert@outlook.de" }]
+requires-python = ">=3.9,<4"
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
-    "Environment :: Console",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Information Technology",
-    "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
-    "Operating System :: MacOS",
-    "Operating System :: Microsoft :: Windows",
-    "Operating System :: POSIX",
-    "Operating System :: Unix",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Topic :: Internet",
-    "Topic :: Internet :: WWW/HTTP",
-    "Topic :: Software Development :: Testing",
+  "Development Status :: 2 - Pre-Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: OS Independent",
+  "Operating System :: POSIX",
+  "Operating System :: Unix",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Topic :: Internet",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Software Development :: Testing",
 ]
 dynamic = [
   "version",
 ]
 dependencies = [
-  "click>8.0",
+  "click>=8.0.6",
+  "fpdf>=1.7.2",
+  "ntplib>=0.4",
+  "pyinstaller>=4.10",
+  "requests>=2.27.1",
 ]
-[project.optional-dependencies]
-dev = [
-  "black",
-  "hatch",
-  "ipython",
-  "mypy",
-  "pre-commit",
+[project.urls]
+Bugtracker = "https://github.com/jmuelbert/test-connections/issues"
+Changelog = "https://github.com/jmuelbert/test-connections/releases"
+Documentation = "https://github.com/jmuelbert/test-connections#readme"
+Issues = "https://github.com/jmuelbert/test-connections/issues"
+Source = "https://github.com/jmuelbert/test-connections"
+
+[project.scripts]
+test-connections = "test_connections.cli.app:main"
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/.github", "/backend", "/scripts"]
+
+[tool.hatch.envs.hatch-static-analysis]
+config-path = "ruff_defaults.toml"
+
+[tool.hatch.build]
+dependencies = [
+  "coverage[toml]>=6.2",
+  "filelock>=3.7.1",
+  "pyfakefs",
   "pytest",
   "pytest-cov",
   "pytest-mock",
-  "PyYAML",
-  "ruff",
-  "types-jsonschema",
-  "types-setuptools",
-  'typing-extensions>=3.7.4; python_version < "3.10"',
-  "yargs",
-]
-doc = [
-  "docutils",
-  "furo",
-  "myst-parser",
-  "sphinx",
-  "sphinx-autobuild",
-  "sphinx-autodoc-typehints",
-  "sphinx-click",
-  "sphinx-contributors",
-  "sphinx-copybutton",
-  "sphinx-design",
-  "sphinxcontrib-spelling",
-  "sphinxext-opengraph",
+  "pytest-randomly",
+  "pytest-rerunfailures",
+  "pytest-xdist",
+  "trustme",
+  # Hatchling dynamic dependency
+  "editables",
 ]
 
-[project.urls]
-bugtracker = "https//github.com/jmuelbert/test-connections/issues"
-changelog = "https://github.com/jmuelbert/test-connections/releases"
-documentation = "https://jmuelbert.github.io/test-connections"
-homepage = "https://github.com/jmuelbert/test-connections"
-repository = "https://github.com/jmuelbert/test-connections"
-
-[project.scripts]
-test-connections = "test_connections:__main__"
-
-
-[tool.hatch.version]
-path = "src/test_connections/__init__.py"
-
-
-[tool.hatch.metadata]
-allow-direct-references = true
-allow-ambiguous-features = true # disable normalization (tox-to-nox) for back-compat
-
-[tool.hatch.build]
-include = [
-    "src/test_connections"
-]
-
-[tool.hatch.build.targets.sdist]
-exclude = [
-  "/.github",
-  "/backend",
-  "/scripts",
-]
-
-[tool.hatch.envs.default]
-features = ["dev"]
+[tool.hatch.envs.default.overrides]
+env.GITHUB_ACTIONS.env-vars = "COVERAGE_REPORT="
 
 [tool.hatch.envs.default.scripts]
-test = [
-    # "black --diff --color --check .",
-    # "ruff check .",
-    # "mypy src/test_connections tests",
-    "python -m pytest -pyargs -doctest-modules tests"
+# --cov must not come before an argument in order to use the sources defined by config
+_cov = "pytest --cov --cov-report={env:COVERAGE_REPORT:term-missing} --cov-config=pyproject.toml"
+dev = "pytest -p no:randomly --no-cov {args:tests}"
+cov = "_cov -p no:randomly {args:tests}"
+full = "_cov -n auto --reruns 5 --reruns-delay 3 -r aR {args:tests}"
+
+[tool.hatch.envs.test.overrides]
+env.HERMETIC_TESTS.type = [{ value = "container", if = ["true"] }, "virtual"]
+
+[[tool.hatch.envs.test.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.coverage]
+detached = true
+dependencies = ["coverage[toml]>=6.2", "lxml"]
+
+[tool.hatch.envs.coverage.scripts]
+combine = "coverage combine {args}"
+report-xml = "coverage xml"
+report-uncovered-html = "coverage html --skip-covered --skip-empty"
+generate-summary = "python scripts/generate_coverage_summary.py"
+write-summary-report = "python scripts/write_coverage_summary_report.py"
+
+[tool.hatch.envs.types]
+dependencies = ["mypy>=1.0.0"]
+
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/test_connections tests}"
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs~=1.5.3",
+  "mkdocs-material~=9.5.1",
+  # Plugins
+  "mkdocs-minify-plugin~=0.7.1",
+  "mkdocs-git-revision-date-localized-plugin~=1.2.1",
+  "mkdocs-git-committers-plugin-2~=2.2.2",
+  "mkdocstrings-python~=1.7.5",
+  "mkdocs-redirects~=1.2.1",
+  "mkdocs-glightbox~=0.3.5",
+  "mike~=2.0.0",
+  # Extensions
+  "mkdocs-click~=0.8.1",
+  "pymdown-extensions~=10.5.0",
+  # Necessary for syntax highlighting in code blocks
+  "pygments~=2.17.2",
+  # Validation
+  # https://github.com/linkchecker/linkchecker/pull/669#issuecomment-1267236287
+  "linkchecker @ git+https://github.com/linkchecker/linkchecker.git@d9265bb71c2054bf57b8c5734a4825d62505c779",
+  # Sphinx
+  "sphinx>=7.2.6",
+  "sphinx-argparse-cli>=1.11.1",
+  "sphinx-autodoc-typehints>=1.25.2",
+  "sphinx-copybutton>=0.5.2",
+  "sphinx-rtd-theme>=1.0.0",
+  "myst-parser>=0.15.2",
+]
+pre-install-commands = ["python scripts/install_mkdocs_material_insiders.py"]
+
+[tool.hatch.envs.docs.overrides]
+env.GH_TOKEN_MKDOCS_MATERIAL_INSIDERS.env-vars = [
+  { key = "MKDOCS_CONFIG", value = "mkdocs.insiders.yml" },
+  { key = "MKDOCS_CONFIG", value = "mkdocs.yml", if = [
+    "",
+  ] },
+  { key = "MKDOCS_IMAGE_PROCESSING", value = "true" },
 ]
 
-test-coverage = "python -m pytest --pyargs --doctest-modules --cov=test_connections --cov-report term test_connections"
-test-coverage-html = "python -m pytest --pyargs --doctest-modules --cov=test_connections --cov-report html test_connections"
+[tool.hatch.envs.docs.env-vars]
+SOURCE_DATE_EPOCH = "1580601600"
+PYTHONUNBUFFERED = "1"
+MKDOCS_CONFIG = "mkdocs.yml"
 
-[tool.hatch.envs.doc]
-features = ["dev", "doc"]
-
-[tool.hatch.envs.doc.scripts]
+[tool.hatch.envs.docs.scripts]
+build = "mkdocs build --config-file {env:MKDOCS_CONFIG} --clean --strict {args}"
+serve = "mkdocs serve --config-file {env:MKDOCS_CONFIG} --dev-addr localhost:8000 {args}"
+ci-build = "mike deploy --config-file {env:MKDOCS_CONFIG} --update-aliases {args}"
+validate = "linkchecker --config .linkcheckerrc site"
+# https://github.com/linkchecker/linkchecker/issues/678
+build-check = ["build --no-directory-urls", "validate"]
+# Sphinx
 clean = "rm -rf doc/_build"
-clean-generated = [
-    "rm -rf doc/user_guide/generated",
-    "rm -rf doc/gallery"
-]
-clean-all = [
-    "clean",
-    "clean-generated",
-    "rm -rf doc/_images"
-]
+clean-generated = ["rm -rf doc/user_guide/generated", "rm -rf doc/gallery"]
+clean-all = ["clean", "clean-generated", "rm -rf doc/_images"]
 build-html = [
-    "mkdir -p doc/_images",
-    "sphinx-build -b html -d doc/_build/doctrees doc doc/_build/html"
+  "mkdir -p doc/_images",
+  "sphinx-build -b html -d doc/_build/doctrees doc doc/_build/html",
 ]
 build-html-win = [
-    "if not exist doc\\_images md doc\\_images",
-    "sphinx-build -b html -d doc\\_build\\doctrees doc doc\\_build\\html"
+  "if not exist doc\\_images md doc\\_images",
+  "sphinx-build -b html -d doc\\_build\\doctrees doc doc\\_build\\html",
 ]
 doctest = "sphinx-build -b doctest -d doc/_build/doctrees doc doc/_build/doctest"
 coverage = "sphinx-build -b coverage -d doc/_build/doctrees doc doc/_build/coverage"
-serve = "(cd doc/_build/html && python -m http.server)"
+sphinx_serve = "(cd doc/_build/html && python -m http.server)"
 publish-clean-build = [
-    "clean-all",
-    "build-html",
-    "(cd doc && bash sync_website.sh)"
+  "clean-all",
+  "build-html",
+  "(cd doc && bash sync_website.sh)",
 ]
+
+[tool.hatch.version]
+path = "src/test_connections/cli/app/__about__.py"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/test_connections"]
 
 [tool.black]
 line-length = 88
-target-version = ["py37", "py38", "py39", "py310", "py311"]
+target-version = ["py38", "py39", "py310", "py311", "py312"]
 include = '\.pyi?$'
-packages = ["test_connections"]
+# packages = ["test_connections"]
 extend-exclude = '.+/(dist|.venv|venv|build)/.+'
 
 [tool.ruff]
-target-version = "py310"
-line-length = 88
+line-length = 100
+fix = true
+
+[tool.ruff.format]
+preview = true
+docstring-code-format = true
+
+[tool.ruff.lint]
+preview = true
+# See https://github.com/astral-sh/ruff#rules for error code definitions.
 select = [
-    "A",
-    "B",  # flake8-bugbear
-    "C",
-    "C4",  # flake8-comprehensions
-    "DTZ",
-    "E",   # pycodestyle-error
-    "EM",
-    "ERA",  # flake8-eradicate/eradicate
-    "F",
-    "FBT",
-    "I",  # isort
-    "ICN",
-    "ISC",
-    "N",  # pep8-naming
-    "PGH",  # pygrep
-    "PIE",  # flake8-pie
-    "PLC",
-    "PLE",
-    "PLR",
-    "PLW",
-    "Q",
-    "RUF",  # ruff checks
-    "S",
-    "SIM",  # flake8-simplify
-    "T",
-    "TCH",  # flake8-type-checking
-    "TID",  # flake8-tidy-imports
-    "UP",  # pyupgrade
-    "W",
-    "YTT",
+  "ANN",  # annotations
+  "B",    # bugbear
+  "C4",   # comprehensions
+  "COM",  # trailing comma
+  "DJ",   # Django
+  "DTZ",  # naive datetime
+  "E",    # style errors
+  "EXE",  # shebang
+  "F",    # flakes
+  "FLY",  # string formatting
+  "G",    # logging format
+  "I",    # import sorting
+  "INT",  # gettext
+  "ISC",  # string concatenation
+  "LOG",  # logging
+  "N",    # naming
+  "PERF", # performance
+  "PGH",  # pygrep-hooks
+  "PIE",  # miscellaneous
+  "PL",   # pylint
+  "PYI",  # typing stubs
+  "Q",    # quotes
+  "RSE",  # raise
+  "RUF",  # Ruff
+  "S",    # security
+  "SLOT", # __slots__
+  "SIM",  # simplify
+  "T10",  # debugger
+  "TCH",  # type-checking
+  "TID",  # tidy imports
+  "UP",   # upgrade
+  "W",    # style warnings
+  "YTT",  # sys.version
 ]
 ignore = [
-    # E203, E266, W503 not yet supported by ruff,
-    # see https://github.com/charliermarsh/ruff/issues/2402
-    # Whitespace before ':'
-    # "E203",
-    # Too many leading '#' for block comment
-    # "E266",
-    # Line break occurred before a binary operator
-    # "W503",
-    # Line too long
-    # "E501",
-    # Relative imports are banned
-    # "TID252",
-    # zip() without an explicit strict= parameter set.
-    # python>=3.10 only
-    "B904",  # use 'raise ... from err'
-    "B905",  # use explicit 'strict=' parameter with 'zip()'
-    "N818"  #  Exception name should be named with an Error suffix
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Use of `assert` detected
+  "S101",
+  # Use `contextlib.suppress(SchemaRegistryException)` instead of `try`-`except`-`pass`
+  "SIM105",
+  # Missing explicit `return` at the end of function able to return non-`None` value
+  "RET503",
+  # Unnecessary assignment to
+  "RET504",
+  # Unnecessary `else` after `return` statement
+  "RET505",
+  # Unnecessary `elif` after `raise` statement
+  "RET506",
+  # Possible hardcoded password
+  "S105",
+  "S106",
+  "PLR",  # Design related pylint codes
+  # RUF012 Mutable class attributes should be annotated with `typing.ClassVar`
+  "RUF012",
+  # Use `X | Y` for type annotations
+  "UP007",
 ]
-exclude = [
-    ".git",
-    "build",
-    "__pycache__",
-    "tests/examples_arguments_syntax",
-    "tests/examples_methods_syntax",
-]
-fix = true
 unfixable = [
-    "ERA",  # do not autoremove commented out code
+  # Don't touch print statements
+  "T201",
+  # Don't touch unused imports
+  "F401",
+  # Don't touch noqa lines
+  "RUF100",
 ]
 
-[tool.ruff.mccabe]
+[tool.ruff.lint.per-file-ignores]
+# B011 Do not call assert False since python -O removes these calls
+# F841 local variable 'foo' is assigned to but never used
+# C408 Unnecessary `dict` call
+# S108 Probable insecure usage of temporary file or directory
+# PLC1901 `ext_pkg.version == ""` can be simplified to `not ext_pkg.version` as an empty string is falsey
+# B018 Found useless expression
+"tests/*" = [
+  "B011",
+  "F841",
+  "EM",
+  "C",
+  "T201",
+  "S108",
+  "PLC1901",
+  "PTH",
+  "ARG",
+  "PT",
+  "RET",
+  "G",
+  "PLW",
+  "B018",
+  "T201",
+]
+
+[tool.ruff.lint.mccabe]
 max-complexity = 18
 
-[tool.ruff.flake8-tidy-imports]
+[tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
 
-[tool.ruff.isort]
+[tool.ruff.lint.flake8-gettext]
+extend-function-names = ["gettext_lazy"]
+
+[tool.ruff.lint.isort]
 force-single-line = true
 lines-between-types = 1
 lines-after-imports = 2
 required-imports = ["from __future__ import annotations"]
 
+[tool.codespell]
+builtin = "clear,usage,en-GB_to_en-US"
+count = true
+
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = [ "-ra", "--strict-markers", "--strict-config" ]
+addopts = ["-ra", "--strict-markers", "--strict-config", "--color=yes"]
 xfail_strict = true
 junit_family = "xunit2"
-filterwarnings = [ "error" ]
+filterwarnings = ["error"]
 log_cli_level = "info"
-testpaths = [ "tests" ]
+testpaths = ["tests"]
 markers = [
-    "save_engine: marks some of the tests which are using an external package to save a chart to e.g. a png file. This mark is used to run those tests selectively in the build GitHub Action.",
+  "save_engine: marks some of the tests which are using an external package to save a chart to e.g. a png file. This mark is used to run those tests selectively in the build GitHub Action.",
 ]
 
+[tool.coverage.run]
+branch = true
+source_pkgs = ["test_connections", "tests"]
+parallel = true
+omit = ["src/test_connections/cli/app/__about__.py"]
+
+[tool.coverage.paths]
+test_connection = [
+  "src/test_connections",
+  "*/test-connections/src/test_connections",
+]
+tests = ["tests", "*/test-connections/tests"]
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+
 [tool.mypy]
-python_version = "3.7"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+follow_imports = "normal"
+ignore_missing_imports = true
+pretty = true
+show_column_numbers = true
+show_error_codes = true
 strict = true
 explicit_package_bases = true
 namespace_packages = true
-show_error_codes = true
-enable_error_code = [
-    "ignore-without-code",
-    "redundant-expr",
-    "truthy-bool",
-]
-mypy_path = "src"
-files = ["src/**/*.py",
-         "tests/***.py",
-          "noxfile.py"]
-exclude = "(?x)(^tests/.*/fixtures | ^src/poetry/core/_vendor)"
+warn_no_return = false
+warn_unused_ignores = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
 
 [[tool.mypy.overrides]]
-module = [
-    'lark.*',
-    'virtualenv.*',
-]
+module = ['lark.*', 'virtualenv.*']
 ignore_missing_imports = true
-
-[tool.tox]
-legacy_tox_ini = """
-    [tox]
-    labels =
-        test = py311, py310, py39
-        static = flake8, mypy
-    requires =
-        tox>4
-        virtualenv>20.2
-    env_list =
-        black
-        docs
-        ruff
-
-    [testenv]
-    usedevelop = true
-    deps = pytest
-    changedir = tests
-    commands = pytest tests
-
-    [testenv:black]
-    deps = mypy
-    changedir = {toxinidir}
-    commands = mypy src
-
-    [testenv:docs]
-    basepython = python3
-    usedevelop = false
-    allowlist_externals =
-        make
-    deps =
-        Sphinx
-        pyenchant
-        sphinxcontrib-spelling
-    changedir = docs
-    commands =
-        make spelling
-
-    [testenv:ruff]
-    deps = ruff
-    changedir = {toxinidir}
-    commands = ruff .
-"""
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+warn_no_return = true

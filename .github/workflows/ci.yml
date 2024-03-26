@@ -5,12 +5,16 @@ name: CI
 
 on:
   push:
-    branches: ["main", "Update-Github-Actions"]
+    branches: [main, develop, release, Update-Github-Actions]
   pull_request:
     branches: ["main"]
 
 permissions:
   contents: read
+
+defaults:
+  run:
+    shell: bash
 
 env:
   FORCE_COLOR: "1"

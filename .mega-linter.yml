@@ -26,7 +26,6 @@ JSON_V8R_FILTER_REGEX_EXCLUDE: (\.devcontainer/devcontainer.json|\.vscode/)
 SPELL_CSPELL_FILTER_REGEX_EXCLUDE: (docs/de|docs/es|docs/it)
 SPELL_LYCHEE_FILTER_REGEX_EXCLUDE: (\.github/workflows/|\.github/actions/|docs/yarn.lock)
 MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE: (\.github/actions/spelling)
-YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: (docs/yarn.lock)
 
 SHOW_ELAPSED_TIME: true
 

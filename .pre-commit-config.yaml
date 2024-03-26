@@ -1,10 +1,13 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 ci:
-  skip: [pylint]
+  autofix_commit_msg: 'style: auto fixes from pre-commit.ci hooks'
+  autofix_prs: false
+  autoupdate_commit_msg: 'chore(deps): pre-commit.ci autoupdate'
   autoupdate_schedule: monthly
-
 exclude: ^(3rdpart|cmake/ECM|cmake/KDAB/|src/3rdparty/|code.dev.code-workspace)
+default_stages:
+  - commit
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
@@ -18,35 +21,29 @@ repos:
       - id: check-yaml
         args: [--allow-multiple-documents]
       - id: check-json
+        exclude: ^(\.devcontainer/devcontainer.json|\.vscode/)
       - id: check-symlinks
       - id: destroyed-symlinks
       - id: check-executables-have-shebangs
-  - repo: https://github.com/pre-commit/mirrors-clang-format
-    rev: v18.1.1
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-vcs-permalinks
+      - id: detect-aws-credentials
+        args: ['--allow-missing-credentials']
+      - id: detect-private-key
+      - id: end-of-file-fixer
+        exclude: (.+/snapshots/.+)|(.*docs/_freeze/.+\.json)|(.+\.excalidraw)
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+        args: ['--markdown-linebreak-ext=md']
+        exclude: .+/snapshots/.+
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.28.0
     hooks:
-      - id: clang-format
-        exclude: (.json)
-  - repo: https://github.com/PyCQA/pylint
-    rev: v3.1.0
-    hooks:
-      - id: pylint
-        exclude: ^(.cmake-format.py|conan/conanfile.py)
-        # additional_dependencies: ['PySide2', 'PySide6']
-  - repo: https://github.com/hhatto/autopep8
-    rev: v2.0.4
-    hooks:
-      - id: autopep8
-        exclude: ^(.cmake-format.py|conan/.*/conanfile.py)
-  - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
-    hooks:
-      - id: codespell
-  - repo: https://github.com/cheshirekow/cmake-format-precommit
-    rev: v0.6.13
-    hooks:
-      - id: cmake-format
-      - id: cmake-lint
-        exclude: (cmake/Toolchain-QNX|.py.cmake|.h.cmake|.rc.cmake|Doxyfile.cmake|gammaray.qhcp.cmake)
+      - id: check-github-workflows
+
   - repo: https://github.com/markdownlint/markdownlint
     rev: v0.12.0
     hooks:
@@ -54,7 +51,101 @@ repos:
         entry: mdl
         language: ruby
         files: \.(md|mdown|markdown)$
+        exclude: \.github/
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+        additional_dependencies: [mdformat-gfm, mdformat-frontmatter, mdformat-footnote]
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: 'v4.0.0-alpha.8'
+    hooks:
+      - id: prettier
+        types_or: [yaml, html, json]
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
+        args: ['-L', 'sur,nd']
+
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: 'v1.10.0'
+    hooks:
+      - id: rst-backticks
+      - id: rst-directive-colons
+      - id: rst-inline-touching-normal
+
+  - repo: https://github.com/tox-dev/pyproject-fmt
+    rev: '1.7.0'
+    hooks:
+      - id: pyproject-fmt
+        # https://pyproject-fmt.readthedocs.io/en/latest/#calculating-max-supported-python-version
+        additional_dependencies: ['tox>=4.9']
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.4
+    hooks:
+      - id: ruff
+        types_or: [python, jupyter]
+        args: ['--fix', '--show-fixes']
+      - id: ruff-format
+        types_or: [python, jupyter]
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.6.27
+    hooks:
+      - id: actionlint-system
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        types_or:
+          - sh
+          - shell
+          - ash
+          - bash
+          - bats
+          - dash
+          - ksh
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
   - repo: https://github.com/fsfe/reuse-tool
     rev: v3.0.1
     hooks:
       - id: reuse
+  - repo: meta
+    hooks:
+      - id: check-hooks-apply
+      - id: check-useless-excludes
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        language: system
+        entry: prettier
+        args: ['--write']
+        types_or:
+          - javascript
+          - json
+          - markdown
+          - yaml
+      - id: shfmt
+        name: shfmt
+        language: system
+        entry: shfmt
+        args: ['-i', '2', '-sr', '-s']
+        types_or:
+          - sh
+          - shell
+          - ash
+          - bash
+          - bats
+          - dash
+          - ksh

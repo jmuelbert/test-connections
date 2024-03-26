@@ -1,0 +1,8 @@
+
+    This is the command line interface (CLI) package for Scale Launch.
+
+
+Usage: test-connections [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.

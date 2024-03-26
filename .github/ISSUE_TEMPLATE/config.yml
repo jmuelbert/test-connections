@@ -1,7 +1,7 @@
 ---
 blank_issues_enabled: false
 contact_links:
- - name: 💡 Feature Request
+  - name: 💡 Feature Request
     url: https://github.com/jmuelbert/jmbde-QT/discussions/new?category=feature-requests
     about: Suggest an improvement you’d like to see added to jmbde-QT
   - name: FAQ

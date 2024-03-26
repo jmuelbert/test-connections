@@ -17,7 +17,7 @@
 # and provide permission before this can report data back to azure.
 # Read the official documentation here : https://learn.microsoft.com/en-us/azure/defender-for-cloud/quickstart-onboard-github
 
-name: 'Microsoft Defender For Devops'
+name: "Microsoft Defender For Devops"
 
 on:
   push:
@@ -27,7 +27,7 @@ on:
     types: [opened, synchronize, reopened]
 
   schedule:
-    - cron: '32 6 * * 5'
+    - cron: "32 6 * * 5"
 
 permissions:
   contents: read
@@ -65,7 +65,7 @@ jobs:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
           restore-keys: |
-              ${{ runner.os }}-nuget-
+            ${{ runner.os }}-nuget-
 
       - name: Run Microsoft Security DevOps
         uses: microsoft/security-devops-action@7e3060ae1e6a9347dd7de6b28195099f39852fe2 # v1.10.0
