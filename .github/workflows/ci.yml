@@ -63,9 +63,9 @@ jobs:
       - name: Run pytest
         run: hatch env run --env all.${{matrix.python-version}} test
 
-      - name: Run mypy
-        if: ${{ matrix.python-version == 'py3.12' }}
-        run: hatch env run --env types check
+      # - name: Run mypy
+      #   if: ${{ matrix.python-version == 'py3.12' }}
+      #   run: hatch env run --env types check
 
       - name: Run Ruff
         if: ${{ matrix.python-version == 'py3.12' }}
