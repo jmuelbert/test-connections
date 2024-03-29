@@ -1,8 +1,16 @@
 name: pre-commit
 
-on:
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+on: # yamllint disable-line rule:truthy
   push:
-    branches: [main, develop, release, Update-Github-Actions]
+    branches: [main, develop, release, Update-GitHub-Actions]
+
   pull_request:
     types: [opened, synchronize, reopened]
 

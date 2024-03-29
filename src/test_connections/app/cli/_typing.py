@@ -16,7 +16,11 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 
+"""
+List of exported names from this module.
 
+Used for controlling imports and to prevent circular imports.
+"""
 __all__ = ["Python"]
 
 

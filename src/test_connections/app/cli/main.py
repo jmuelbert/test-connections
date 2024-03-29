@@ -2,24 +2,28 @@
 from __future__ import annotations
 
 import configparser
-
 from logging import getLogger
 from logging.config import fileConfig as logConfig
 
 import click
-
 from fpdf import FPDF
-from test_connections.cli.app.__about__ import __version__
-from test_connections.config.settings import settings
+
 from test_connections.core.check_ntp import test_ntp
 from test_connections.core.check_urls import test_urls
-
 
 logConfig("./logging.conf", disable_existing_loggers=False)
 logger = getLogger(__name__)
 
 
 def create_pdf() -> FPDF:
+    """Creates a new PDF object.
+
+    Creates and configures a new FPDF object, adds a blank page,
+    sets the font, and returns the PDF object.
+
+    Returns:
+        FPDF: The initialized PDF object.
+    """
     # Create a PDF object
     pdf = fpdf.FPDF()
     pdf.add_page()

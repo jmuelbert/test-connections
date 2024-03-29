@@ -6,7 +6,7 @@
 
 name: Issue Processing Reminder
 
-on:
+on: # yamllint disable-line rule:truthy
   issues:
     types: [opened, edited] # Trigger the workflow when an issue is opened or edited
 

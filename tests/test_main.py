@@ -1,11 +1,8 @@
 from __future__ import annotations
 
-from unittest import TestCase
-
-import pytest
-
 from click.testing import CliRunner
-from test_connections.cli.app import main
+
+from test_connections.app.cli.main import main
 
 
 def test_main_succeeds() -> None:

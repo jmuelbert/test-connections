@@ -9,7 +9,7 @@ on: # yamllint disable-line rule:truthy
   # Comment this line to trigger action only on pull-requests
   # (not recommended if you don't pay for GH Actions)
   push:
-    branches: ["main", "develop", "release", "improve_workflows"]
+    branches: [main, develop, release, Update-GitHub-Actions]
 
   pull_request:
     types: [opened, labeled]

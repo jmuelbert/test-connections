@@ -2,13 +2,24 @@ from __future__ import annotations
 
 import csv
 import time
-
 from time import ctime
 
 import ntplib
 
 
 def test_ntp(ntp_file, pdf_output):
+    """Tests NTP time synchronization.
+
+    Iterates through a list of NTP servers from a CSV file, attempts to connect
+    to each one and get the time, and writes the results to a PDF file.
+
+    Compares the NTP time to the system time and writes the difference.
+
+    Args:
+        ntp_file: Path to CSV file containing NTP servers.
+        pdf_output: PDF file to write output to.
+
+    """
     # Create a list to store the NTP servers
     ntps = []
 

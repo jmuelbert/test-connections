@@ -1,13 +1,15 @@
 name: Release documentation
 
-on:
-  pull_request:
-    types:
-      - closed
-    branches: [main]
+on: # yamllint disable-line rule:truthy
+  push:
+    branches: [main, develop, release, Update-GitHub-Actions]
     paths:
+      - doc/**
       - docs/**
       - mkdocs.yml
+
+  pull_request:
+    types: [closed]
 
 jobs:
   release-docs:

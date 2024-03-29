@@ -5,7 +5,7 @@
 
 name: Scorecard supply-chain security
 
-on:
+on: # yamllint disable-line rule:truthy
   branch_protection_rule:
   # Schedule the workflow to run every Tuesday at 4:24 AM
 
@@ -13,7 +13,7 @@ on:
     - cron: "24 4 * * 2"
 
   push:
-    branches: [main, develop, release, improve_build-workflow]
+    branches: [main, develop, release, Update-GitHub-Actions]
 
   pull_request:
     # The branches below must be a subset of the branches above

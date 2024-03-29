@@ -1,18 +1,17 @@
-# SPDX-FileCopyrightText: 2023 Jürgen Mülbert
+# SPDX-FileCopyrightText: 2023-2024 Jürgen Mülbert
 #
 # SPDX-License-Identifier: EUPL-1.2
 
 [build-system]
+requires = ["hatchling>=1.22.2"]
 build-backend = "hatchling.build"
-requires = [
-  "hatch-vcs>=0.3",
-  "hatchling>=1.22.2",
-]
 
 [project]
 name = "test-connections"
+dynamic = ["version"]
 description = "Checks the availability of web addresses and NTP servers."
 readme = "README.md"
+requires-python = ">=3.8"
 keywords = [
   "availability",
   "check program",
@@ -26,8 +25,8 @@ maintainers = [
   { email = "juergen.muelbert@outlook.de" },
 ]
 authors = [{ name = "Jürgen Mülbert", email = "juergen.muelbert@outlook.de" }]
-requires-python = ">=3.9,<4"
 classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
   "Development Status :: 2 - Pre-Alpha",
   "Environment :: Console",
   "Intended Audience :: Developers",
@@ -39,23 +38,25 @@ classifiers = [
   "Operating System :: POSIX",
   "Operating System :: Unix",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
   "Topic :: Internet",
   "Topic :: Internet :: WWW/HTTP",
   "Topic :: Software Development :: Testing",
 ]
-dynamic = [
-  "version",
-]
 dependencies = [
-  "click>=8.0.6",
+  "click>=8.0.4",
   "fpdf>=1.7.2",
-  "ntplib>=0.4",
-  "pyinstaller>=4.10",
+  "ntplib>=0.4.0",
   "requests>=2.27.1",
+  "pyinstaller>=4.9",
 ]
+
 [project.urls]
 Bugtracker = "https://github.com/jmuelbert/test-connections/issues"
 Changelog = "https://github.com/jmuelbert/test-connections/releases"
@@ -64,60 +65,30 @@ Issues = "https://github.com/jmuelbert/test-connections/issues"
 Source = "https://github.com/jmuelbert/test-connections"
 
 [project.scripts]
-test-connections = "test_connections.cli.app:main"
+test-connections = "test_connections.app.cli:main"
 
 [tool.hatch.build.targets.sdist]
 exclude = ["/.github", "/backend", "/scripts"]
 
+[tool.hatch.version]
+path = "src/test_connections/__about__.py"
+
 [tool.hatch.envs.hatch-static-analysis]
 config-path = "ruff_defaults.toml"
 
-[tool.hatch.build]
-dependencies = [
-  "coverage[toml]>=6.2",
-  "filelock>=3.7.1",
-  "pyfakefs",
-  "pytest",
-  "pytest-cov",
-  "pytest-mock",
-  "pytest-randomly",
-  "pytest-rerunfailures",
-  "pytest-xdist",
-  "trustme",
-  # Hatchling dynamic dependency
-  "editables",
-]
-
-[tool.hatch.envs.default.overrides]
-env.GITHUB_ACTIONS.env-vars = "COVERAGE_REPORT="
-
+[tool.hatch.envs.default]
+dependencies = ["coverage[toml]>=6.5", "pytest"]
 [tool.hatch.envs.default.scripts]
-# --cov must not come before an argument in order to use the sources defined by config
-_cov = "pytest --cov --cov-report={env:COVERAGE_REPORT:term-missing} --cov-config=pyproject.toml"
-dev = "pytest -p no:randomly --no-cov {args:tests}"
-cov = "_cov -p no:randomly {args:tests}"
-full = "_cov -n auto --reruns 5 --reruns-delay 3 -r aR {args:tests}"
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = ["- coverage combine", "coverage report"]
+cov = ["test-cov", "cov-report"]
 
-[tool.hatch.envs.test.overrides]
-env.HERMETIC_TESTS.type = [{ value = "container", if = ["true"] }, "virtual"]
-
-[[tool.hatch.envs.test.matrix]]
+[[tool.hatch.envs.all.matrix]]
 python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
-
-[tool.hatch.envs.coverage]
-detached = true
-dependencies = ["coverage[toml]>=6.2", "lxml"]
-
-[tool.hatch.envs.coverage.scripts]
-combine = "coverage combine {args}"
-report-xml = "coverage xml"
-report-uncovered-html = "coverage html --skip-covered --skip-empty"
-generate-summary = "python scripts/generate_coverage_summary.py"
-write-summary-report = "python scripts/write_coverage_summary_report.py"
 
 [tool.hatch.envs.types]
 dependencies = ["mypy>=1.0.0"]
-
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/test_connections tests}"
 
@@ -149,16 +120,6 @@ dependencies = [
   "sphinx-rtd-theme>=1.0.0",
   "myst-parser>=0.15.2",
 ]
-pre-install-commands = ["python scripts/install_mkdocs_material_insiders.py"]
-
-[tool.hatch.envs.docs.overrides]
-env.GH_TOKEN_MKDOCS_MATERIAL_INSIDERS.env-vars = [
-  { key = "MKDOCS_CONFIG", value = "mkdocs.insiders.yml" },
-  { key = "MKDOCS_CONFIG", value = "mkdocs.yml", if = [
-    "",
-  ] },
-  { key = "MKDOCS_IMAGE_PROCESSING", value = "true" },
-]
 
 [tool.hatch.envs.docs.env-vars]
 SOURCE_DATE_EPOCH = "1580601600"
@@ -184,75 +145,27 @@ build-html-win = [
   "if not exist doc\\_images md doc\\_images",
   "sphinx-build -b html -d doc\\_build\\doctrees doc doc\\_build\\html",
 ]
-doctest = "sphinx-build -b doctest -d doc/_build/doctrees doc doc/_build/doctest"
-coverage = "sphinx-build -b coverage -d doc/_build/doctrees doc doc/_build/coverage"
-sphinx_serve = "(cd doc/_build/html && python -m http.server)"
-publish-clean-build = [
-  "clean-all",
-  "build-html",
-  "(cd doc && bash sync_website.sh)",
+
+
+[tool.coverage.run]
+source_pkgs = ["test_connections", "tests"]
+branch = true
+parallel = true
+omit = ["src/test_connections/__about__.py"]
+
+[tool.coverage.paths]
+test_connections = [
+  "src/test_connections",
+  "*/test-connections/src/test_connections",
 ]
+tests = ["tests", "*/test-connections/tests"]
 
-[tool.hatch.version]
-path = "src/test_connections/cli/app/__about__.py"
-
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/test_connections"]
-
-[tool.black]
-line-length = 88
-target-version = ["py38", "py39", "py310", "py311", "py312"]
-include = '\.pyi?$'
-# packages = ["test_connections"]
-extend-exclude = '.+/(dist|.venv|venv|build)/.+'
-
-[tool.ruff]
-line-length = 100
-fix = true
-
-[tool.ruff.format]
-preview = true
-docstring-code-format = true
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
 
 [tool.ruff.lint]
 preview = true
-# See https://github.com/astral-sh/ruff#rules for error code definitions.
-select = [
-  "ANN",  # annotations
-  "B",    # bugbear
-  "C4",   # comprehensions
-  "COM",  # trailing comma
-  "DJ",   # Django
-  "DTZ",  # naive datetime
-  "E",    # style errors
-  "EXE",  # shebang
-  "F",    # flakes
-  "FLY",  # string formatting
-  "G",    # logging format
-  "I",    # import sorting
-  "INT",  # gettext
-  "ISC",  # string concatenation
-  "LOG",  # logging
-  "N",    # naming
-  "PERF", # performance
-  "PGH",  # pygrep-hooks
-  "PIE",  # miscellaneous
-  "PL",   # pylint
-  "PYI",  # typing stubs
-  "Q",    # quotes
-  "RSE",  # raise
-  "RUF",  # Ruff
-  "S",    # security
-  "SLOT", # __slots__
-  "SIM",  # simplify
-  "T10",  # debugger
-  "TCH",  # type-checking
-  "TID",  # tidy imports
-  "UP",   # upgrade
-  "W",    # style warnings
-  "YTT",  # sys.version
-]
+
 ignore = [
   # Allow non-abstract empty methods in abstract base classes
   "B027",
@@ -277,54 +190,6 @@ ignore = [
   # Use `X | Y` for type annotations
   "UP007",
 ]
-unfixable = [
-  # Don't touch print statements
-  "T201",
-  # Don't touch unused imports
-  "F401",
-  # Don't touch noqa lines
-  "RUF100",
-]
-
-[tool.ruff.lint.per-file-ignores]
-# B011 Do not call assert False since python -O removes these calls
-# F841 local variable 'foo' is assigned to but never used
-# C408 Unnecessary `dict` call
-# S108 Probable insecure usage of temporary file or directory
-# PLC1901 `ext_pkg.version == ""` can be simplified to `not ext_pkg.version` as an empty string is falsey
-# B018 Found useless expression
-"tests/*" = [
-  "B011",
-  "F841",
-  "EM",
-  "C",
-  "T201",
-  "S108",
-  "PLC1901",
-  "PTH",
-  "ARG",
-  "PT",
-  "RET",
-  "G",
-  "PLW",
-  "B018",
-  "T201",
-]
-
-[tool.ruff.lint.mccabe]
-max-complexity = 18
-
-[tool.ruff.lint.flake8-tidy-imports]
-ban-relative-imports = "all"
-
-[tool.ruff.lint.flake8-gettext]
-extend-function-names = ["gettext_lazy"]
-
-[tool.ruff.lint.isort]
-force-single-line = true
-lines-between-types = 1
-lines-after-imports = 2
-required-imports = ["from __future__ import annotations"]
 
 [tool.codespell]
 builtin = "clear,usage,en-GB_to_en-US"
@@ -341,22 +206,6 @@ testpaths = ["tests"]
 markers = [
   "save_engine: marks some of the tests which are using an external package to save a chart to e.g. a png file. This mark is used to run those tests selectively in the build GitHub Action.",
 ]
-
-[tool.coverage.run]
-branch = true
-source_pkgs = ["test_connections", "tests"]
-parallel = true
-omit = ["src/test_connections/cli/app/__about__.py"]
-
-[tool.coverage.paths]
-test_connection = [
-  "src/test_connections",
-  "*/test-connections/src/test_connections",
-]
-tests = ["tests", "*/test-connections/tests"]
-
-[tool.coverage.report]
-exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
 
 [tool.mypy]
 disallow_untyped_defs = false

@@ -30,16 +30,16 @@ jobs:
     strategy:
       matrix:
         os: [Ubuntu, MacOS, Windows]
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        python-version: ["py3.8", "py3.9", "py3.10", "py3.11"]
       fail-fast: false
     defaults:
       run:
         shell: bash
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip" # caching pip dependencies
@@ -48,20 +48,8 @@ jobs:
         id: full-python-version
         run: echo version=$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))") >> $GITHUB_OUTPUT
 
-      - name: Bootstrap poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python - -y
-
-      - name: Update PATH
-        if: ${{ matrix.os != 'Windows' }}
-        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
-
-      - name: Update Path for Windows
-        if: ${{ matrix.os == 'Windows' }}
-        run: echo "$APPDATA\Python\Scripts" >> $GITHUB_PATH
-
-      - name: Configure poetry
-        run: poetry config virtualenvs.in-project true
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
       - name: Set up cache
         uses: actions/cache@v3
@@ -70,28 +58,20 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
-      - name: Ensure cache is healthy
-        if: steps.cache.outputs.cache-hit == 'true'
-        run: |
-          # `timeout` is not available on macOS, so we define a custom function.
-          [ "$(command -v timeout)" ] || function timeout() { perl -e 'alarm shift; exec @ARGV' "$@"; }
-          # Using `timeout` is a safeguard against the Poetry command hanging for some reason.
-          timeout 10s poetry run pip --version || rm -rf .venv
-
-      - name: Check lock file
-        run: poetry lock --check
-
-      - name: Install dependencies
-        run: poetry install
-
       - name: Run pytest
-        run: poetry run python -m pytest -p no:sugar -q tests/
+        run: hatch env run --env all.${{matrix.python-version}} test
 
       - name: Run mypy
-        run: poetry run mypy
+        if: ${{ matrix.python-version == 'py3.12' }}
+        run: hatch run types:check
+
+      - name: Run Ruff
+        if: ${{ matrix.python-version == 'py3.12' }}
+        run: hatch fmt
 
       - name: Run Sphinx auto-build
-        run: poetry run sphinx-build --color docs docs/_build
+        if: ${{ matrix.python-version == 'py3.12' }}
+        run: hatch run docs:build
 
   release:
     name: Release
@@ -100,28 +80,35 @@ jobs:
     environment:
       name: release
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: ${{ matrix.python-version }}
+          cache: "pip" # caching pip dependencies
 
-      - name: Install Poetry
-        run: |
-          curl -sSL https://install.python-poetry.org | python - -y
+      - name: Get full Python version
+        id: full-python-version
+        run: echo version=$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))") >> $GITHUB_OUTPUT
 
-      - name: Update PATH
-        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
-      - name: Build project for distribution
-        run: poetry build
+      - name: Set up cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Check Version
         id: check-version
         run: |
-          [[ "$(poetry version --short)" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || echo prerelease=true >> $GITHUB_OUTPUT
+          [[ "$(hatch version)" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || echo prerelease=true >> $GITHUB_OUTPUT
+
+      - name: Build and Publish
+        run: hatch build
 
       - name: Create Release
         uses: ncipollo/release-action@v1
@@ -131,7 +118,7 @@ jobs:
           draft: false
           prerelease: steps.check-version.outputs.prerelease == 'true'
 
-      - name: Publish to PyPI
-        env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
-        run: poetry publish
+      # - name: Publish to PyPI
+      #  env:
+      #    POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
+      #  run: poetry publish

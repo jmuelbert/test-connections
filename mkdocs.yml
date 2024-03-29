@@ -8,10 +8,10 @@ docs_dir: docs/linkified
 # Repository
 repo_name: jmuelbert/test-connections
 repo_url: https://github.com/jmuelbert/test-connections
-edit_uri: ""
+edit_uri: ''
 nav:
-  - Introduction: index.md
-  - CLI: cli.md  
+  # - Introduction: index.md
+  # - CLI: cli.md
 
 # Copyright
 copyright: Copyright &copy; 2023 - 2024
@@ -69,17 +69,17 @@ markdown_extensions:
   - pymdownx.snippets
   - attr_list
   - md_in_html
-  - mdx_include
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+  # - mdx_include
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:material.extensions.emoji.twemoji
+  #     emoji_generator: !!python/name:material.extensions.emoji.twemoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true
 
 plugins:
   - search
   - mkdocstrings:
-      watch: [launch]
+      # watch: [launch]
       handlers:
         python:
           rendering:
@@ -90,11 +90,11 @@ plugins:
             merge_init_into_class: true
             show_signature_annotations: true
             separate_signature: true
-  - mkdocs-simple-hooks:
-      hooks:
-        on_pre_build: 'docs.plugins:on_pre_build'
-        on_files: 'docs.plugins:on_files'
-        on_page_markdown: 'docs.plugins:on_page_markdown'
+  # - mkdocs-simple-hooks:
+  #     hooks:
+  #       on_pre_build: 'docs.plugins:on_pre_build'
+  #       on_files: 'docs.plugins:on_files'
+  #       on_page_markdown: 'docs.plugins:on_page_markdown'
 
 extra_javascript:
   - javascripts/config.js

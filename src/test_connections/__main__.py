@@ -9,11 +9,10 @@ from __future__ import annotations
 
 import sys
 
-from test_connections.cli.app import main as cli
-
+from test_connections.app.cli import main as cli
 
 if __name__ == "__main__":
     cli(*args)
 
 if getattr(sys, "frozen", False):
-    main(sys.argv[1:])
+    cli(sys.argv[1:])

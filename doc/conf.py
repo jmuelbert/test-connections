@@ -2,19 +2,18 @@
 
 from __future__ import annotations
 
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 
-from test_connections.cli.app.__about__ import __version__
-
+# from test_connections.__about__ import __version__
 
 company, name = "jmuelbert", "test-connections"
-release, version = __version__, ".".join(__version__.split(".")[:2])
+# release, version = __version__, ".".join(__version__.split(".")[:2])
+version = "0.0.1"
 now = datetime.now(tz=UTC)
 copyright = f"2023-{now.year}, {company}"  # noqa: A001
 master_doc, source_suffix = "index", ".rst"
 
-html_theme = "furo"
+# html_theme = "furo"
 html_title, html_last_updated_fmt = name, now.isoformat()
 pygments_style, pygments_dark_style = "sphinx", "monokai"
 
