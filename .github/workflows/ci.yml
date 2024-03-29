@@ -65,7 +65,7 @@ jobs:
 
       - name: Run mypy
         if: ${{ matrix.python-version == 'py3.12' }}
-        run: hatch run types:check
+        run: hatch env run --env types check
 
       - name: Run Ruff
         if: ${{ matrix.python-version == 'py3.12' }}
@@ -73,7 +73,7 @@ jobs:
 
       - name: Run Sphinx auto-build
         if: ${{ matrix.python-version == 'py3.12' }}
-        run: hatch run docs:build
+        run: hatch run docs:build-check
 
   release:
     name: Release
