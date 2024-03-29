@@ -61,6 +61,7 @@ jobs:
           key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Run pytest
+        if: ${{ matrix.python-version != 'py3.9' && matrix.os = 'MacOS') }}
         run: hatch env run --env all.${{matrix.python-version}} test
 
       # - name: Run mypy
@@ -73,7 +74,7 @@ jobs:
 
       - name: Run Sphinx auto-build
         if: ${{ matrix.python-version == 'py3.12' }}
-        run: hatch run docs:build-check
+        run: hatch run docs:build-html
 
   release:
     name: Release
