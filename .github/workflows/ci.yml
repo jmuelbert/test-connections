@@ -69,11 +69,11 @@ jobs:
       #   run: hatch env run --env types check
 
       - name: Run Ruff
-        if: ${{ matrix.python-version == 'py3.12' }}
+        if: ${{ matrix.python-version == 'py3.12' && matrix.os == 'Ubuntu' }}
         run: hatch fmt
 
       - name: Run Sphinx auto-build
-        if: ${{ matrix.python-version == 'py3.12' }}
+        if: ${{ matrix.python-version == 'py3.12' && matrix.os == 'Ubuntu' }}
         run: hatch run docs:build-html
 
   release:
