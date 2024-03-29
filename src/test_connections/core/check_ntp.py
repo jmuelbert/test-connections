@@ -51,4 +51,3 @@ def test_ntp(ntp_file, pdf_output):
             # Write the error message to PDF file
             pdf_output.write(5, f"NTP error: {e}\n")
             pdf_output.write(5, "\n")
-

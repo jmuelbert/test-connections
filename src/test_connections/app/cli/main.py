@@ -8,6 +8,7 @@ from logging.config import fileConfig as logConfig
 import click
 from fpdf import FPDF
 
+
 from test_connections.core.check_ntp import test_ntp
 from test_connections.core.check_urls import test_urls
 
@@ -25,7 +26,7 @@ def create_pdf() -> FPDF:
         FPDF: The initialized PDF object.
     """
     # Create a PDF object
-    pdf = fpdf.FPDF()
+    pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", size=12)
     return pdf
@@ -90,5 +91,5 @@ def main(ntpdata: str, urldata: str, outputpath: str) -> int:
     return 0
 
 
-if __name__ == "__main__":  # pragma: no cover
-    main(*args)
+if __name__ == "__main__":
+    main()

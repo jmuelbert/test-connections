@@ -5,6 +5,8 @@ from os import getenv
 from typing import Any
 
 """Settings class to handle configuration."""
+
+
 class Settings:
     __slots__ = ["config_parser", "env"]
     config_parser: ConfigParser
@@ -35,7 +37,11 @@ class Settings:
         Returns:
             The value for the setting, or the default value if not found.
         """
-        return self._get_from_section(self.env, name) or self._get_from_section("default", name) or default_value
+        return (
+            self._get_from_section(self.env, name)
+            or self._get_from_section("default", name)
+            or default_value
+        )
 
     def _get_from_section(self, section: str, var: str) -> Any:
         """Gets the value for the given setting name from the given config
@@ -55,6 +61,7 @@ class Settings:
         if section in self.config_parser and var in self.config_parser[section]:
             return self.config_parser[section][var]
         return None
+
 
 """Initializes a Settings instance.
 

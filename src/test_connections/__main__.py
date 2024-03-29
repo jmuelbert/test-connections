@@ -12,7 +12,7 @@ import sys
 from test_connections.app.cli import main as cli
 
 if __name__ == "__main__":
-    cli(*args)
+    cli()
 
 if getattr(sys, "frozen", False):
     cli(sys.argv[1:])

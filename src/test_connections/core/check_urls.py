@@ -17,7 +17,6 @@ def test_urls(url_file, pdf_output):
     # Create a list to store the URLs
     urls = []
 
-
     # Open the URL file and read the URLs
     with open(url_file) as f:
         reader = csv.reader(f)
