@@ -30,7 +30,7 @@ jobs:
     strategy:
       matrix:
         os: [Ubuntu, MacOS, Windows]
-        python-version: ["py3.8", "py3.9", "py3.10", "py3.11"]
+        python-version: ["py3.8", "py3.9", "py3.10", "py3.11", "py3.12"]
       fail-fast: false
     defaults:
       run:
@@ -41,8 +41,10 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
-          cache: "pip" # caching pip dependencies
+          # Read python version from a file .python-version
+          # python-version-file: ".python-version"
+          check-latest: true
+          cache: pip
 
       - name: Get full Python version
         id: full-python-version
@@ -82,11 +84,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
-          cache: "pip" # caching pip dependencies
+          # Read python version from a file .python-version
+          # python-version-file: ".python-version"
+          check-latest: true
+          cache: pip
 
       - name: Get full Python version
         id: full-python-version
