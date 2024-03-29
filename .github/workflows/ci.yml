@@ -89,16 +89,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           # Read python version from a file .python-version
-          # python-version-file: ".python-version"
+          python-version-file: ".python-version"
           check-latest: true
           cache: pip
-
-      - name: Get full Python version
-        id: full-python-version
-        run: echo version=$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))") >> $GITHUB_OUTPUT
-
-      - name: Install Hatch
-        run: pip install --upgrade hatch
 
       - name: Set up cache
         uses: actions/cache@v3
@@ -106,6 +99,13 @@ jobs:
         with:
           path: .venv
           key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Get full Python version
+        id: full-python-version
+        run: echo version=$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))") >> $GITHUB_OUTPUT
+
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
       - name: Check Version
         id: check-version
