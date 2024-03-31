@@ -55,7 +55,7 @@ Please checkout [Issues][github_issues] page for a list of all known issues.
 
 [![REUSE Compliance Check][reuse_compliance_action_badge]][reuse_compliance_action]
 
-## Acknowledgements
+## Acknowledgments
 
 Many thanks to everyone reporting issues.
 

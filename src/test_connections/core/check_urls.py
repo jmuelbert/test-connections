@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import csv
+import locale
 
 import requests
 
 
-def test_urls(url_file, pdf_output):
+def test_urls(url_file, pdf_output) -> None:
     """
     Tests URLs from a CSV file.
 
@@ -20,7 +21,7 @@ def test_urls(url_file, pdf_output):
     urls = []
 
     # Open the URL file and read the URLs
-    with open(url_file) as f:
+    with open(url_file, encoding=locale.getpreferredencoding(False)) as f:
         reader = csv.reader(f)
         for row in reader:
             # Assume the URL is in the first column of the CSV file

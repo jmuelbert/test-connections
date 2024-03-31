@@ -12,7 +12,7 @@ class Settings:
     config_parser: ConfigParser
     env: str
 
-    def __init__(self, file: str = "settings.conf"):
+    def __init__(self, file: str = "settings.conf") -> None:
         """
         Initializes the Settings class.
 

@@ -135,7 +135,7 @@ words:
   - recvbuffer
   - refact
   - Referencias
-  - Referenz
+  - Reference
   - rehype
   - resx
   - returntocorp
@@ -165,7 +165,7 @@ words:
   - webp
   - withastro
 flagWords:
-  - hte
+  - the
 maxNumberOfProblems: 1000
 import: []
 useGitignore: true
@@ -180,8 +180,8 @@ overrides:
     language: en,sv
   - filename: package.json
     ignoreWords:
-      - colour
-      - canot
+      - color
+      - cannot
 allowCompoundWords: true
 enableGlobDot: true
 cache:

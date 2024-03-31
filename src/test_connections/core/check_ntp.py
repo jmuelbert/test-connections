@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import csv
+import locale
 import time
 from time import ctime
 
 import ntplib
 
 
-def test_ntp(ntp_file, pdf_output):
+def test_ntp(ntp_file, pdf_output) -> None:
     """
     Tests NTP time synchronization.
 
@@ -26,7 +27,7 @@ def test_ntp(ntp_file, pdf_output):
     ntps = []
 
     # Open the NTP file and read the NTP servers
-    with open(ntp_file) as f:
+    with open(ntp_file, encoding=locale.getpreferredencoding(False)) as f:
         reader = csv.reader(f)
         for row in reader:
             # Assume the NTP server is in the first column of the CSV file

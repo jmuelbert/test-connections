@@ -9,7 +9,7 @@ Buildables
 cfbundle
 cocoadocs
 colorset
-colour
+color
 comitlint
 dsym
 esx
