@@ -78,9 +78,9 @@ jobs:
         if: ${{ matrix.python-version == 'py3.12' && matrix.os == 'Ubuntu' }}
         run: hatch fmt
 
-      - name: Run Sphinx auto-build
+      - name: Run mkdocs build-check
         if: ${{ matrix.python-version == 'py3.12' && matrix.os == 'Ubuntu' }}
-        run: hatch run docs:build-html
+        run: hatch run docs:build-check
 
   release:
     name: Release

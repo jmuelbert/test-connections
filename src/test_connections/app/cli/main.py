@@ -15,8 +15,7 @@ logger = getLogger(__name__)
 
 
 def create_pdf() -> FPDF:
-    """
-    Creates a new PDF object.
+    """Creates a new PDF object.
 
     Creates and configures a new FPDF object, adds a blank page,
     sets the font, and returns the PDF object.
@@ -24,6 +23,7 @@ def create_pdf() -> FPDF:
     Returns
     -------
         FPDF: The initialized PDF object.
+
     """
     # Create a PDF object
     pdf = FPDF()
@@ -53,8 +53,7 @@ def create_pdf() -> FPDF:
     help="the name of the output file",
 )
 def main(ntpdata: str, urldata: str, outputpath: str) -> int:
-    r"""
-    cli, generate separate files from datafile.
+    r"""cli, generate separate files from datafile.
 
     Args:
     ----
@@ -65,6 +64,7 @@ def main(ntpdata: str, urldata: str, outputpath: str) -> int:
     Returns:
     -------
         Status as int (0 is good)
+
     """
     config = configparser.ConfigParser()
 

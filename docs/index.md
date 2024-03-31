@@ -11,20 +11,18 @@ test-connections
 <div align="center">
 <p>
 <a href="https://github.com/jmuelbert/test-connections/actions">
-<img src="https://github.com/jmuelbert/test-connections/workflows/Test%20Suite/badge.svg" alt="Test Suite">
+<img src="https://github.com/jmuelbert/test-connections/workflows/ci/badge.svg" alt="ci">
 
 <a href="https://pypi.org/project/test-connections/">
     <img src="https://badge.fury.io/py/test-connections.svg" alt="Package version">
 </a>
 </p>
 
-<em>A next-generation HTTP client for Python.</em>
-</div>/
-
-test-connections i a tool to check the availability of a website or ntp-server.
+<em>test-connections i a tool to check the availability of a website or ntp-server.</em>
+</div>
 
 Install test-connections using pip:
 
 ```shell
-$ pip install test-connections
+  pip install test-connections
 ```

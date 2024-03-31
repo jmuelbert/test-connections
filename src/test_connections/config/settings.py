@@ -13,8 +13,7 @@ class Settings:
     env: str
 
     def __init__(self, file: str = "settings.conf") -> None:
-        """
-        Initializes the Settings class.
+        """Initializes the Settings class.
 
         Reads in the configuration from the provided file path.
         Sets the ENV environment variable to 'dev' if not already set.
@@ -24,8 +23,7 @@ class Settings:
         self.env = getenv("ENV", "dev")
 
     def get(self, name: str, default_value: Any = None) -> Any:
-        """
-        Gets the value for the given setting name from the environment
+        """Gets the value for the given setting name from the environment
         configuration.
 
         First checks the configuration for the current ENV environment.
@@ -40,12 +38,12 @@ class Settings:
         Returns:
         -------
             The value for the setting, or the default value if not found.
+
         """
         return self._get_from_section(self.env, name) or self._get_from_section("default", name) or default_value
 
     def _get_from_section(self, section: str, var: str) -> Any:
-        """
-        Gets the value for the given setting name from the given config
+        """Gets the value for the given setting name from the given config
         section.
 
         Checks if the given section exists in the config parser and if the
@@ -60,6 +58,7 @@ class Settings:
         Returns:
         -------
             The setting value if found, else None.
+
         """
         if section in self.config_parser and var in self.config_parser[section]:
             return self.config_parser[section][var]

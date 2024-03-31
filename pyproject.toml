@@ -4,10 +4,7 @@
 
 [build-system]
 build-backend = "hatchling.build"
-requires = [
-  "hatch-fancy-pypi-readme>=22.5",
-  "hatchling>=1.22.2",
-]
+requires = ["hatch-fancy-pypi-readme>=22.5", "hatchling>=1.22.2"]
 
 [project]
 name = "test-connections"
@@ -28,11 +25,10 @@ authors = [{ name = "Jürgen Mülbert", email = "juergen.muelbert@outlook.de" }]
 requires-python = ">=3.8"
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",
-  "Development Status :: 2 - Pre-Alpha",
   "Environment :: Console",
   "Intended Audience :: Developers",
   "Intended Audience :: Information Technology",
-  "License :: OSI Approved :: European Union Public License 1.2 (EUPL 1.2)",
+  "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
   "Operating System :: MacOS",
   "Operating System :: Microsoft :: Windows",
   "Operating System :: OS Independent",
@@ -51,23 +47,22 @@ classifiers = [
   "Topic :: Internet :: WWW/HTTP",
   "Topic :: Software Development :: Testing",
 ]
-dynamic = [
-  "readme",
-  "version",
-]
+dynamic = ["readme", "version"]
 dependencies = [
   "click>=8.0.4",
   "fpdf>=1.7.2",
-  "ntplib>=0.4",
-  "pyinstaller>=4.9",
+  "ntplib>=0.4.0",
   "requests>=2.27.1",
+  "pyinstaller>=4.9",
 ]
+
 [project.urls]
 Bugtracker = "https://github.com/jmuelbert/test-connections/issues"
 Changelog = "https://github.com/jmuelbert/test-connections/releases"
 Documentation = "https://github.com/jmuelbert/test-connections#readme"
 Issues = "https://github.com/jmuelbert/test-connections/issues"
 Source = "https://github.com/jmuelbert/test-connections"
+
 [project.scripts]
 test-connections = "test_connections.app.cli:main"
 
@@ -128,13 +123,6 @@ dependencies = [
   # Validation
   # https://github.com/linkchecker/linkchecker/pull/669#issuecomment-1267236287
   "linkchecker @ git+https://github.com/linkchecker/linkchecker.git@d9265bb71c2054bf57b8c5734a4825d62505c779",
-  # Sphinx
-  "sphinx>=7.2.6",
-  "sphinx-argparse-cli>=1.11.1",
-  "sphinx-autodoc-typehints>=1.25.2",
-  "sphinx-copybutton>=0.5.2",
-  "sphinx-rtd-theme>=1.0.0",
-  "myst-parser>=0.15.2",
 ]
 
 [tool.hatch.envs.docs.env-vars]
@@ -149,18 +137,6 @@ ci-build = "mike deploy --config-file {env:MKDOCS_CONFIG} --update-aliases {args
 validate = "linkchecker --config .linkcheckerrc site"
 # https://github.com/linkchecker/linkchecker/issues/678
 build-check = ["build --no-directory-urls", "validate"]
-# Sphinx
-clean = "rm -rf doc/_build"
-clean-generated = ["rm -rf doc/user_guide/generated", "rm -rf doc/gallery"]
-clean-all = ["clean", "clean-generated", "rm -rf doc/_images"]
-build-html = [
-  "mkdir -p doc/_images",
-  "sphinx-build -b html -d doc/_build/doctrees doc doc/_build/html",
-]
-build-html-win = [
-  "if not exist doc\\_images md doc\\_images",
-  "sphinx-build -b html -d doc\\_build\\doctrees doc doc\\_build\\html",
-]
 
 [tool.black]
 line-length = 120
@@ -177,35 +153,48 @@ extend-exclude = '''
 )/
 '''
 
+[tool.hatch.env.pre-commit]
+dependencies = ["pre-commit>=4.0.0"]
+
+[tool.hatch.envs.pre-commit.scripts]
+check = "pre-commit run --all-files"
+
 [tool.ruff]
-target-version = "py38"
-lint.isort = { known-first-party = [
-  "tox",
-  "tests",
-], required-imports = [
-  "from __future__ import annotations",
-] }
-lint.select = ["ALL"]
-lint.ignore = [
-  "CPY",     # No copyright header
-  "INP001",  # no implicit namespaces here
-  "D",       # ignore documentation for now
-  "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in `arg`"
-  "ANN101",  # Missing type annotation for `self` in method
-  "ANN102",  # Missing type annotation for `cls` in classmethod"
-  "D203",    # `one-blank-line-before-class` (D203) and `no-blank-line-before-class` (D211) are incompatible
-  "D212",    # `multi-line-summary-first-line` (D212) and `multi-line-summary-second-line` (D213) are incompatible
-  "S104",    # Possible binding to all interfaces
-  "COM812",  # conflicts with formatter
-  "ISC001",  # conflicts with formatter
-  "S404",    # Using subprocess is alright.
-  "PLR0914", ## Too many local variables
-  "PLR0917", ## Too many positional arguments
+fix = true
+line-length = 120
+
+[tool.ruff.format]
+preview = true
+docstring-code-format = true
+docstring-code-line-length = 100
+
+[tool.ruff.lint]
+select = ["ALL"]
+preview = true
+ignore = [
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Use of `assert` detected
+  "S101",
+  # Use `contextlib.suppress(SchemaRegistryException)` instead of `try`-`except`-`pass`
+  "SIM105",
+  # Missing explicit `return` at the end of function able to return non-`None` value
+  "RET503",
+  # Unnecessary assignment to
+  "RET504",
+  # Unnecessary `else` after `return` statement
+  "RET505",
+  # Unnecessary `elif` after `raise` statement
+  "RET506",
+  # Possible hardcoded password
+  "S105",
+  "S106",
+  "PLR",  # Design related pylint codes
+  # RUF012 Mutable class attributes should be annotated with `typing.ClassVar`
+  "RUF012",
+  # Use `X | Y` for type annotations
+  "UP007",
 ]
-format.preview = true
-lint.preview = true
-format.docstring-code-format = true
-format.docstring-code-line-length = 100
 
 [tool.ruff.per-file-ignores]
 "tests/**/*.py" = [
@@ -216,7 +205,6 @@ format.docstring-code-line-length = 100
   "S603",    # `subprocess` call: check for execution of untrusted input
   "PLR2004", # Magic value used in comparison, consider replacing with a constant variable
 ]
-
 [tool.codespell]
 builtin = "clear,usage,en-GB_to_en-US"
 write-changes = true

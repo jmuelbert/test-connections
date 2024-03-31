@@ -111,7 +111,8 @@ class SettingsTest(TestCase):
         """Tests that the get() method parses and returns
         float values correctly. Verifies that get() will
         cast the setting value to a float if the setting
-        type is float."""
+        type is float.
+        """
         assert float(self.settings.get("sample_of_float_var")) == 10.1
 
     @mock.patch.dict(os.environ, {"ENV": "prod"}, clear=True)

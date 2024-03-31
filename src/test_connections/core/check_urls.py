@@ -7,8 +7,7 @@ import requests
 
 
 def test_urls(url_file, pdf_output) -> None:
-    """
-    Tests URLs from a CSV file.
+    """Tests URLs from a CSV file.
 
     Args:
     ----
@@ -16,6 +15,7 @@ def test_urls(url_file, pdf_output) -> None:
       pdf_output: PDF file opened for writing to log results.
 
     For each URL in the CSV file, sends a GET request and writes the response status code and content length to the PDF file. If an exception occurs, it is caught and an error message is written instead.
+
     """
     # Create a list to store the URLs
     urls = []

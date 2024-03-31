@@ -16,7 +16,6 @@ repos:
       - id: check-added-large-files
       - id: check-builtin-literals
       - id: check-executables-have-shebangs
-        exclude: (tests/data/)
       - id: detect-private-key
         exclude: tests/conftest.py
       - id: mixed-line-ending
@@ -26,13 +25,6 @@ repos:
     hooks:
       - id: check-github-workflows
         args: ['--verbose']
-
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.3.4
-    hooks:
-      - id: ruff-format
-      - id: ruff
-        args: ['--fix', '--unsafe-fixes', '--exit-non-zero-on-fix']
 
   - repo: https://github.com/psf/black
     rev: 24.3.0
@@ -80,12 +72,7 @@ repos:
     hooks:
       - id: codespell
         additional_dependencies: ['tomli>=2.0.1']
-        exclude: (LICENSE|LICENSES/**)
-
-  - repo: https://github.com/tox-dev/pyproject-fmt
-    rev: '1.7.0'
-    hooks:
-      - id: pyproject-fmt
+        exclude: (LICENSE|LICENSES/)
 
   - repo: meta
     hooks:
