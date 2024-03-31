@@ -6,9 +6,11 @@ import requests
 
 
 def test_urls(url_file, pdf_output):
-    """Tests URLs from a CSV file.
+    """
+    Tests URLs from a CSV file.
 
     Args:
+    ----
       url_file: Path to CSV file containing URLs to test. URLs are assumed to be in the first column.
       pdf_output: PDF file opened for writing to log results.
 

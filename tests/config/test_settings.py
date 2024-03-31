@@ -50,7 +50,7 @@ class SettingsTest(TestCase):
     - Read environment-specific overrides
 
     The tests are organized into unit tests for each of these behaviors.
-    """ """Tests for reading configuration settings from a file.
+    Tests for reading configuration settings from a file.
 
     This test suite verifies that the Settings class can:
 
@@ -97,9 +97,7 @@ class SettingsTest(TestCase):
     """
 
     def test_get_default_value_when_setting_not_found_with_success(self):
-        self.assertEqual(
-            self.settings.get("not_found_var", "default_value"), "default_value"
-        )
+        self.assertEqual(self.settings.get("not_found_var", "default_value"), "default_value")
 
     def test_get_setting_int_value_with_success(self):
         """Tests that the get() method parses and returns

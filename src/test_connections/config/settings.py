@@ -13,7 +13,8 @@ class Settings:
     env: str
 
     def __init__(self, file: str = "settings.conf"):
-        """Initializes the Settings class.
+        """
+        Initializes the Settings class.
 
         Reads in the configuration from the provided file path.
         Sets the ENV environment variable to 'dev' if not already set.
@@ -23,7 +24,8 @@ class Settings:
         self.env = getenv("ENV", "dev")
 
     def get(self, name: str, default_value: Any = None) -> Any:
-        """Gets the value for the given setting name from the environment
+        """
+        Gets the value for the given setting name from the environment
         configuration.
 
         First checks the configuration for the current ENV environment.
@@ -31,20 +33,19 @@ class Settings:
         If still not found, returns the provided default value.
 
         Args:
+        ----
             name: The name of the setting to get.
             default_value: The value to return if no value found for the setting.
 
         Returns:
+        -------
             The value for the setting, or the default value if not found.
         """
-        return (
-            self._get_from_section(self.env, name)
-            or self._get_from_section("default", name)
-            or default_value
-        )
+        return self._get_from_section(self.env, name) or self._get_from_section("default", name) or default_value
 
     def _get_from_section(self, section: str, var: str) -> Any:
-        """Gets the value for the given setting name from the given config
+        """
+        Gets the value for the given setting name from the given config
         section.
 
         Checks if the given section exists in the config parser and if the
@@ -52,10 +53,12 @@ class Settings:
         setting value. Otherwise returns None.
 
         Args:
+        ----
             section: The section in the config to check.
             var: The name of the setting to get.
 
         Returns:
+        -------
             The setting value if found, else None.
         """
         if section in self.config_parser and var in self.config_parser[section]:

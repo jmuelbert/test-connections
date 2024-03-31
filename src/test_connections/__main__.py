@@ -1,9 +1,10 @@
-#
-# SPDX-FileCopyrightText: 2024 Jürgen Mülbert <juergen.muelbert@outlook.de>
-#
-# SPDX-License-Identifier: EUPL-1.2
-#
-"""Command-line interface."""
+"""
+SPDX-FileCopyrightText: 2024 Jürgen Mülbert <juergen.muelbert@outlook.de>
+
+SPDX-License-Identifier: EUPL-1.2
+
+Command-line interface.
+"""
 
 from __future__ import annotations
 

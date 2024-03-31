@@ -1,110 +1,141 @@
-# Project information
-site_name: test-connections
-site_description: Checker for URL's and NTP-Servere
-site_author: Jürgen Mülbert
-site_url: https://io.github.com/jmuelbert/test-connections
-docs_dir: docs/linkified
+site_name: TEST-CONNECTIONS
+site_description: A tester for differt hosts for availble.
+site_url: https://io.github.org/jmuelbert/test-connections/
 
-# Repository
-repo_name: jmuelbert/test-connections
-repo_url: https://github.com/jmuelbert/test-connections
-edit_uri: ''
-nav:
-  # - Introduction: index.md
-  # - CLI: cli.md
-
-# Copyright
-copyright: Copyright &copy; 2023 - 2024
-
-# Configuration
 theme:
-  name: material
-  custom_dir: docs/overrides
-  language: en
-
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-
-  font:
-    text: Fira Sans
-    code: Fira Code
-  logo: img/icon.png
-  favicon: img/favicon.ico
+  name: 'material'
   features:
-    - content.code.copy
-    - navigation.tabs
-    - navigation.instant
-    - navigation.indexes
-    - navigation.prune
+    - navigation.sections
 
-# Extras
-extra:
-  social:
-    - icon: fontawesome/brands/github-alt
-      link: https://github.com/jmuelbert/test-connections
-  version:
-    provider: mike
+repo_name: jmuelbert/test-connections
+repo_url: https://github.com/jmuelbert/test-connections/
+edit_uri: ''
 
-# Extensions
+nav:
+  - Introduction: 'index.md'
+  - Usage:
+      - QuickStart: 'quickstart.md'
+      - Advanced Usage: 'advanced.md'
+  - Guides:
+      - Async Support: 'async.md'
+      - HTTP/2 Support: 'http2.md'
+      - Requests Compatibility: 'compatibility.md'
+      - Troubleshooting: 'troubleshooting.md'
+  - API Reference:
+      - Developer Interface: 'api.md'
+      - Exceptions: 'exceptions.md'
+      - Environment Variables: 'environment_variables.md'
+  - Community:
+      - Third Party Packages: 'third_party_packages.md'
+      - Contributing: 'contributing.md'
+      - Code of Conduct: 'code_of_conduct.md'
+
 markdown_extensions:
-  - toc:
-      permalink: true
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
+  - markdown.extensions.toc:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+      permalink: ''
+  - markdown.extensions.admonition:
+  - markdown.extensions.smarty:
+      smart_quotes: false
+  - pymdownx.betterem:
+  - markdown.extensions.attr_list:
+  - markdown.extensions.def_list:
+  - markdown.extensions.tables:
+  - markdown.extensions.abbr:
+  - markdown.extensions.footnotes:
+  - markdown.extensions.md_in_html:
+  - pymdownx.superfences:
+      preserve_tabs: true
+      custom_fences:
+        # Mermaid diagrams
+        - name: diagram
+          class: diagram
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: math
+          class: arithmatex
+          format:
+            !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {
+              kwds: {mode: generic, tag: pre},
+            }
+        - name: md-render
+          class: md-render
+          format: !!python/name:tools.pymdownx_md_render.md_sub_render
   - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - attr_list
-  - md_in_html
-  # - mdx_include
-  # - pymdownx.emoji:
-  #     emoji_index: !!python/name:material.extensions.emoji.twemoji
-  #     emoji_generator: !!python/name:material.extensions.emoji.twemoji.to_svg
+      extend_pygments_lang:
+        - name: php-inline
+          lang: php
+          options:
+            startinline: true
+        - name: pycon3
+          lang: pycon
+          options:
+            python3: true
+      linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite:
+      custom_inline:
+        - name: math
+          class: arithmatex
+          format:
+            !!python/object/apply:pymdownx.arithmatex.arithmatex_inline_format {
+              kwds: {mode: generic},
+            }
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+      social_url_shorthand: true
+      social_url_shortener: true
+      user: facelessuser
+      repo: pymdown-extensions
+      normalize_issue_symbols: true
+  - pymdownx.tilde:
+  - pymdownx.caret:
+  - pymdownx.smartsymbols:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.escapeall:
+      hardbreak: True
+      nbsp: True
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.progressbar:
+  - pymdownx.arithmatex:
+      generic: true
+      block_tag: 'pre'
+  - pymdownx.mark:
+  - pymdownx.striphtml:
+  - pymdownx.snippets:
+      base_path:
+        - docs/src/markdown/.snippets
+        - LICENSE.md
+      auto_append:
+        - refs.md
+      check_paths: true
+  - pymdownx.keys:
+      separator: "\uff0b"
+  - pymdownx.details:
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.saneheaders:
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/facelessuser
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/TWs8Tgr
+extra_css:
+  # - https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css
+  - assets/pymdownx-extras/extra.css
+extra_javascript:
+  - https://unpkg.com/mermaid@8.13.3/dist/mermaid.min.js
+  # - https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - assets/pymdownx-extras/extra-loader.js
 
 plugins:
   - search
-  - mkdocstrings:
-      # watch: [launch]
-      handlers:
-        python:
-          rendering:
-            show_root_heading: true
-            show_root_full_path: false
-            show_source: false
-            heading_level: 2
-            merge_init_into_class: true
-            show_signature_annotations: true
-            separate_signature: true
-  # - mkdocs-simple-hooks:
-  #     hooks:
-  #       on_pre_build: 'docs.plugins:on_pre_build'
-  #       on_files: 'docs.plugins:on_files'
-  #       on_page_markdown: 'docs.plugins:on_page_markdown'
-
-extra_javascript:
-  - javascripts/config.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cdn.jsdelivr.net/npm/vega@5
-  - https://cdn.jsdelivr.net/npm/vega-lite@5
-  - https://cdn.jsdelivr.net/npm/vega-embed@6
-  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
-  - javascripts/tablesort.js
-
-extra_css:
-  - stylesheets/extra.css
+  - git-revision-date-localized
+  - minify:
+      minify_html: true

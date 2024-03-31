@@ -7,8 +7,6 @@ from logging.config import fileConfig as logConfig
 
 import click
 from fpdf import FPDF
-
-
 from test_connections.core.check_ntp import test_ntp
 from test_connections.core.check_urls import test_urls
 
@@ -17,12 +15,14 @@ logger = getLogger(__name__)
 
 
 def create_pdf() -> FPDF:
-    """Creates a new PDF object.
+    """
+    Creates a new PDF object.
 
     Creates and configures a new FPDF object, adds a blank page,
     sets the font, and returns the PDF object.
 
-    Returns:
+    Returns
+    -------
         FPDF: The initialized PDF object.
     """
     # Create a PDF object
@@ -53,17 +53,19 @@ def create_pdf() -> FPDF:
     help="the name of the output file",
 )
 def main(ntpdata: str, urldata: str, outputpath: str) -> int:
-    r"""cli, generate separate files from datafile.
+    r"""
+    cli, generate separate files from datafile.
 
     Args:
+    ----
         ntpdata: the file contents the URLs to be tested
         urldata: the file contents the NTP servers to be tested
         outputfile: the name of the output file
 
     Returns:
+    -------
         Status as int (0 is good)
     """
-
     config = configparser.ConfigParser()
 
     config["Path"] = {

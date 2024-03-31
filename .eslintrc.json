@@ -2,7 +2,9 @@
   "root": true,
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "parser": "@typescript-eslint/parser",
-  "parserOptions": {"project": ["./docs/tsconfig.json"]},
+  "parserOptions": {
+    "project": ["./docs/tsconfig.json"]
+  },
   "plugins": ["@typescript-eslint"],
   "rules": {
     "@typescript-eslint/strict-boolean-expressions": [
