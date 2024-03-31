@@ -1,5 +1,5 @@
 <p align="center" style="margin: 0 0 10px">
-  <img width="350" height="208" src="https://raw.githubusercontent.com/jmuelbert/test-connections/main/docs/img/test-connections.png" alt='test-connections'>
+  <img width="350" height="208" src="https://raw.githubusercontent.com/jmuelbert/test-connections/main/docs/img/test-connections.jpg" alt='test-connections'>
 </p>
 
 <h1 align="center" style="font-size: 3rem; margin: -15px 0">
