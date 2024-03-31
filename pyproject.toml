@@ -191,15 +191,15 @@ extend-exclude = '''
 '''
 
 [tool.ruff]
-select = ["ALL"]
+lint.select = ["ALL"]
 line-length = 120
 target-version = "py38"
-isort = { known-first-party = [
+lint.sort = { known-first-party = [
   "filelock",
 ], required-imports = [
   "from __future__ import annotations",
 ] }
-ignore = [
+lint.ignore = [
   "ANN101", # Missing type annotation for `self` in method
   "D301",   #  Use `r"""` if any backslashes in a docstring
   "D205",   # 1 blank line required between summary line and description

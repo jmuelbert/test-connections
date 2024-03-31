@@ -295,10 +295,10 @@ var sidecar = (function (t) {
 																i
 															);
 														})()
-												  ))
+													))
 												: e.activationElement &&
-												  (e.activationElement = (0, x.default)(e.activationElement)),
-										  e.activationElement &&
+													(e.activationElement = (0, x.default)(e.activationElement)),
+											e.activationElement &&
 												(z(e.activationElement, function (e) {
 													t.toggleChat(!0), e.preventDefault();
 												}),
