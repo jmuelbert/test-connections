@@ -21,6 +21,7 @@ repos:
           - --autofix
           - --no-ensure-ascii
           - --no-sort-keys
+        exclude: (\.devcontainer/devcontainer.json|\.vscode/)
       - id: check-ast
       - id: debug-statements
       - id: check-docstring-first
