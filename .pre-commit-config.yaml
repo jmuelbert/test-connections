@@ -1,3 +1,13 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+ci:
+  autoupdate_schedule: weekly
+  skip: [eslint, prettier, mypy]
+  autofix_commit_msg: "ci: auto fixes from pre-commit.ci\n\nFor more information, see https://pre-commit.ci"
+  autoupdate_commit_msg: 'ci: pre-commit autoupdate [pre-commit.ci]'
+  autofix_prs: false
+default_language_version:
+  python: python3.11 # NOTE: sync with .python-version-default
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
@@ -15,9 +25,7 @@ repos:
       - id: check-docstring-first
       - id: check-added-large-files
       - id: check-builtin-literals
-      - id: check-executables-have-shebangs
       - id: detect-private-key
-        exclude: tests/conftest.py
       - id: mixed-line-ending
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
@@ -26,40 +34,35 @@ repos:
       - id: check-github-workflows
         args: ['--verbose']
 
-  - repo: https://github.com/psf/black
-    rev: 24.3.0
-    hooks:
-      - id: black
-
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.9.0
+    rev: v1.8.0
     hooks:
       - id: mypy
-        args: [--no-strict-optional, --ignore-missing-imports]
-        additional_dependencies:
-          [
-            types-click,
-            types-pkg_resources,
-            types-requests,
-            types-tabulate,
-            types-Deprecated,
-            types-PyYAML,
-            types-cachetools,
-          ]
-
-  - repo: https://github.com/packit/pre-commit-hooks
-    rev: v1.2.0
-    hooks:
-      - id: validate-config # passes when packit not installed (e.g. in CI)
-      - id: check-rebase
-        args:
-          - https://github.com/packit/packit.git
-        stages: [manual, push]
+        # exclude: ^(docs/conf.py)$
+        args: []
+        additional_dependencies: &mypy_deps
+          - types-PyYAML
+          - tomli >= 0.2.6, < 2.0.0
+          - click >= 8.1.0, != 8.1.4, != 8.1.5
+          - packaging >= 22.0
+          - platformdirs >= 2.1.0
+          - pytest
+          - hypothesis
+          - aiohttp >= 3.7.4
+          - types-commonmark
+          - types-requests>=2.31
+          - urllib3>=2.2.1
+          - hypothesmith
+      - id: mypy
+        name: mypy (Python 3.10)
+        files: src/
+        args: ['--python-version=3.10']
+        additional_dependencies: *mypy_deps
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.28.0
@@ -72,7 +75,12 @@ repos:
     hooks:
       - id: codespell
         additional_dependencies: ['tomli>=2.0.1']
-        exclude: (LICENSE|LICENSES/)
+        exclude: (pyproject.toml|LICENSE|LICENSES/|\.github/actions)
+
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v3.0.1
+    hooks:
+      - id: reuse
 
   - repo: meta
     hooks:

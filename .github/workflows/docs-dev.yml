@@ -4,9 +4,10 @@ on: # yamllint disable-line rule:truthy
   push:
     branches: [main, develop, release, Update-GitHub-Actions]
     paths:
-      - doc/**
       - docs/**
       - mkdocs.yml
+      - pyproject.toml
+      - .github/workflows/docs-dev.yml
 
   pull_request:
     types: [closed]
@@ -18,30 +19,29 @@ env:
   FORCE_COLOR: "1"
 
 jobs:
-  build:
+  build-docs:
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          # Fetch all history for applying timestamps to every page
-          fetch-depth: 0
+      # Checkout the repository to the GitHub Actions runner
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-
-      - name: Validate history
-        run: python scripts/validate_history.py
+          # Read python version from a file .python-version
+          python-version-file: ".python-version"
+          check-latest: true
+          cache: pip
 
       - name: Ensure latest pip
         run: python -m pip install --upgrade pip
 
-      - name: Install ourself
-        run: |
-          pip install -e .
-          pip install -e ./backend
+      - name: Install Hatch
+        run: pip install --upgrade hatch
 
       - name: Configure Git for GitHub Actions bot
         run: |
@@ -73,7 +73,7 @@ jobs:
 
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     needs:
-      - build
+      - build-docs
 
     steps:
       - uses: actions/download-artifact@v4

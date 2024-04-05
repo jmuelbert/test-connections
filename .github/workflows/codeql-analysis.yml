@@ -22,6 +22,8 @@ on:
 
 jobs:
   analyze:
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
     name: Analyze
     runs-on: "ubuntu-latest"
     permissions:
@@ -39,8 +41,9 @@ jobs:
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      # Checkout the repository to the GitHub Actions runner
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL

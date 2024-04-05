@@ -24,6 +24,7 @@ concurrency:
 
 jobs:
   semgrep:
+    # Skip any PR created by dependabot to avoid permission issues:
     if: (github.actor != 'dependabot[bot]')
     name: semgrep/ci
     runs-on: ubuntu-latest

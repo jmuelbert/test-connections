@@ -612,7 +612,7 @@ select = [
 ban-relative-imports = "all"
 
 [lint.isort]
-known-first-party = ["test_connections"]
+known-first-party = ["checkconnect"]
 
 [lint.flake8-pytest-style]
 fixture-parentheses = false

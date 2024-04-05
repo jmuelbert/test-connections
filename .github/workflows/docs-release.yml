@@ -4,9 +4,10 @@ on: # yamllint disable-line rule:truthy
   push:
     branches: [main, develop, release, Update-GitHub-Actions]
     paths:
-      - doc/**
       - docs/**
       - mkdocs.yml
+      - pyproject.toml
+      - .github/workflows/docs-release.yml
 
   pull_request:
     types: [closed]

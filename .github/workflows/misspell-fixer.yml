@@ -18,13 +18,12 @@ permissions:
 
 jobs:
   misspell-fixer:
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
-
-    # Skip any PR created by dependabot to avoid permission issues:
-    if: (github.actor != 'dependabot[bot]')
 
     steps:
       - name: "🧰 Checkout Source Code"

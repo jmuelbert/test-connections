@@ -4,10 +4,14 @@
 
 [build-system]
 build-backend = "hatchling.build"
-requires = ["hatch-fancy-pypi-readme>=22.5", "hatchling>=1.22.2"]
+requires = [
+  "hatchling>=1.22.2",
+  "hatch-vcs>=0.3.0",
+  "hatch-fancy-pypi-readme>=22.5",
+]
 
 [project]
-name = "test-connections"
+name = "checkconnect"
 description = "Checks the availability of web addresses and NTP servers."
 keywords = [
   "availability",
@@ -57,21 +61,38 @@ dependencies = [
 ]
 
 [project.urls]
-Bugtracker = "https://github.com/jmuelbert/test-connections/issues"
-Changelog = "https://github.com/jmuelbert/test-connections/releases"
-Documentation = "https://github.com/jmuelbert/test-connections#readme"
-Issues = "https://github.com/jmuelbert/test-connections/issues"
-Source = "https://github.com/jmuelbert/test-connections"
+Bugtracker = "https://github.com/jmuelbert/checkconnect/issues"
+Changelog = "https://github.com/jmuelbert/checkconnect/releases"
+Documentation = "https://github.com/jmuelbert/checkconnect#readme"
+Issues = "https://github.com/jmuelbert/checkconnect/issues"
+Source = "https://github.com/jmuelbert/checkconnect"
 
 [project.scripts]
-test-connections = "test_connections.app.cli:main"
+checkconnect = "checkconnect.cli:main"
 
 [tool.hatch.build.targets.sdist]
 exclude = ["/.github", "/backend", "/scripts"]
 include = ["/src/test_connections", "/CHANGELOG.md", "/README.md"]
 
 [tool.hatch.version]
-path = "src/test_connections/__about__.py"
+source = "vcs"
+
+[tool.hatch.version.raw-options]
+version_scheme = "python-simplified-semver"
+local_scheme = "no-local-version"
+parentdir_prefix_version = "hatch-"
+git_describe_command = [
+  "git",
+  "describe",
+  "--dirty",
+  "--tags",
+  "--long",
+  "--match",
+  "hatch-v*",
+]
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/checkconnect/_version.py"
 
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
 content-type = "text/markdown"
@@ -233,9 +254,9 @@ omit = ["src/test_connections/__about__.py"]
 [tool.coverage.paths]
 test_connections = [
   "src/test_connections",
-  "*/test-connections/src/test_connections",
+  "*/checkconnect/src/test_connections",
 ]
-tests = ["tests", "*/test-connections/tests"]
+tests = ["tests", "*/checkconnect/tests"]
 
 [tool.coverage.report]
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
@@ -256,7 +277,7 @@ warn_unused_ignores = true
 enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
 
 [[tool.mypy.overrides]]
-module = ['lark.*', 'virtualenv.*']
+module = ['test_connections.*', 'virtualenv.*']
 ignore_missing_imports = true
 disallow_untyped_defs = true
 disallow_incomplete_defs = true

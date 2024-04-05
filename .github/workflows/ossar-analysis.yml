@@ -18,20 +18,18 @@ on: # yamllint disable-line rule:truthy
   push:
     branches: [main, develop, release, Update-GitHub-Actions]
     paths:
-      - "**.{cpp,h,hpp,qml,ts,py}"
-      - cmake/**
-      - apps/**
-      - CMakeLists.txt
+      - "src/**"
+      - "tests/**"
+      - pyproject.toml
       - ".github/workflows/ossar-analysis.yml"
 
   pull_request:
     # The branches below must be a subset of the branches above
     types: [opened, synchronize, reopened]
     paths:
-      - "**.{cpp,h,hpp,qml,ts,py}"
-      - cmake/**
-      - apps/**
-      - CMakeLists.txt
+      - "src/**"
+      - "tests/**"
+      - pyproject.toml
       - ".github/workflows/ossar-analysis.yml"
 
   schedule:

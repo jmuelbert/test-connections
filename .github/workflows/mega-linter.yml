@@ -8,11 +8,13 @@ name: MegaLinter
 on: # yamllint disable-line rule:truthy
   # Comment this line to trigger action only on pull-requests
   # (not recommended if you don't pay for GH Actions)
-  push:
-    branches: [main, develop, release, Update-GitHub-Actions]
+  # push:
+  #  branches: [main, develop, release, Update-GitHub-Actions]
 
   pull_request:
     types: [opened, labeled]
+
+  workflow_dispatch:
 
 # Uncomment env block if you do not want to apply fixes
 env:

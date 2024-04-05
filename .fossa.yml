@@ -6,13 +6,11 @@ version: 2
 cli:
   server: https://app.fossa.com
   fetcher: custom
-  project: https://github.com/jmuelbert/jmbde-QT
+  project: https://github.com/jmuelbert/checkconnect
 analyze:
   modules:
-    - name: jmbde
-      type: nuget
-      target: packaging/chocolatey/jmbde.nuspec
-      path: packaging/chocolatey
+    - name: checkconnect
+      type: pip
     - name: docs
       type: pip
       target: docs

@@ -28,7 +28,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  devSkim:
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
     name: DevSkim
     runs-on: ubuntu-latest
     permissions:

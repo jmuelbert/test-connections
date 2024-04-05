@@ -1,6 +1,6 @@
-# Contributing to test-connections
+# Contributing to checkconnect
 
-We would love for you to contribute to test-connections and help make it even better than it is
+We would love for you to contribute to checkconnect and help make it even better than it is
 today! As a contributor, here are the guidelines we would like you to follow:
 
 <!--* [Code of Conduct](#coc)-->
@@ -15,11 +15,11 @@ today! As a contributor, here are the guidelines we would like you to follow:
     <!-- - [Signing the CLA](#cla) -->
 
 <!-- ## <a name="coc"></a> Code of Conduct
-Help us keep test-connections open and inclusive. Please read and follow our [Code of Conduct][coc]. -->
+Help us keep checkconnect open and inclusive. Please read and follow our [Code of Conduct][coc]. -->
 
 ## <a name="question"></a> Got a Question or Problem?
 
-**Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests.** You've got much better chances of getting your question answered on [Stack Overflow][stackoverflow] where the questions should be tagged with tag `test-connections`.
+**Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests.** You've got much better chances of getting your question answered on [Stack Overflow][stackoverflow] where the questions should be tagged with tag `checkconnect`.
 
 Stack Overflow is a much better place to ask questions since:
 
@@ -56,7 +56,7 @@ Before you submit an issue, please search the issue tracker, maybe an issue for 
 
 We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using a repository or [Gist](https://gist.github.com/). Having a live, reproducible scenario gives us wealth of important information without going back & forth to you with additional questions like:
 
-- version of test-connections used
+- version of checkconnect used
 - 3rd-party libraries and their versions
 - and most importantly - a use-case that fails
 
@@ -93,7 +93,7 @@ We cannot accept code without this.
 
 1. Create your patch, **including appropriate test cases**.
 1. Follow our [Coding Rules](#rules).
-1. Run the full test-connections test suite
+1. Run the full checkconnect test suite
    and ensure that all tests pass.
 1. Commit your changes using a descriptive commit message that follows our
    [commit message conventions](#commit). Adherence to these conventions
@@ -111,12 +111,12 @@ We cannot accept code without this.
     git push origin my-fix-branch
     ```
 
-1. In GitHub, send a pull request to `test-connections:main`.
+1. In GitHub, send a pull request to `checkconnect:main`.
 
 - If we suggest changes then:
 
   - Make the required updates.
-  - Re-run the test-connections test suites to ensure tests are still passing.
+  - Re-run the checkconnect test suites to ensure tests are still passing.
   - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
         ```shell
@@ -207,7 +207,7 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
 
 We have very precise rules over how our git commit messages can be formatted. This leads to **more
 readable messages** that are easy to follow when looking through the **project history**. But also,
-we use the git commit messages to **generate the test-connections change log**.
+we use the git commit messages to **generate the checkconnect change log**.
 
 ### Commit Message Format
 
@@ -309,8 +309,8 @@ changes to be accepted, the CLA must be signed. It's a quick process, we promise
 <!-- [individual-cla]: http://code.google.com/legal/individual-cla-v1.0.html -->
 <!-- [corporate-cla]: http://code.google.com/legal/corporate-cla-v1.0.html -->
 
-[github]: https://github.com/jmuelbert/test-connections
-[stackoverflow]: https://stackoverflow.com/questions/tagged/test-connectionsjs
+[github]: https://github.com/jmuelbert/checkconnect
+[stackoverflow]: https://stackoverflow.com/questions/tagged/checkconnectjs
 [python-style-guide]: https://google.github.io/styleguide/pyguide.html
-[new_issue]: https://github.com/jmuelbert/test-connections/issues/new
-[gh_prs]: https://github.com/jmuelbert/test-connections/pulls
+[new_issue]: https://github.com/jmuelbert/checkconnect/issues/new
+[gh_prs]: https://github.com/jmuelbert/checkconnect/pulls
