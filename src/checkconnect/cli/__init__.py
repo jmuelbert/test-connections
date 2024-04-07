@@ -48,18 +48,17 @@ def create_pdf() -> fpdf:
   return pdf
 
 
-@click.group(
-  context_settings={'help_option_names': ['-h', '--help'], 'max_content_width': 120}, invoke_without_command=True
-)
+# @click.group(
+#  context_settings={'help_option_names': ['-h', '--help'], 'max_content_width': 120}, invoke_without_command=True
+# )
 @click.option('-u', '--url-data', default='url.csv', help='the file contents the URLs to be tested')
 @click.option('-n', '--ntp-data', default='ntp.csv', help='the file contents the NTP servers to be tested')
 @click.option('-o', '--pdf_output', default='output.pdf', help='the name of the output file')
 @click.option('--config', 'config_file', default='./config/settings.conf', help='the configuration file to use')
-@click.version_option(version=__version__, prog_name='test_connections')
-@click.command()
 @click.version_option(version=__version__, prog_name='CheckConnect')
-@click.pass_context
-def checkconnect(ctx: click.Context, ntp_data: str, url_data: str, pdf_output: str) -> int:
+@click.command()
+# @click.pass_context
+def checkconnect(ntp_data: str, url_data: str, pdf_output: str) -> int:
   r"""cli, generate separate files from datafile.
 
   Args:
@@ -73,7 +72,7 @@ def checkconnect(ctx: click.Context, ntp_data: str, url_data: str, pdf_output: s
       Status as int (0 is good)
 
   """
-  app = Application(ctx.exit)
+  app = Application()
 
   config = configparser.ConfigParser()
 
@@ -94,8 +93,6 @@ def checkconnect(ctx: click.Context, ntp_data: str, url_data: str, pdf_output: s
 
   # Save PDF file
   pdf.output(pdf_output)
-
-  ctx.obj = app
 
   # Return status
   return 0

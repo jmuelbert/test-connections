@@ -4,7 +4,8 @@
 # SPDX-License-Identifier: MIT
 #
 name: Pull Request Linter
-on:
+
+on: # yamllint disable-line rule:truthy
   pull_request:
     types:
       - opened

@@ -5,59 +5,59 @@
 [build-system]
 build-backend = "hatchling.build"
 requires = [
-  "hatchling>=1.22.2",
-  "hatch-vcs>=0.3.0",
-  "hatch-fancy-pypi-readme>=22.5",
+    "hatchling>=1.22.2",
+    "hatch-vcs>=0.3.0",
+    "hatch-fancy-pypi-readme>=22.5",
 ]
 
 [project]
 name = "checkconnect"
 description = "Checks the availability of web addresses and NTP servers."
 keywords = [
-  "availability",
-  "check program",
-  "NTP server",
-  "testing",
-  "web address",
+    "availability",
+    "check program",
+    "NTP server",
+    "testing",
+    "web address",
 ]
 license = "EUPL-1.2"
 maintainers = [
-  { name = "Jürgen Mülbert" },
-  { email = "juergen.muelbert@outlook.de" },
+    { name = "Jürgen Mülbert" },
+    { email = "juergen.muelbert@outlook.de" },
 ]
 authors = [{ name = "Jürgen Mülbert", email = "juergen.muelbert@outlook.de" }]
 requires-python = ">=3.8"
 classifiers = [
-  "Development Status :: 2 - Pre-Alpha",
-  "Environment :: Console",
-  "Intended Audience :: Developers",
-  "Intended Audience :: Information Technology",
-  "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
-  "Operating System :: MacOS",
-  "Operating System :: Microsoft :: Windows",
-  "Operating System :: OS Independent",
-  "Operating System :: POSIX",
-  "Operating System :: Unix",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
-  "Topic :: Internet",
-  "Topic :: Internet :: WWW/HTTP",
-  "Topic :: Software Development :: Testing",
+    "Development Status :: 2 - Pre-Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: OS Independent",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Internet",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Testing",
 ]
 dynamic = ["readme", "version"]
 dependencies = [
-  "click>=8.0.4",
-  "fpdf>=1.7.2",
-  "ntplib>=0.4.0",
-  "requests>=2.27.1",
-  "pyinstaller>=4.9",
+    "click>=8.0.4",
+    "fpdf>=1.7.2",
+    "ntplib>=0.4.0",
+    "requests>=2.27.1",
+    "pyinstaller>=4.9",
 ]
 
 [project.urls]
@@ -72,7 +72,7 @@ checkconnect = "checkconnect.cli:main"
 
 [tool.hatch.build.targets.sdist]
 exclude = ["/.github", "/backend", "/scripts"]
-include = ["/src/test_connections", "/CHANGELOG.md", "/README.md"]
+include = ["/src/checkconnect", "/CHANGELOG.md", "/README.md"]
 
 [tool.hatch.version]
 source = "vcs"
@@ -82,13 +82,13 @@ version_scheme = "python-simplified-semver"
 local_scheme = "no-local-version"
 parentdir_prefix_version = "hatch-"
 git_describe_command = [
-  "git",
-  "describe",
-  "--dirty",
-  "--tags",
-  "--long",
-  "--match",
-  "hatch-v*",
+    "git",
+    "describe",
+    "--dirty",
+    "--tags",
+    "--long",
+    "--match",
+    "hatch-v*",
 ]
 
 [tool.hatch.build.hooks.vcs]
@@ -108,6 +108,7 @@ config-path = "ruff_defaults.toml"
 
 [tool.hatch.envs.default]
 dependencies = ["coverage[toml]>=6.5", "pytest"]
+
 [tool.hatch.envs.default.scripts]
 test = "pytest {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
@@ -121,29 +122,29 @@ python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 dependencies = ["mypy>=1.0.0"]
 
 [tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/test_connections tests}"
+check = "mypy --install-types --non-interactive {args:src/checkconnect tests}"
 
 [tool.hatch.envs.docs]
 dependencies = [
-  "mkdocs~=1.5.3",
-  "mkautodoc~=0.2.0",
-  "mkdocs-material~=9.5.1",
-  # Plugins
-  "mkdocs-minify-plugin~=0.7.1",
-  "mkdocs-git-revision-date-localized-plugin~=1.2.1",
-  "mkdocs-git-committers-plugin-2~=2.2.2",
-  "mkdocstrings-python~=1.7.5",
-  "mkdocs-redirects~=1.2.1",
-  "mkdocs-glightbox~=0.3.5",
-  "mike~=2.0.0",
-  # Extensions
-  "mkdocs-click~=0.8.1",
-  "pymdown-extensions~=10.5.0",
-  # Necessary for syntax highlighting in code blocks
-  "pygments~=2.17.2",
-  # Validation
-  # https://github.com/linkchecker/linkchecker/pull/669#issuecomment-1267236287
-  "linkchecker @ git+https://github.com/linkchecker/linkchecker.git@d9265bb71c2054bf57b8c5734a4825d62505c779",
+    "mkdocs~=1.5.3",
+    "mkautodoc~=0.2.0",
+    "mkdocs-material~=9.5.1",
+    # Plugins
+    "mkdocs-minify-plugin~=0.7.1",
+    "mkdocs-git-revision-date-localized-plugin~=1.2.1",
+    "mkdocs-git-committers-plugin-2~=2.2.2",
+    "mkdocstrings-python~=1.7.5",
+    "mkdocs-redirects~=1.2.1",
+    "mkdocs-glightbox~=0.3.5",
+    "mike~=2.0.0",
+    # Extensions
+    "mkdocs-click~=0.8.1",
+    "pymdown-extensions~=10.5.0",
+    # Necessary for syntax highlighting in code blocks
+    "pygments~=2.17.2",
+    # Validation
+    # https://github.com/linkchecker/linkchecker/pull/669#issuecomment-1267236287
+    "linkchecker @ git+https://github.com/linkchecker/linkchecker.git@d9265bb71c2054bf57b8c5734a4825d62505c779",
 ]
 
 [tool.hatch.envs.docs.env-vars]
@@ -174,11 +175,13 @@ extend-exclude = '''
 )/
 '''
 
-[tool.hatch.env.pre-commit]
-dependencies = ["pre-commit>=4.0.0"]
+[tool.hatch.envs.lint]
+dependencies = ["pre-commit>=3.5.0", "pylint"]
+skip-install = true
 
-[tool.hatch.envs.pre-commit.scripts]
-check = "pre-commit run --all-files"
+[tool.hatch.envs.lint.scripts]
+lint = "pre-commit run --all-files  {args}"
+py_lint = "pylint {args:src/checkconnect tests}"
 
 [tool.ruff]
 fix = true
@@ -193,45 +196,46 @@ docstring-code-line-length = 100
 select = ["ALL"]
 preview = true
 ignore = [
-  # Allow non-abstract empty methods in abstract base classes
-  "B027",
-  # Use of `assert` detected
-  "S101",
-  # Use `contextlib.suppress(SchemaRegistryException)` instead of `try`-`except`-`pass`
-  "SIM105",
-  # Missing explicit `return` at the end of function able to return non-`None` value
-  "RET503",
-  # Unnecessary assignment to
-  "RET504",
-  # Unnecessary `else` after `return` statement
-  "RET505",
-  # Unnecessary `elif` after `raise` statement
-  "RET506",
-  # Possible hardcoded password
-  "S105",
-  "S106",
-  "PLR",  # Design related pylint codes
-  # RUF012 Mutable class attributes should be annotated with `typing.ClassVar`
-  "RUF012",
-  # Use `X | Y` for type annotations
-  "UP007",
+    # Allow non-abstract empty methods in abstract base classes
+    "B027",
+    # Use of `assert` detected
+    "S101",
+    # Use `contextlib.suppress(SchemaRegistryException)` instead of `try`-`except`-`pass`
+    "SIM105",
+    # Missing explicit `return` at the end of function able to return non-`None` value
+    "RET503",
+    # Unnecessary assignment to
+    "RET504",
+    # Unnecessary `else` after `return` statement
+    "RET505",
+    # Unnecessary `elif` after `raise` statement
+    "RET506",
+    # Possible hardcoded password
+    "S105",
+    "S106",
+    "PLR",  # Design related pylint codes
+    # RUF012 Mutable class attributes should be annotated with `typing.ClassVar`
+    "RUF012",
+    # Use `X | Y` for type annotations
+    "UP007",
 ]
 
 [tool.ruff.per-file-ignores]
 "tests/**/*.py" = [
-  "S101",    # asserts allowed in tests...
-  "FBT",     # don"t care about booleans as positional arguments in tests
-  "INP001",  # no implicit namespace
-  "D",       # don"t care about documentation in tests
-  "S603",    # `subprocess` call: check for execution of untrusted input
-  "PLR2004", # Magic value used in comparison, consider replacing with a constant variable
+    "S101",    # asserts allowed in tests...
+    "FBT",     # don"t care about booleans as positional arguments in tests
+    "INP001",  # no implicit namespace
+    "D",       # don"t care about documentation in tests
+    "S603",    # `subprocess` call: check for execution of untrusted input
+    "PLR2004", # Magic value used in comparison, consider replacing with a constant variable
 ]
+
 [tool.codespell]
-builtin = "clear,usage,en-GB_to_en-US"
+builtin = "clear,rare,informal,usage,code, names,en-GB_to_en-US"
 write-changes = true
-skip = "*.svg"
 ignore-words = "ignore-words.txt"
 count = true
+skip = "*.svg,pyproject.toml,LICENSE,LICENSES/*,.github/actions/*"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -242,20 +246,17 @@ filterwarnings = ["error"]
 log_cli_level = "info"
 testpaths = ["tests"]
 markers = [
-  "save_engine: marks some of the tests which are using an external package to save a chart to e.g. a png file. This mark is used to run those tests selectively in the build GitHub Action.",
+    "save_engine: marks some of the tests which are using an external package to save a chart to e.g. a png file. This mark is used to run those tests selectively in the build GitHub Action.",
 ]
 
 [tool.coverage.run]
-source_pkgs = ["test_connections", "tests"]
+source_pkgs = ["checkconnect", "tests"]
 branch = true
 parallel = true
-omit = ["src/test_connections/__about__.py"]
+omit = ["src/checkconnect/__about__.py"]
 
 [tool.coverage.paths]
-test_connections = [
-  "src/test_connections",
-  "*/checkconnect/src/test_connections",
-]
+checkconnect = ["src/checkconnect", "*/checkconnect/src/checkconnect"]
 tests = ["tests", "*/checkconnect/tests"]
 
 [tool.coverage.report]
@@ -277,7 +278,7 @@ warn_unused_ignores = true
 enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
 
 [[tool.mypy.overrides]]
-module = ['test_connections.*', 'virtualenv.*']
+module = ['checkconnect.*', 'virtualenv.*']
 ignore_missing_imports = true
 disallow_untyped_defs = true
 disallow_incomplete_defs = true

@@ -1,6 +1,6 @@
 ::: mkdocs-click
     :module: checkconnect.cli
-    :command: main
+    :command: checkconnect
     :depth: 0
-    :style: table
+    :style: table 
     :remove_ascii_art: true

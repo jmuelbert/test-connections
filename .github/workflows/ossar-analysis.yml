@@ -16,7 +16,7 @@ name: OSSAR
 
 on: # yamllint disable-line rule:truthy
   push:
-    branches: [main, develop, release, Update-GitHub-Actions]
+    branches: [main, develop, release]
     paths:
       - "src/**"
       - "tests/**"

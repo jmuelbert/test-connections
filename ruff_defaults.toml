@@ -298,7 +298,6 @@ select = [
   "PLR0402",
   "PLR1701",
   "PLR1704",
-  "PLR1706",
   "PLR1711",
   "PLR1714",
   "PLR1722",
@@ -596,17 +595,8 @@ select = [
 ]
 
 [lint.per-file-ignores]
-"**/scripts/*" = [
-  "INP001",
-  "T201",
-]
-"**/tests/**/*" = [
-  "PLC1901",
-  "PLR2004",
-  "PLR6301",
-  "S",
-  "TID252",
-]
+"**/scripts/*" = ["INP001", "T201"]
+"**/tests/**/*" = ["PLC1901", "PLR2004", "PLR6301", "S", "TID252"]
 
 [lint.flake8-tidy-imports]
 ban-relative-imports = "all"

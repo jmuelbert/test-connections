@@ -5,7 +5,7 @@
 
 """Connect to NTP servers and get the time.
 
-    this function connects to a list of NTP servers and gets the time.
+this function connects to a list of NTP servers and gets the time.
 """
 
 from __future__ import annotations

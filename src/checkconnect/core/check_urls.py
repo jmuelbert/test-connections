@@ -3,8 +3,7 @@
 # SPDX-License-Identifier: EUPL-1.2
 
 
-"""Check the connectivity to https: Server_
-"""
+"""Check the connectivity to https: Server_"""
 
 from __future__ import annotations
 

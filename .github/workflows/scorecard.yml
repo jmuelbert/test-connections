@@ -13,7 +13,7 @@ on: # yamllint disable-line rule:truthy
     - cron: "24 4 * * 2"
 
   push:
-    branches: [main, develop, release, Update-GitHub-Actions]
+    branches: [main, develop, release]
 
   pull_request:
     # The branches below must be a subset of the branches above

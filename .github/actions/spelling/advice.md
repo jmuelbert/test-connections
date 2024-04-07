@@ -6,14 +6,16 @@ If items relate to a ...
 
 - binary file (or some other file you wouldn't want to check at all).
 
-  Please add a file path to the `excludes.txt` file matching the containing file.
+  Please add a file path to the `excludes.txt` file matching the containing
+  file.
 
   File paths are Perl 5 Regular Expressions - you can
-  [test](https://www.regexplanet.com/advanced/perl/) yours before committing to verify it will match
-  your files.
+  [test](https://www.regexplanet.com/advanced/perl/) yours before
+  committing to verify it will match your files.
 
-  `^` refers to the file's path from the root of the repository, so `^README\.md$` would exclude
-  [README.md](README.md) (on whichever branch you're using).
+  `^` refers to the file's path from the root of the repository, so
+  `^README\.md$` would exclude [README.md](README.md) (on whichever branch
+  you're using).
 
 - well-formed pattern.
 
@@ -22,8 +24,8 @@ If items relate to a ...
   that would match it, try adding it to the `patterns.txt` file.
 
   Patterns are Perl 5 Regular Expressions - you can
-  [test](https://www.regexplanet.com/advanced/perl/) yours before committing to verify it will match
-  your lines.
+  [test](https://www.regexplanet.com/advanced/perl/) yours before
+  committing to verify it will match your lines.
 
   Note that patterns can't match multiline strings.
 
@@ -31,6 +33,6 @@ If items relate to a ...
 
 <!-- adoption information-->
 
-:steam_locomotive: If you're seeing this message and your PR is from a branch that doesn't have
-check-spelling, please merge to your PR's base branch to get the version configured for your
-repository.
+:steam_locomotive: If you're seeing this message and your PR is from a
+branch that doesn't have check-spelling, please merge to your PR's base
+branch to get the version configured for your repository.

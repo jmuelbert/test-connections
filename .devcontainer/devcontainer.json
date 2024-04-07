@@ -7,9 +7,7 @@
 	"name": "checkconnect",
 	"customizations": {
 		"vscode": {
-			"extensions": [
-				"ms-python.python"
-			],
+			"extensions": ["ms-python.python"],
 			"settings": {
 				"python.defaultInterpreterPath": "/home/vscode/checkconnect-env/bin/python3.11"
 			}

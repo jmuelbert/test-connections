@@ -1,20 +1,34 @@
-# checkconnect
+<p align="center" style="margin: 0 0 10px">
+  <img width="350" height="208" src="https://raw.githubusercontent.com/jmuelbert/checkconnect/main/docs/img/checkconnect.jpg" alt='checkconnect'>
+</p>
+
+<h1 align="center" style="font-size: 3rem; margin: -15px 0">
+checkconnect
+</h1>
+
+______________________________________________________________________
 
 [![Gitpod-Ready-Code][gitpod_badge]][gitpod]
 [![CI][ci_action_badge]][ci_action]
-[![Dependabot auto-merge][dependabot_action_badge]][depandabot_action]
+[![Dependabot auto-merge][dependabot_merge_action_badge]][depandabot_merge_action]
 [![Dependency Review][dependency_review_action_badge]][dependency_review_action]
 [![GitHub license][github_license_badge]][euplv1.2_license]
 [![Ruff][ruff_badge]][ruff]
 
 ## Features
 
-A program that checks the availability of web addresses and NTP servers is a program that verifies if a specific web address or NTP server is accessible on the internet. The program does this by sending requests to the web address or the NTP server and waiting for a response. If a response is received within a certain time, it means that the web address or the NTP server is available. If no response is received or an error occurs, it means that the web address or the NTP server is not available. The program can output the results of the check in a file or on the screen.
+A program that checks the availability of web addresses and NTP servers is
+a program that verifies if a specific web address or NTP server is
+accessible on the internet. The program does this by sending requests to
+the web address or the NTP server and waiting for a response. If a response
+is received within a certain time, it means that the web address or the NTP
+server is available. If no response is received or an error occurs, it
+means that the web address or the NTP server is not available. The program
+can output the results of the check in a file or on the screen.
 
 ## Requirements
 
-Python 3.6+
-Works on all Desktop Platform with Python
+Python 3.6+ Works on all Desktop Platform with Python
 
 ## Install
 
@@ -25,7 +39,7 @@ Follow soon
 To get list of all available options, call
 
 ```bash
-   checkconnect --help
+checkconnect --help
 ```
 
 ## Documentation
@@ -38,7 +52,8 @@ Please see the [contributing guide][contribution_guide]
 
 ## Known Issues
 
-Please checkout [Issues][github_issues] page for a list of all known issues.
+Please checkout [Issues][github_issues] page for a list of all known
+issues.
 
 ## Analyzing Tools
 
@@ -70,8 +85,8 @@ Code is under the [European Public License V1.2][license].
 [codeql_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/codeql-analysis.yml
 [codeql_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/codeql-analysis.yml/badge.svg
 [contribution_guide]: https://github.com/jmuelbert/checkconnect/blob/master/.github/CONTRIBUTING.md
-[depandabot_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependabot-merge.yml
-[dependabot_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependabot-merge.yml/badge.svg
+[depandabot_merge_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependabot-merge.yml
+[dependabot_merge_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependabot-merge.yml/badge.svg
 [dependency_review_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependency-review.yml
 [dependency_review_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependency-review.yml/badge.svg
 [devskim_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/devskim-analysis.yml
