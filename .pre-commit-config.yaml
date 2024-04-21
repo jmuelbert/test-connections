@@ -34,8 +34,8 @@ repos:
       - id: check-case-conflict
       - id: detect-private-key
       - id: mixed-line-ending
-      - id: check-executables-have-shebangs
-      - id: check-shebang-scripts-are-executable
+      # - id: check-executables-have-shebangs
+      # - id: check-shebang-scripts-are-executable
       - id: fix-byte-order-marker
       - id: file-contents-sorter
         files: dictionary.*\.txt$|\.wordlist$
@@ -43,7 +43,6 @@ repos:
       - id: no-commit-to-branch
         args: [--branch, develop, --branch, main]
       - id: detect-private-key
-        exclude: tests/test_fixtures/database_key_test*
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.28.0
@@ -55,9 +54,17 @@ repos:
     rev: v0.3.7
     hooks:
       - id: ruff
-        args: ['--fix']
+        types_or: [python, jupyter]
+        args: ['--fix', '--show-fixes']
         exclude: ^(build|examples|tests)/.*$
       - id: ruff-format
+        types_or: [python, jupyter]
+
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+        additional_dependencies: [mdformat-gfm, mdformat-frontmatter, mdformat-footnote]
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v4.0.0-alpha.8

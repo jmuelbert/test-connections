@@ -8,6 +8,9 @@
 /sitespeed-result/
 /.mypy_cache/
 /build/
+.mypy_cache
+.pytest_cache
+.ruff_cache
 .clang-tidy
 pnpm-lock.yaml
 yarn.lock
@@ -16,6 +19,7 @@ docs/node_modules
 docs/.changeset
 docs/pnpm-lock.yaml
 docs/yarn.lock
+docs/overrides/*.html
 *.ts
 *.wxs
 CMakeLists.txt
@@ -26,12 +30,13 @@ LICENSES/
 project-words.txt
 cppcheck_suppressions.txt
 conanfile.py
-
 out
 build
 image
 dist
 bin
 .vscode-test
-
 Pipfile.lock
+result*
+*.delta
+*.lock
