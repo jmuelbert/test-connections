@@ -8,3 +8,6 @@ class Application:
     """Initializes the Application class."""
     super().__init__(*args, **kwargs)
     # self.config_file = ConfigFile()
+
+def test():
+    pass

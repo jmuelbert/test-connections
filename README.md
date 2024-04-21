@@ -1,12 +1,4 @@
-<p align="center" style="margin: 0 0 10px">
-  <img width="350" height="208" src="https://raw.githubusercontent.com/jmuelbert/checkconnect/main/docs/img/checkconnect.jpg" alt='checkconnect'>
-</p>
-
-<h1 align="center" style="font-size: 3rem; margin: -15px 0">
-checkconnect
-</h1>
-
-______________________________________________________________________
+# checkconnect
 
 [![Gitpod-Ready-Code][gitpod_badge]][gitpod]
 [![CI][ci_action_badge]][ci_action]
@@ -14,6 +6,10 @@ ______________________________________________________________________
 [![Dependency Review][dependency_review_action_badge]][dependency_review_action]
 [![GitHub license][github_license_badge]][euplv1.2_license]
 [![Ruff][ruff_badge]][ruff]
+
+<!-- begin-short -->
+
+**checkconnect** is
 
 ## Features
 
@@ -55,6 +51,8 @@ Please see the [contributing guide][contribution_guide]
 Please checkout [Issues][github_issues] page for a list of all known
 issues.
 
+## Project Links
+
 ## Analyzing Tools
 
 [![Codacy Security Scan][codacy_action_badge]][codacy_action]
@@ -74,9 +72,13 @@ issues.
 
 Many thanks to everyone reporting issues.
 
+## Credits
+
 ## License
 
 Code is under the [European Public License V1.2][license].
+
+<!-- readme-pypi-ignore-after -->
 
 [ci_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml
 [ci_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml/badge.svg

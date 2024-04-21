@@ -33,12 +33,10 @@
 
 - [ ] If the key of a setting is changed, the `old` attribute is updated or
   it is resolved in SettingsUpdater.
-- [ ] If there are changes of the text displayed in the UI, they are
-  wrapped in `tr()` or `QCoreApplication::translate()`.
 - [ ] If needed, I have opened a pull request or an issue to update the
-  [documentation](http://jmuelbert.github.io/jmbde-QT/).
+  [documentation](http://jmuelbert.github.io/checkconnct/).
 - [ ] If these changes are notable, they are documented in
-  [CHANGELOG.md](https://github.com/jmuelbert/jmbde-QT/blob/master/CHANGELOG.md).
+  [CHANGELOG.md](https://github.com/jmuelbert/checkconnct/blob/master/CHANGELOG.md).
 
 ## Additional text
 

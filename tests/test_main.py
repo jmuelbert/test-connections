@@ -6,7 +6,6 @@
 from __future__ import annotations
 
 from checkconnect.cli import checkconnect
-
 from click.testing import CliRunner
 
 

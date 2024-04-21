@@ -22,6 +22,13 @@ from typing import Any
 
 
 class Settings:
+  """
+  Provides a Settings class to manage configuration settings for the application.
+
+  The Settings class reads in configuration settings from a file and provides methods to retrieve those settings. It supports reading settings from different environments (e.g. 'dev', 'prod') and falling back to default values if a setting is not found.
+
+  The Settings class is responsible for initializing the configuration parser, reading the configuration file, and providing a consistent interface for retrieving settings.
+  """
   __slots__ = ['config_parser', 'env']
   config_parser: ConfigParser
   env: str

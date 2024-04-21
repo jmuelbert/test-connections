@@ -1,8 +1,11 @@
+# SPDX-FileCopyrightText: 2023-2024 Jürgen Mülbert <juergen.muelbert@outlook.de>.
+# SPDX-License-Identifier: EUPL-1.2
+#
 INHERIT: mkdocs.yml
 
 plugins:
   git-committers:
-    repository: pypa/hatch
+    repository: jmuelbert/checkconnect
     enabled: !ENV [GITHUB_ACTIONS, false]
     token: !ENV [GH_TOKEN]
   social:

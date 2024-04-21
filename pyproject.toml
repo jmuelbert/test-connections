@@ -5,59 +5,59 @@
 [build-system]
 build-backend = "hatchling.build"
 requires = [
-    "hatchling>=1.22.2",
-    "hatch-vcs>=0.3.0",
-    "hatch-fancy-pypi-readme>=22.5",
+  "hatchling>=1.24.1",
+  "hatch-vcs>=0.3.0",
+  "hatch-fancy-pypi-readme>=22.5",
 ]
 
 [project]
 name = "checkconnect"
 description = "Checks the availability of web addresses and NTP servers."
 keywords = [
-    "availability",
-    "check program",
-    "NTP server",
-    "testing",
-    "web address",
+  "availability",
+  "check program",
+  "NTP server",
+  "testing",
+  "web address",
 ]
 license = "EUPL-1.2"
 maintainers = [
-    { name = "Jürgen Mülbert" },
-    { email = "juergen.muelbert@outlook.de" },
+  { name = "Jürgen Mülbert" },
+  { email = "juergen.muelbert@outlook.de" },
 ]
 authors = [{ name = "Jürgen Mülbert", email = "juergen.muelbert@outlook.de" }]
 requires-python = ">=3.8"
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
-    "Environment :: Console",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Information Technology",
-    "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
-    "Operating System :: MacOS",
-    "Operating System :: Microsoft :: Windows",
-    "Operating System :: OS Independent",
-    "Operating System :: POSIX",
-    "Operating System :: Unix",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: Implementation :: CPython",
-    "Programming Language :: Python :: Implementation :: PyPy",
-    "Topic :: Internet",
-    "Topic :: Internet :: WWW/HTTP",
-    "Topic :: Software Development :: Testing",
+  "Development Status :: 2 - Pre-Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: OS Independent",
+  "Operating System :: POSIX",
+  "Operating System :: Unix",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Topic :: Internet",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Software Development :: Testing",
 ]
 dynamic = ["readme", "version"]
 dependencies = [
-    "click>=8.0.4",
-    "fpdf>=1.7.2",
-    "ntplib>=0.4.0",
-    "requests>=2.27.1",
-    "pyinstaller>=4.9",
+  "click>=8.0.4",
+  "fpdf>=1.7.2",
+  "ntplib>=0.4.0",
+  "requests>=2.27.1",
+  "pyinstaller>=4.9",
 ]
 
 [project.urls]
@@ -72,7 +72,7 @@ checkconnect = "checkconnect.cli:main"
 
 [tool.hatch.build.targets.sdist]
 exclude = ["/.github", "/backend", "/scripts"]
-include = ["/src/checkconnect", "/CHANGELOG.md", "/README.md"]
+include = ["/src", "/tests", "/CHANGELOG.md", "/README.md", "/LICENSE"]
 
 [tool.hatch.version]
 source = "vcs"
@@ -82,13 +82,13 @@ version_scheme = "python-simplified-semver"
 local_scheme = "no-local-version"
 parentdir_prefix_version = "hatch-"
 git_describe_command = [
-    "git",
-    "describe",
-    "--dirty",
-    "--tags",
-    "--long",
-    "--match",
-    "hatch-v*",
+  "git",
+  "describe",
+  "--dirty",
+  "--tags",
+  "--long",
+  "--match",
+  "hatch-v*",
 ]
 
 [tool.hatch.build.hooks.vcs]
@@ -98,10 +98,42 @@ version-file = "src/checkconnect/_version.py"
 content-type = "text/markdown"
 
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+text = "# checkconnect\n"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
 path = "README.md"
+start-after = "<!-- begin-short -->\n"
+end-before = "## Project Links"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+path = "README.md"
+start-at = "## Credits"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+text = """
+
+
+## Release Information
+
+"""
 
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
 path = "CHANGELOG.md"
+start-after = "<!-- changelog follows -->"
+pattern = "\n(###.+?\n)## "
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
+text = "\n---\n\n[Full changelog](https://github.com/encode/httpx/blob/master/CHANGELOG.md)\n"
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+pattern = '\[(.+?)\]\(((?!https?://)\S+?.\.(png|gif))\)'
+replacement = '[\1](https://raw.githubusercontent.com/hynek/doc2dash/main/\g<2>)'
+
+[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
+# Transform GitHub callouts into bolded text.
+# https://github.com/orgs/community/discussions/16925
+pattern = '\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]'
+replacement = '**\1**:'
 
 [tool.hatch.envs.hatch-static-analysis]
 config-path = "ruff_defaults.toml"
@@ -113,7 +145,7 @@ dependencies = ["coverage[toml]>=6.5", "pytest"]
 test = "pytest {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = ["- coverage combine", "coverage report"]
-cov = ["test-cov", "cov-report"]
+full = ["test-cov", "cov-report"]
 
 [[tool.hatch.envs.all.matrix]]
 python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
@@ -126,25 +158,34 @@ check = "mypy --install-types --non-interactive {args:src/checkconnect tests}"
 
 [tool.hatch.envs.docs]
 dependencies = [
-    "mkdocs~=1.5.3",
-    "mkautodoc~=0.2.0",
-    "mkdocs-material~=9.5.1",
-    # Plugins
-    "mkdocs-minify-plugin~=0.7.1",
-    "mkdocs-git-revision-date-localized-plugin~=1.2.1",
-    "mkdocs-git-committers-plugin-2~=2.2.2",
-    "mkdocstrings-python~=1.7.5",
-    "mkdocs-redirects~=1.2.1",
-    "mkdocs-glightbox~=0.3.5",
-    "mike~=2.0.0",
-    # Extensions
-    "mkdocs-click~=0.8.1",
-    "pymdown-extensions~=10.5.0",
-    # Necessary for syntax highlighting in code blocks
-    "pygments~=2.17.2",
-    # Validation
-    # https://github.com/linkchecker/linkchecker/pull/669#issuecomment-1267236287
-    "linkchecker @ git+https://github.com/linkchecker/linkchecker.git@d9265bb71c2054bf57b8c5734a4825d62505c779",
+  "mkdocs>=1.5.3",
+  "mkdocs-material>=9.5.1",
+  "mkdocs-material[imaging]>=0.0.0",
+  "mkautodoc>=0.2.0",
+  "mkdocs-autorefs>=0.3.1",
+  "mkapi>=0.0.0",
+  "mdx-include >=1.4.1,<2.0.0",
+  "mkdocs-markdownextradata-plugin >=0.1.7,<0.3.0",
+  # Plugins
+  "mkdocs-static-i18n>=1.2.2",
+  "mkdocs-minify-plugin>=0.7.1",
+  "mkdocs-git-authors-plugin>=0.8.0",
+  "mkdocs-git-revision-date-localized-plugin>=1.2.1",
+  "mkdocs-git-committers-plugin-2>=2.2.2",
+  "mkdocs-table-reader-plugin>=2.1.0",
+  "mkdocstrings-python>=1.7.5",
+  "mkdocs-redirects>=1.2.1",
+  "mkdocs-glightbox>=0.3.5",
+  "mike>=2.0.0",
+  # Extensions
+  "mkdocs-click>=0.8.1",
+  "pymdown-extensions>=10.5.0",
+  # Necessary for syntax highlighting in code blocks
+  "pygments>=2.17.2",
+  "mkdocs-render-swagger-plugin>=0.0.0",
+  # Validation
+  # https://github.com/linkchecker/linkchecker/pull/669#issuecomment-1267236287
+  "linkchecker @ git+https://github.com/linkchecker/linkchecker.git@d9265bb71c2054bf57b8c5734a4825d62505c779",
 ]
 
 [tool.hatch.envs.docs.env-vars]
@@ -175,63 +216,68 @@ extend-exclude = '''
 )/
 '''
 
+[tool.hatch.envs.check]
+dependecies = ["pre-commit>=3.5.0"]
+
+[tool.hatch.envs.check.scripts]
+precommit = "pre-commit run --all-files  {args}"
+
 [tool.hatch.envs.lint]
-dependencies = ["pre-commit>=3.5.0", "pylint"]
+dependencies = ["pylint"]
 skip-install = true
 
 [tool.hatch.envs.lint.scripts]
-lint = "pre-commit run --all-files  {args}"
-py_lint = "pylint {args:src/checkconnect tests}"
+py-lint = "pylint {args:src/checkconnect tests}"
 
 [tool.ruff]
 fix = true
 line-length = 120
 
 [tool.ruff.format]
-preview = true
-docstring-code-format = true
 docstring-code-line-length = 100
 
+preview = true
+docstring-code-format = true
 [tool.ruff.lint]
 select = ["ALL"]
 preview = true
 ignore = [
-    # Allow non-abstract empty methods in abstract base classes
-    "B027",
-    # Use of `assert` detected
-    "S101",
-    # Use `contextlib.suppress(SchemaRegistryException)` instead of `try`-`except`-`pass`
-    "SIM105",
-    # Missing explicit `return` at the end of function able to return non-`None` value
-    "RET503",
-    # Unnecessary assignment to
-    "RET504",
-    # Unnecessary `else` after `return` statement
-    "RET505",
-    # Unnecessary `elif` after `raise` statement
-    "RET506",
-    # Possible hardcoded password
-    "S105",
-    "S106",
-    "PLR",  # Design related pylint codes
-    # RUF012 Mutable class attributes should be annotated with `typing.ClassVar`
-    "RUF012",
-    # Use `X | Y` for type annotations
-    "UP007",
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Use of `assert` detected
+  "S101",
+  # Use `contextlib.suppress(SchemaRegistryException)` instead of `try`-`except`-`pass`
+  "SIM105",
+  # Missing explicit `return` at the end of function able to return non-`None` value
+  "RET503",
+  # Unnecessary assignment to
+  "RET504",
+  # Unnecessary `else` after `return` statement
+  "RET505",
+  # Unnecessary `elif` after `raise` statement
+  "RET506",
+  # Possible hardcoded password
+  "S105",
+  "S106",
+  "PLR",  # Design related pylint codes
+  # RUF012 Mutable class attributes should be annotated with `typing.ClassVar`
+  "RUF012",
+  # Use `X | Y` for type annotations
+  "UP007",
 ]
 
 [tool.ruff.per-file-ignores]
 "tests/**/*.py" = [
-    "S101",    # asserts allowed in tests...
-    "FBT",     # don"t care about booleans as positional arguments in tests
-    "INP001",  # no implicit namespace
-    "D",       # don"t care about documentation in tests
-    "S603",    # `subprocess` call: check for execution of untrusted input
-    "PLR2004", # Magic value used in comparison, consider replacing with a constant variable
+  "S101",    # asserts allowed in tests...
+  "FBT",     # don"t care about booleans as positional arguments in tests
+  "INP001",  # no implicit namespace
+  "D",       # don"t care about documentation in tests
+  "S603",    # `subprocess` call: check for execution of untrusted input
+  "PLR2004", # Magic value used in comparison, consider replacing with a constant variable
 ]
 
 [tool.codespell]
-builtin = "clear,rare,informal,usage,code, names,en-GB_to_en-US"
+builtin = "clear,rare,informal,usage,code,names"
 write-changes = true
 ignore-words = "ignore-words.txt"
 count = true
@@ -246,7 +292,7 @@ filterwarnings = ["error"]
 log_cli_level = "info"
 testpaths = ["tests"]
 markers = [
-    "save_engine: marks some of the tests which are using an external package to save a chart to e.g. a png file. This mark is used to run those tests selectively in the build GitHub Action.",
+  "save_engine: marks some of the tests which are using an external package to save a chart to e.g. a png file. This mark is used to run those tests selectively in the build GitHub Action.",
 ]
 
 [tool.coverage.run]
@@ -260,7 +306,10 @@ checkconnect = ["src/checkconnect", "*/checkconnect/src/checkconnect"]
 tests = ["tests", "*/checkconnect/tests"]
 
 [tool.coverage.report]
+show_missing = true
+skip_covered = true
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+omit = []
 
 [tool.mypy]
 disallow_untyped_defs = false

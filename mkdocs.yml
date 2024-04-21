@@ -1,10 +1,19 @@
-site_name: checkconnect
-site_description: A tester for differt hosts for available.
-site_url: https://io.github.org/jmuelbert/checkconnect/
+# SPDX-FileCopyrightText: 2023-2024 Jürgen Mülbert <juergen.muelbert@outlook.de>.
+# SPDX-License-Identifier: EUPL-1.2
+#
+# Source: https://github.com/jmuelbert/checkconnect/blob/main/workflow-templates/assets/mkdocs/mkdocs.yml
+# See: https://www.mkdocs.org/user-guide/configuration/
 
+# Project Information
+site_name: checkconnect
+site_url: https://io.github.org/jmuelbert/checkconnect/
+site_description: >-
+  A tester for differt hosts for available.
+
+# Repository
 repo_name: jmuelbert/checkconnect
 repo_url: https://github.com/jmuelbert/checkconnect/
-edit_uri: ''
+edit_uri: 'blob/main/docs/'
 
 # Copyright
 copyright: Copyright &copy; 2023 - 2024 Jürgen Mülbert
@@ -12,6 +21,7 @@ copyright: Copyright &copy; 2023 - 2024 Jürgen Mülbert
 # Configuration
 docs_dir: docs
 site_dir: site
+
 theme:
   name: material
   custom_dir: docs/.overrides
@@ -20,68 +30,243 @@ theme:
   static_templates:
     - 404.html
 
-  # Don't include MkDocs' JavaScript
-  include_search_page: false
-  search_index_only: true
-
   # Default values, taken from mkdocs_theme.yml
   language: en
+  direction: ltr
   features:
-    # - announce.dismiss
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
     - content.code.annotate
-    # - content.tabs.link
+    - content.code.copy
+    - content.tabs.link
     - content.tooltips
-    # - header.autohide
+    - header.autohide
     # - navigation.expand
+    - navigation.footer
     - navigation.indexes
-    # - navigation.instant
-    # - navigation.prune
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.path # Not compatible with navigation.expand
+    - navigation.prune
     - navigation.sections
     - navigation.tabs
-    # - navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
     - search.share
     - search.suggest
     - toc.follow
-    # - toc.integrate
+    - toc.integrate
   palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
+    # Palette toggle for light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    - scheme: slate
-      primary: indigo
-      accent: indigo
+
+    # Palette toggle for dark mode
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
   font:
     text: Roboto
     code: Roboto Mono
-  favicon: assets/favicon.png
   icon:
-    logo: logo
+    repo: fontawesome/brands/github-alt
+    logo: material/check-network-outline
+
+# Page tree
+nav:
+  - Introduction: 'index.md'
+  - User Guide:
+      - Install: user-guide/install.md
+      - Commandline: user-guide/commandline.md
+      - Environment: user-guide/environment_variables.md
+      - Configuration: user-guide/configuration.md
+
+  - Developer Guide:
+      - Overview: developer-guide/overview.md
+      - API:
+          - CLI: developer-guide/api/cli.md
+          - Config: developer-guide/api/config.md
+          - Core: developer-guide/api/core.md
+      - Third party packages: developer-guide/third_party_packages.md
+      - Trouble Shooting: developer-guide/troubleshooting.md
+
+  - Usage:
+      - QuickStart: usage/quickstart.md
+      - Advanced: usage/advenced.md
+
+  - Philosphie: philosophy.md
+  - Upgrade: upgrade.md
+
+  - About:
+      - Release Notes: about/release-notes.md
+      - Changelog: about/changelog.md
+      - Contributing: 'about/contributing.md'
+      - Code of Conduct: 'about/code_of_conduct.md'
+      - Authors: about/authors.md
+      - FAQ: about/faq.md
+      - License: about/license.md
 
 # Plugins
 plugins:
-  - search
-  - redirects:
-      redirect_maps:
-        conventions.md: philosophy.md
-        reference/abbreviations.md: reference/tooltips.md
-        reference/meta-tags.md: reference/index.md
-        reference/variables.md: https://mkdocs-macros-plugin.readthedocs.io/
-        # sponsorship.md: insiders/index.md
-        upgrading.md: upgrade.md
-  - minify:
-      minify_html: true
+  i18n:
+    docs_structure: suffix
+    languages:
+      - locale: en
+        default: true
+        name: English
+        build: true
+      - locale: de
+        name: Deutsch
+        build: true
+      - locale: it
+        name: Italiano
+        build: false
+      - locale: es
+        name: Español
+        build: false
+
+  # Enable for bug reports
+  # info: {}
+  # Built-in
+  search:
+    separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  autorefs: {}
+  # Extra
+  glightbox: {}
+  minify:
+    minify_html: true
+  git-authors: {}
+  git-revision-date-localized:
+    type: date
+    strict: false
+    fallback_to_build_date: true
+  git-committers:
+    repository: jmuelbert/checkconnet
+    branch: main
+  table-reader: {}
+  mike:
+    alias_type: copy
+  material/social: {}
+  material/tags: {}
+  mkdocstrings:
+    enable_inventory: true
+    default_handler: python
+    handlers:
+      python:
+        paths: [src]
+        options:
+          show_root_heading: true
+          show_object_full_path: false
+          show_category_heading: false
+          show_bases: true
+          show_submodules: false
+          show_if_no_docstring: false
+          show_signature: false
+          heading_level: 1
+          filters: ['!^_']
+  render_swagger: {}
+  redirects:
+    redirect_maps:
+      conventions.md: philosophy.md
+      upgrading.md: upgrade.md
+
+# Markdown Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      # reduced to keep TOC nice under Changelog page
+      toc_depth: 2
+      permalink: true
+  - tables
+  - codehilite:
+      css_class: highlight
+  # Standard mkdocs Extensions
+  - mkdocs-click
+  - mkautodoc
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      guess_lang: false
+      linenums_style: pymdownx-inline
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+      social_url_shortener: true
+      social_url_shorthand: true
+      normalize_issue_symbols: true
+      provider: github
+      user: jmuelbert
+      repo: checkconnect
+  - pymdownx.mark
+  - pymdownx.progressbar
+  - pymdownx.saneheaders
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+      base_path:
+        - docs/.snippets
+      auto_append:
+        - links.txt
+        - abbrs.txt
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 # Customization
 extra:
+  version:
+    provider: mike
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: Deutsch
+      link: /de/
+      lang: de
+    - name: Italiano
+      link: /it/
+      lang: it
+    - name: Español
+      link: /es/
+      lang: es
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/jmuelbert
@@ -94,61 +279,8 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/jmuelbert
 
-# Extensions
-markdown_extensions:
-  - mkdocs-click
-  - abbr
-  - admonition
-  - attr_list
-  - def_list
-  - footnotes
-  - md_in_html
-  - toc:
-      permalink: true
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.magiclink:
-      repo_url_shorthand: true
-      user: jmuelbert
-      repo: checkconnect
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-
-# Page tree
-nav:
-  - Home: index.md
-  - Getting started:
-      - Installation: getting-started.md
-      - Customization: customization.md
-      - License: license.md
-      - Changelog:
-          - changelog/index.md
-          - How to upgrade: upgrade.md
-  - CLI:
-      - About: cli/about.md
-      - Reference: cli/reference.md
-  - Setup:
-      - Settings: setup/settings.md
-  - Reference:
-      - reference/index.md
+watch:
+  - mkdocs.yml
+  - mkdocs.insiders.yml
+  - src/
+  - docs/
