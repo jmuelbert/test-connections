@@ -6,9 +6,9 @@ body:
 
         Want to report a bug instead? [Use our bug report form](https://github.com/jmuelbert/checkconnct/issues/new?assignees=&labels=&projects=&template=01-bug-report.yml)
   - type: input
-    id: checkconnct-version
+    id: checkconnect-version
     attributes:
-      label: What version of `checkconnct` are you using?
+      label: What version of `checkconnect` are you using?
       placeholder: 0.0.0
     validations:
       required: true

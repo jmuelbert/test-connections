@@ -1,5 +1,5 @@
 ---
-# SPDX-FileCopyrightText: Jürgen Mülbert <juergen.muelbert@web.de>
+# SPDX-FileCopyrightText: GitHub, Inc. and contributors
 #
 # SPDX-License-Identifier: MIT
 #
@@ -10,20 +10,60 @@
 # file with configuration.  For more information, see:
 # https://github.com/actions/labeler
 
-name: Labeler
+name: "Pull Request auto-label"
 
 on: # yamllint disable-line rule:truthy
+  push:
+    branches: [main, develop, release]
   pull_request:
     types:
       - opened
       - edited
       - synchronize
 
-permissions:
-  contents: read
+concurrency:
+  group: ${{ format('pr-label-{0}', github.event.pull_request.number || github.sha) }}
+  cancel-in-progress: true
 
 jobs:
-  label:
+  conflicts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Update PRs with conflict labels
+        uses: eps1lon/actions-label-merge-conflict@releases/2.x
+        with:
+          dirtyLabel: "conflicts"
+          #removeOnDirtyLabel: "PR: ready to ship"
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          commentOnDirty: "This pull request has conflicts with the base branch, please resolve those so we can evaluate the pull request."
+          commentOnClean: "Conflicts have been resolved! 🎉 A maintainer will review the pull request shortly."
+
+  size:
+    if: ${{ github.event_name == 'pull_request_target' }}
+    permissions:
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: codelytv/pr-size-labeler@f2aafc4d8735009c6de18acefe15eecbfbfae56f # v 1.9.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          xs_label: 'size/xs'
+          xs_max_size: 2
+          s_label: 'size/s'
+          s_max_size: 10
+          m_label: 'size/m'
+          m_max_size: 100
+          l_label: 'size/l'
+          l_max_size: 500
+          xl_label: 'size/xl'
+          message_if_xl:
+
+  scope:
+    if: ${{ github.event_name == 'pull_request_target' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -35,4 +75,4 @@ jobs:
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           configuration-path: .github/pr-labeler.yml
-          sync-labels: false
+          sync-labels: true

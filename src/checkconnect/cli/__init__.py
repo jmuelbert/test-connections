@@ -19,6 +19,7 @@ from logging import getLogger
 from logging.config import fileConfig as logConfig
 
 import click
+import typer
 import fpdf
 
 from checkconnect._version import __version__
@@ -29,6 +30,7 @@ from checkconnect.core.check_urls import test_urls
 logConfig('./logging.conf', disable_existing_loggers=False)
 logger = getLogger(__name__)
 
+app = typer.Typer()
 
 def create_pdf() -> fpdf:
   """Creates a new PDF object.
@@ -101,3 +103,5 @@ def checkconnect(ntp_data: str, url_data: str, pdf_output: str) -> int:
 def main():  # no cov
   """Entry point for the module."""
   return checkconnect(sys.argv[1:])
+if __name__ == "__main__":
+    typer.run(main)

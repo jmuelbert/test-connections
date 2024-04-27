@@ -22,6 +22,8 @@ docs/yarn.lock
 docs/overrides/*.html
 *.ts
 *.wxs
+*.md
+*.mdx
 CMakeLists.txt
 compile_commands.json
 CONTRIBUTORS

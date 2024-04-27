@@ -1,46 +1,48 @@
 {
-	"tasks": [
-		{
-			"label": "CMake: build the active target",
-			"type": "shell",
-			"command": "cmake",
-			"args": [
-				"--build",
-				"build",
-				"--config",
-				"${command:cmake.buildType}",
-				"--target",
-				"${command:cmake.buildTargetName}",
-				"-j"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared"
-			}
-		},
-		{
-			"type": "shell",
-			"label": "Clang-Tidy: fix current file",
-			"command": "clang-tidy",
-			"args": ["--fix-errors", "--use-color", "${file}"],
-			"options": {
-				"cwd": "${workspaceFolder}"
-			},
-			"group": "none",
-			"presentation": {
-				"echo": false,
-				"reveal": "silent",
-				"focus": false,
-				"panel": "shared"
-			},
-			"problemMatcher": []
-		}
-	],
-	"version": "2.0.0"
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Pytest",
+      "type": "shell",
+      "command": "python3 -m pytest --timeout=10 tests",
+      "dependsOn": ["Install all Test Requirements"],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Pytest (changed tests only)",
+      "type": "shell",
+      "command": "python3 -m pytest --timeout=10 --picked",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Ruff",
+      "type": "shell",
+      "command": "pre-commit run ruff --all-files",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+  ]
 }

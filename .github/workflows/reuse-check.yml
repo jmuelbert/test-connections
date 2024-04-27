@@ -1,7 +1,7 @@
 ---
-# SPDX-FileCopyrightText: Jürgen Mülbert <juergen.muelbert@web.de>
+# SPDX-FileCopyrightText: Free Software Foundation Europe
 #
-# SPDX-License-Identifier: EUPL-1.2
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 name: REUSE Compliance Check
 

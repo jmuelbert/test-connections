@@ -11,6 +11,16 @@ requires = [
 ]
 
 [project]
+dependencies = [
+  "importlib_metadata;python_version<'3.8'",
+  "click>=8.0.4",
+  "typer>=0.12.3",
+  "fpdf>=1.7.2",
+  "ntplib>=0.4.0",
+  "requests>=2.27.1",
+  "pyinstaller>=4.9",
+]
+
 name = "checkconnect"
 description = "Checks the availability of web addresses and NTP servers."
 keywords = [
@@ -52,13 +62,6 @@ classifiers = [
   "Topic :: Software Development :: Testing",
 ]
 dynamic = ["readme", "version"]
-dependencies = [
-  "click>=8.0.4",
-  "fpdf>=1.7.2",
-  "ntplib>=0.4.0",
-  "requests>=2.27.1",
-  "pyinstaller>=4.9",
-]
 
 [project.urls]
 Bugtracker = "https://github.com/jmuelbert/checkconnect/issues"
@@ -80,7 +83,7 @@ source = "vcs"
 [tool.hatch.version.raw-options]
 version_scheme = "python-simplified-semver"
 local_scheme = "no-local-version"
-parentdir_prefix_version = "hatch-"
+parentdir_prefix_version = "checkconnect-"
 git_describe_command = [
   "git",
   "describe",
@@ -88,7 +91,7 @@ git_describe_command = [
   "--tags",
   "--long",
   "--match",
-  "hatch-v*",
+  "checkconnect-v*",
 ]
 
 [tool.hatch.build.hooks.vcs]

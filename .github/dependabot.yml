@@ -10,6 +10,10 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      github-actions:
+        patterns:
+          - '*'
     commit-message:
       prefix: "fix: :rocket: gha"
     open-pull-requests-limit: 10
@@ -43,5 +47,9 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      python-requirements:
+        patterns:
+          - '*'
     commit-message:
       prefix: "fix: :rocket: pip"

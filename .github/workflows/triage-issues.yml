@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mark or Close Stale Issues and Pull Requests
-        uses: actions/stale@v8
+        uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v 9
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 365

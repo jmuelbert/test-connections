@@ -8,7 +8,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: DevSkim
+name: "DevSkim"
 
 on: # yamllint disable-line rule:truthy
   push:

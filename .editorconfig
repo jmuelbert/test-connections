@@ -10,64 +10,75 @@ root = true
 # All files
 # Don't use tabs for indentation.
 [*]
-indent_style = space
 charset = utf-8
 end_of_line = lf
-indent_size = 4
-max_line_length = 120
 insert_final_newline = true
-trim_trailing_whitespace = true
-# (Please don't specify an indent_size here; that has too many unintended consequences.)
 
-# C++ source files
-[*.{cpp,h,hpp}]
+# 4 space indentation for Python files
+[*.{py,pyi}]
+indent_style = space
+indent_size = 4
+max_line_length=88
+
+# 2 space indentation for Frontend files
+[*.{js,jsx,ts,tsx,html,less,css}]
+indent_style = space
 indent_size = 2
 
-# CMake configuration files
-[CMakeLists.txt,CMakeSettings.json,*.cmake{,.in}]
+# 2 space indentation for markdown and yaml config files
+[*.{md,mdx,yml,yaml,json,toml}]
 indent_size = 2
 
 # Override for Makefile
 [{Makefile, makefile, GNUmakefile}]
 indent_style = tab
 
+# CMake configuration files
+[CMakeLists.txt,CMakeSettings.json,*.cmake{,.in}]
+indent_size = 2
+
+# C++ source files
+[*.{cpp,h,hpp}]
+indent_size = 2
+
 # CI configuration files
 [Vagrantfile]
 indent_size = 2
-
-# 2 space indentation for markdown and yaml config files
-[*.{md,Rmd,rst,yml,yaml,json,toml}]
+[*.json]
 indent_size = 2
+insert_final_newline = ignore
+
+
 
 # Windows shell scripts
 [*.{bat,cmd,ps1}]
 end_of_line = crlf
+indent_style = tab
 insert_final_newline = false
 
 # Unix shell scripts
 [*.sh]
+# Note: indent_size isn't applied for Bash scripts in PyCharm for some reason. Pycharm is using indentation size 2.
 end_of_line = lf
 insert_final_newline = false
 
-# Python scripts
-[*.{py,pyi}]
-indent_style = space
-indent_size = 4
+
 
 # Visual studio property sheets
 [*.{props,targets}]
 indent_size = 2
-indent_style = space
 
-[*.html]
-indent_style = space
-indent_size = 2
 
 [**.{md,mdx,txt,rst}]
-indent_style = space
+max_line_length = 140
 trim_trailing_whitespace = false
 insert_final_newline = false
 
+[*.rst]
+indent_size = 3
+
+[docs/**.txt]
+max_line_length = 79
 
 [LICENSE]
 insert_final_newline = false

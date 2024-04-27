@@ -1,4 +1,9 @@
 ---
+# SPDX-FileCopyrightText: semgrep
+#
+# SPDX-License-Identifier: MIT
+#
+
 # Name of this GitHub Actions workflow.
 name: Semgrep
 

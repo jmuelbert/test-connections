@@ -84,36 +84,30 @@ theme:
 # Page tree
 nav:
   - Introduction: 'index.md'
-  - User Guide:
-      - Install: user-guide/install.md
-      - Commandline: user-guide/commandline.md
-      - Environment: user-guide/environment_variables.md
-      - Configuration: user-guide/configuration.md
-
-  - Developer Guide:
-      - Overview: developer-guide/overview.md
+  - QuickStart: 'quickstart.md'
+  - Advanced:
+  - Guides:
+      - Command Line: 'guides/commandline.md'
+      - Configuration: 'guides/confirguration.md'
+      - Installation: 'guides/install.md'
+      - Logging: 'guides/logging.md'
+      - Troubleshooting: 'guides/troubleshooting.md'
+  - Develop:
+      - Exceptions: 'developer/exceptions.md'
+      - Environment Variables: 'developer/environment_variables.md'
+      - Changelog: 'developer/changelog.md'
+      - Release Notes: 'developer/release-notes.md'
       - API:
-          - CLI: developer-guide/api/cli.md
-          - Config: developer-guide/api/config.md
-          - Core: developer-guide/api/core.md
-      - Third party packages: developer-guide/third_party_packages.md
-      - Trouble Shooting: developer-guide/troubleshooting.md
-
-  - Usage:
-      - QuickStart: usage/quickstart.md
-      - Advanced: usage/advenced.md
-
-  - Philosphie: philosophy.md
-  - Upgrade: upgrade.md
-
+      - Core: 'developer/core.md'
+      - Config: 'developer/config.md'
+  - Community:
+      - faq: 'community/faq.md'
+      - Contributing: 'community/contributing.md'
+      - Code of Conduct: 'community/code_of_conduct.md'
+      - Third Party Packages: 'community/third_party_packages.md'
   - About:
-      - Release Notes: about/release-notes.md
-      - Changelog: about/changelog.md
-      - Contributing: 'about/contributing.md'
-      - Code of Conduct: 'about/code_of_conduct.md'
-      - Authors: about/authors.md
-      - FAQ: about/faq.md
-      - License: about/license.md
+      - Authors: 'about/authors.md'
+      - License: 'about/license.md'
 
 # Plugins
 plugins:

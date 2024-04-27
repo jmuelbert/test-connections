@@ -1,5 +1,8 @@
 ---
-name: Dependabot auto-merge
+# SPDX-FileCopyrightText: GitHub, Inc. and contributors
+# SPDX-License-Identifier: MIT
+
+name: "Dependabot auto-merge"
 
 on: pull_request # yamllint disable-line rule:truthy
 

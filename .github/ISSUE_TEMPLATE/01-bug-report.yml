@@ -1,12 +1,16 @@
-name: "\U0001F41E Bug report" 
-description: Report an issue or possible bug title:
-"\[Bug\]: " labels: \["bug", "triage"\] 
-labels: ["bug"]
-assignees: jmuelbert 
+name: "\U0001F41E Bug report"
+description: Report a bug in checkconnect. To report a security issue, please instead use the security option below. For questions, please use the GitHub Discussions.
+title: "\[Bug\]: " labels: \["bug", "triage"\]
+labels: ["02 Bug Report"]
+assignees: jmuelbert
 body:
-  - type: markdown 
-    attributes: value: | 
-      Thank you for taking the time to fill out this bug report! We appreciate it! Before you get started [search to see](https://github.com/jmuelbert/checkconnect/issues) if your bug has already been reported. If it has, please comment on the existing.
+  - type: markdown
+    attributes: value: >
+      Thank you for taking the time to fill out this bug report! We appreciate it!
+
+      Before you get started [search to see](https://github.com/jmuelbert/checkconnect/issues)
+
+      if your bug has already been reported. If it has, please comment on the existing.
   - type: textarea
     id: bug-description
       attributes:
@@ -70,11 +74,11 @@ body:
       value: |
         📌  Please ensure that you have filled all of the required sections above, and that the reproduction you have provided is [minimal, complete, and reproducible](https://stackoverflow.com/help/minimal-reproducible-example). Incomplete issues will be closed.
 
-- type: checkboxes 
-  id: terms 
-  attributes: 
+- type: checkboxes
+  id: terms
+  attributes:
     label: Code of Conduct
     description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/jmuelbert/checkconnect/blob/main/CODE_OF_CONDUCT.md)
-    options: 
+    options:
       - label: I agree to follow this project's Code of Conduct
       required: true

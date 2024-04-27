@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: oxsecurity
+#
+# SPDX-License-Identifier: APL-3.0
+#
 # MegaLinter GitHub Action configuration file
 # More info at https://megalinter.io
 

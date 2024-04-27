@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: Andres Alvarez <a.alvarez.sor@gmail.com>
+#
+# SPDX-License-Identifier: ISC
+#
 name: "size-limit"
 on:
   pull_request:
@@ -13,6 +17,6 @@ jobs:
       - name: "🧰 Checkout"
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
 
-      - uses: andresz1/size-limit-action@v1
+      - uses: andresz1/size-limit-action@94bc357df29c36c8f8d50ea497c3e225c3c95d1d # v 1.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,3 +1,9 @@
+---
+# SPDX-FileCopyrightText: Dr. Jan-Philip Gehrcke
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
 name: github-repo-stats
 
 on:
@@ -14,6 +20,6 @@ jobs:
     steps:
       - name: run-ghrs
         # Use latest release.
-        uses: jgehrcke/github-repo-stats@HEAD
+        uses: jgehrcke/github-repo-stats@306db38ad131cab2aa5f2cd3062bf6f8aa78c1aa # V 1.4.2
         with:
           ghtoken: ${{ secrets.ghrs_github_api_token }}

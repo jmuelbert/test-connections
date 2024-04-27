@@ -1,4 +1,8 @@
-name: Release documentation
+---
+# SPDX-FileCopyrightText: GitHub, Inc. and contributors
+# SPDX-License-Identifier: MIT
+
+name: "Release documentation"
 
 on: # yamllint disable-line rule:truthy
   push:
@@ -20,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger the docs release event
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0 # v 3.0.0
         with:
           event-type: release-docs
           client-payload: >
