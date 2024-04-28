@@ -17,7 +17,6 @@ on:
       # Only ever run once
       - opened
 
-
 jobs:
   add-header:
     runs-on: ubuntu-latest

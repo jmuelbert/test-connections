@@ -1,6 +1,6 @@
 # CheckConnect History
 
----
+______________________________________________________________________
 
 All notable changes to CheckConnect will be documented in this file.
 
@@ -14,6 +14,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 **_Fixed:_**
 
-## [0.0.
+## \[0.0.
 
-1](https://github.com/jmuelbert/checkconnect/releases/tag/checkconnect-v0.0.1) - 2024-03-12 ## {: #checkconnect-v0.0.1}
+1\](https://github.com/jmuelbert/checkconnect/releases/tag/checkconnect-v0.0.1) - 2024-03-12 ## {: #checkconnect-v0.0.1}

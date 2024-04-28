@@ -106,21 +106,21 @@ We cannot accept code without this.
 1. Search [GitHub Pull Requests][gh_prs] for an open or closed PR that
    relates to your submission. You don't want to duplicate effort.
 
-2. Fork this repository.
+1. Fork this repository.
 
-3. Make your changes in a new git branch:
+1. Make your changes in a new git branch:
 
    ```shell
    git checkout -b my-fix-branch main
    ```
 
-4. Create your patch, **including appropriate test cases**.
+1. Create your patch, **including appropriate test cases**.
 
-5. Follow our [Coding Rules](#rules).
+1. Follow our [Coding Rules](#rules).
 
-6. Run the full checkconnect test suite and ensure that all tests pass.
+1. Run the full checkconnect test suite and ensure that all tests pass.
 
-7. Commit your changes using a descriptive commit message that follows our
+1. Commit your changes using a descriptive commit message that follows our
    [commit message conventions](#commit). Adherence to these conventions is
    necessary because release notes are automatically generated from these
    messages.
@@ -132,13 +132,13 @@ We cannot accept code without this.
    Note: the optional commit `-a` command line option will automatically
    "add" and "rm" edited files.
 
-8. Push your branch to GitHub:
+1. Push your branch to GitHub:
 
    ```shell
    git push origin my-fix-branch
    ```
 
-9. In GitHub, send a pull request to `checkconnect:main`.
+1. In GitHub, send a pull request to `checkconnect:main`.
 
 - If we suggest changes then:
 

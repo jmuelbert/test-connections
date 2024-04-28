@@ -12,7 +12,7 @@
 # with GitHub code scanning. For documentation, or to provide feedback, visit
 # https://github.com/github/ossar-action
 
-name: OSSAR
+name: "OSSAR"
 
 on: # yamllint disable-line rule:truthy
   push:
@@ -57,7 +57,7 @@ jobs:
       #   with:
       #     dotnet-version: '3.1.x'
       # Run open source static analysis tools
-      - name: Run OSSAR
+      - name: "Run OSSAR"
         uses: github/ossar-action@fae13e456b9973657a670eef6bccc3a4c2b5153d # main
         id: ossar
 

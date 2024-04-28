@@ -23,7 +23,7 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger the docs release event
+      - name: "Trigger the docs release event"
         uses: peter-evans/repository-dispatch@ff45666b9427631e3450c54a1bcbee4d9ff4d7c0 # v 3.0.0
         with:
           event-type: release-docs

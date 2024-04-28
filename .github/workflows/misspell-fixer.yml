@@ -33,13 +33,13 @@ jobs:
           # files within `super-linter`
           fetch-depth: 0
 
-      - name: Run Misspell Fixer
+      - name: "Run Misspell Fixer"
         uses: sobolevn/misspell-fixer-action@8842a5615f83fed75e8a87015e9300a54d049961 # master
 
-      - name: Check for changes
+      - name: "Check for changes"
         run: git diff --exit-code ${{ github.sha }}
 
-      - name: Create Pull Request for typos
+      - name: "Create Pull Request for typos"
         if: failure()
         uses: peter-evans/create-pull-request@153407881ec5c347639a548ade7d8ad1d6740e38 # v5.0.2
         with:

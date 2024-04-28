@@ -34,11 +34,11 @@ that demonstrates the issue.
 The usual process to make a contribution is to:
 
 1. Check for existing related issues
-2. Fork the repository and create a new branch
-3. Make your changes
-4. Make sure formatting, linting and tests passes.
-5. Add tests if possible to cover the lines you added.
-6. Commit, and send a Pull Request.
+1. Fork the repository and create a new branch
+1. Make your changes
+1. Make sure formatting, linting and tests passes.
+1. Add tests if possible to cover the lines you added.
+1. Commit, and send a Pull Request.
 
 ## Clone the repository
 

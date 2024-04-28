@@ -4,13 +4,11 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-
-
 # This workflow uses actions that are not certified by GitHub. They are provided
 # by a third-party and are governed by separate terms of service, privacy
 # policy, and support documentation.
 
-name: Scorecard supply-chain security
+name: "Scorecard supply-chain security"
 
 on: # yamllint disable-line rule:truthy
   branch_protection_rule:
@@ -33,7 +31,7 @@ jobs:
   analysis:
     # Skip any PR created by dependabot to avoid permission issues:
     if: (github.actor != 'dependabot[bot]')
-    name: Scorecard analysis
+    name: "Scorecard analysis"
     runs-on: ubuntu-latest
     permissions:
       security-events: write

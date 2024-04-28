@@ -18,7 +18,7 @@ permissions:
 jobs:
   write_good_job:
     runs-on: ubuntu-latest
-    name: A job to lint Markdown files
+    name: "A job to lint Markdown files"
     permissions:
       contents: read
       pull-requests: write
@@ -29,9 +29,9 @@ jobs:
         id: write-good
         uses: tomwhross/write-good-action@5897a4ff597390bd521c5c3a6c062bf96147a341 # v1.6
       # Use the output from the `write-good` step
-      - name: Get the write-good output
+      - name: "Get the write-good output"
         run: echo "${{ steps.write-good.outputs.result }}"
-      - name: Post comment
+      - name: "Post comment"
         uses: mshick/add-pr-comment@7c0890544fb33b0bdd2e59467fbacb62e028a096 # v2.8.1
         if: ${{ steps.write-good.outputs.result }}
         with:

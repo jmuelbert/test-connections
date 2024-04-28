@@ -62,7 +62,7 @@ jobs:
             7.0.x
           cache: true
 
-      - name: Cache NuGet packages
+      - name: "Cache NuGet packages"
         uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
         with:
           path: ~/.nuget/packages
@@ -70,7 +70,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Run Microsoft Security DevOps
+      - name: "Run Microsoft Security DevOps"
         uses: microsoft/security-devops-action@7e3060ae1e6a9347dd7de6b28195099f39852fe2 # v1.10.0
         id: msdo
 

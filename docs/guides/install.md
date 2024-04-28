@@ -1,6 +1,6 @@
 # Installation
 
----
+______________________________________________________________________
 
 ## Installers
 
@@ -16,9 +16,11 @@
 
 CheckConnect is available on PyPI and can be installed with [pip](https://pip.pypa.io).
 
-    ```
-    pip install checkconnect
-    ```
+````
+```
+pip install checkconnect
+```
+````
 
 !!! warning
 This method modifies the Python environment in which you choose to install. Consider instead using [pipx](#pipx) to avoid dependency conflicts.
@@ -27,23 +29,25 @@ This method modifies the Python environment in which you choose to install. Cons
 
 [pipx](https://github.com/pypa/pipx) allows for the global installation of Python applications in isolated environments.
 
-    ```
-    pipx install checkconnect
-    ```
+````
+```
+pipx install checkconnect
+```
 
 
-    ```
-    sudo dnf install hatch
-    ```
+```
+sudo dnf install hatch
+```
 
-    ## Void Linux
+## Void Linux
 
-    ```
-    xbps-install hatch
-    ```
+```
+xbps-install hatch
+```
 
-    ## Build system availability
+## Build system availability
 
-    Hatchling is Hatch's [build backend](config/build.md#build-system) which you will never need to install manually. See its [changelog](history/hatchling.md) for version information.
+Hatchling is Hatch's [build backend](config/build.md#build-system) which you will never need to install manually. See its [changelog](history/hatchling.md) for version information.
 
-    [![Packaging status](https://repology.org/badge/vertical-allrepos/hatchling.svg){ loading=lazy .off-glb }](https://repology.org/project/hatchling/versions)
+[![Packaging status](https://repology.org/badge/vertical-allrepos/hatchling.svg){ loading=lazy .off-glb }](https://repology.org/project/hatchling/versions)
+````

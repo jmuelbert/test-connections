@@ -33,7 +33,7 @@ jobs:
       - name: "🧰 Checkout Source Code"
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: Set up Python
+      - name: "Set up Python"
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
         with:
           # Read python version from a file .python-version
@@ -41,30 +41,30 @@ jobs:
           check-latest: true
           cache: pip
 
-      - name: Ensure latest pip
+      - name: "Ensure latest pip"
         run: python -m pip install --upgrade pip
 
-      - name: Install Hatch
+      - name: "Install Hatch"
         run: pip install --upgrade hatch
 
-      - name: Configure Git for GitHub Actions bot
+      - name: "Configure Git for GitHub Actions bot"
         run: |
           git config --local user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Build documentation
+      - name: "Build documentation"
         run: hatch -v run docs:build-check
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN_MKDOCS_MATERIAL_INSIDERS: ${{ secrets.GH_TOKEN_MKDOCS_MATERIAL_INSIDERS }}
 
-      - name: Commit documentation
+      - name: "Commit documentation"
         run: hatch -v run docs:ci-build dev
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN_MKDOCS_MATERIAL_INSIDERS: ${{ secrets.GH_TOKEN_MKDOCS_MATERIAL_INSIDERS }}
 
-      - name: Create archive
+      - name: "Create archive"
         run: git archive -o site.zip gh-pages
 
       - uses: actions/upload-artifact@e63ea677fb182f6827027a7b74f61debfca990ab # v4.3.3
@@ -80,11 +80,12 @@ jobs:
       - build-docs
 
     steps:
-      - uses: actions/download-artifact@c13dba102f4bb92b3f679fa086db9e2973960ca7 # v 4.1.7
+      - name: "Download Articfact"
+        uses: actions/download-artifact@c13dba102f4bb92b3f679fa086db9e2973960ca7 # v4.1.7
         with:
           name: documentation
 
-      - name: Unpack archive
+      - name: "Unpack archive"
         run: python -m zipfile -e site.zip site
 
       - uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v 4.0.0

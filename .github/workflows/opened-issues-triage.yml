@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-name: Move new issues into Triage
+name: "Move new issues into Triage"
 
 permissions:
   contents: read
@@ -16,7 +16,7 @@ jobs:
   automate-project-columns:
     runs-on: ubuntu-latest
     steps:
-      - name: Move Issue to Triage Column
+      - name: "Move Issue to Triage Column"
         uses: alex-page/github-project-automation-plus@7ffb872c64bd809d23563a130a0a97d01dfa8f43 # main
         with:
           project: checkconnect

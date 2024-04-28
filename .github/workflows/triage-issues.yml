@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: EUPL-1.2
 #
 
-name: Triage Issues
+name: "Triage Issues"
 
 on: # yamllint disable-line rule:truthy
   push:
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mark or Close Stale Issues and Pull Requests
-        uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v 9
+        uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v9
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 365
@@ -66,7 +66,7 @@ jobs:
       )
     runs-on: ubuntu-latest
     steps:
-      - name: Mark or Close Stale `bump-pr`  Pull Requests
+      - name: "Mark or Close Stale `bump-pr`  Pull Requests"
         uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v9
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -81,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Lock Outdated Threads
+      - name: "Lock Outdated Threads"
         uses: dessant/lock-threads@1bf7ec25051fe7c00bdd17e6a7cf3d7bfb7dc771 # v5.0.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
