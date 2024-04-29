@@ -1,6 +1,4 @@
-# SPDX-FileCopyrightText: 2023-2024 Jürgen Mülbert <juergen.muelbert@outlook.de>.
-# SPDX-License-Identifier: EUPL-1.2
-#
+---
 # Source: https://github.com/jmuelbert/checkconnect/blob/main/workflow-templates/assets/mkdocs/mkdocs.yml
 # See: https://www.mkdocs.org/user-guide/configuration/
 
@@ -45,9 +43,9 @@ theme:
     # - navigation.expand
     - navigation.footer
     - navigation.indexes
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
     - navigation.path # Not compatible with navigation.expand
     - navigation.prune
     - navigation.sections
@@ -85,21 +83,23 @@ theme:
 nav:
   - Introduction: 'index.md'
   - QuickStart: 'quickstart.md'
-  - Advanced:
+  - Philosphy: 'philosphy.md'
+  - Upgrade: 'upgrade.md'
+  # - Advanced:
   - Guides:
       - Command Line: 'guides/commandline.md'
-      - Configuration: 'guides/confirguration.md'
+      - Configuration: 'guides/configuration.md'
       - Installation: 'guides/install.md'
       - Logging: 'guides/logging.md'
       - Troubleshooting: 'guides/troubleshooting.md'
   - Develop:
-      - Exceptions: 'developer/exceptions.md'
       - Environment Variables: 'developer/environment_variables.md'
       - Changelog: 'developer/changelog.md'
       - Release Notes: 'developer/release-notes.md'
-      - API:
+      - API: 'developer/overview.md'
+      - CLI: 'developer/cli.md'
       - Core: 'developer/core.md'
-      - Config: 'developer/config.md'
+      - Configuration: 'developer/configuration.md'
   - Community:
       - faq: 'community/faq.md'
       - Contributing: 'community/contributing.md'
@@ -143,9 +143,6 @@ plugins:
     type: date
     strict: false
     fallback_to_build_date: true
-  git-committers:
-    repository: jmuelbert/checkconnet
-    branch: main
   table-reader: {}
   mike:
     alias_type: copy

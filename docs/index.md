@@ -24,7 +24,7 @@ checkconnect i a tool to check the availability of a website or ntp-server.
 
   Reproducible builds by default with a rich ecosystem of plugins
 
-  [:octicons-arrow-right-24: Configure builds](config/build.md#build-system)
+  [:octicons-arrow-right-24: Configure builds](developer/build.md#build-system)
 
 </div>
 

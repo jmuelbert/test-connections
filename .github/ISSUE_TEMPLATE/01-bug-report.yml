@@ -2,9 +2,7 @@
 name: "\U0001F41E Bug report"
 description: Report a bug in checkconnect. To report a security issue, please instead use the security option below. For questions, please use the GitHub Discussions.
 title: "🐛 [BUG] - <title>"
-labels: [
-  "bug"
-]
+labels: ["bug"]
 assignees: jmuelbert
 body:
   - type: markdown
@@ -28,8 +26,8 @@ body:
       label: Have you searched existing issues ? 🔎
       description: Please search to see if your bug has already been reported.
       options:
-      - label: I have searched the existing issues.
-        required: true
+        - label: I have searched the existing issues.
+          required: true
 
   - type: textarea
     id: reproduction
@@ -53,7 +51,7 @@ body:
     id: logs
     attributes:
       label: Logs
-      description: "Please include the full stacktrace of the errors you get from Python or Javascript. If you are running in a colab notebooks, you can get the logs with by setting `debug=True`
+      description: "Please include the full stacktrace of the errors you get from Python or Javascript. If you are running in a colab notebooks, you can get the logs with by setting `debug=True`"
       render: shell
   - type: textarea
     id: system-info
@@ -78,11 +76,10 @@ body:
       value: |
         📌  Please ensure that you have filled all of the required sections above, and that the reproduction you have provided is [minimal, complete, and reproducible](https://stackoverflow.com/help/minimal-reproducible-example). Incomplete issues will be closed.
 
-- type: checkboxes
-  id: terms
-  attributes:
-    label: Code of Conduct
-    description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/jmuelbert/checkconnect/blob/main/CODE_OF_CONDUCT.md)
-    options:
-      - label: I agree to follow this project's Code of Conduct
-      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/jmuelbert/checkconnect/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct

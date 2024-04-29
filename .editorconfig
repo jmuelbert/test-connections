@@ -16,9 +16,10 @@ insert_final_newline = true
 
 # 4 space indentation for Python files
 [*.{py,pyi}]
-indent_style = space
+indent-style = tab
 indent_size = 4
 max_line_length=88
+quote_type = double
 
 # 2 space indentation for Frontend files
 [*.{js,jsx,ts,tsx,html,less,css}]
@@ -48,8 +49,6 @@ indent_size = 2
 indent_size = 2
 insert_final_newline = ignore
 
-
-
 # Windows shell scripts
 [*.{bat,cmd,ps1}]
 end_of_line = crlf
@@ -62,12 +61,9 @@ insert_final_newline = false
 end_of_line = lf
 insert_final_newline = false
 
-
-
 # Visual studio property sheets
 [*.{props,targets}]
 indent_size = 2
-
 
 [**.{md,mdx,txt,rst}]
 max_line_length = 140

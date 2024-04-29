@@ -1,5 +1,5 @@
-# Copyright (C) 2023-2024 Jürgen Mülbert.
-# SPDX-FileCopyrightText: 2023-2034 Jürgen Mülbert <juergen.muelbert@outlook.de>.
+# SPDX-FileCopyrightText: © 2023-2024 Jürgen Mülbert
+#
 # SPDX-License-Identifier: EUPL-1.2
 
 """__init__.py for cli.
@@ -19,89 +19,94 @@ from logging import getLogger
 from logging.config import fileConfig as logConfig
 
 import click
-import typer
 import fpdf
+import typer
 
 from checkconnect._version import __version__
-from checkconnect.cli.application import Application
+
+# from checkconnect.cli.application import Application
 from checkconnect.core.check_ntp import test_ntp
 from checkconnect.core.check_urls import test_urls
 
-logConfig('./logging.conf', disable_existing_loggers=False)
+logConfig("./logging.conf", disable_existing_loggers=False)
 logger = getLogger(__name__)
 
-app = typer.Typer()
+# app = typer.Typer()
+
 
 def create_pdf() -> fpdf:
-  """Creates a new PDF object.
+    """Creates a new PDF object.
 
-  Creates and configures a new FPDF object, adds a blank page,
-  sets the font, and returns the PDF object.
+    Creates and configures a new FPDF object, adds a blank page,
+    sets the font, and returns the PDF object.
 
-  Returns
-  -------
-      FPDF: The initialized PDF object.
+    Returns
+    -------
+        FPDF: The initialized PDF object.
 
-  """
-  # Create a PDF object
-  pdf = fpdf()
-  pdf.add_page()
-  pdf.set_font('Arial', size=12)
-  return pdf
+    """
+    # Create a PDF object
+    pdf = fpdf()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    return pdf
 
 
 # @click.group(
 #  context_settings={'help_option_names': ['-h', '--help'], 'max_content_width': 120}, invoke_without_command=True
 # )
-@click.option('-u', '--url-data', default='url.csv', help='the file contents the URLs to be tested')
-@click.option('-n', '--ntp-data', default='ntp.csv', help='the file contents the NTP servers to be tested')
-@click.option('-o', '--pdf_output', default='output.pdf', help='the name of the output file')
-@click.option('--config', 'config_file', default='./config/settings.conf', help='the configuration file to use')
-@click.version_option(version=__version__, prog_name='CheckConnect')
+@click.option("-u", "--url-data", default="url.csv", help="the file contents the URLs to be tested")
+@click.option("-n", "--ntp-data", default="ntp.csv", help="the file contents the NTP servers to be tested")
+@click.option("-o", "--pdf_output", default="output.pdf", help="the name of the output file")
+@click.option("--config", "config_file", default="./config/settings.conf", help="the configuration file to use")
+@click.version_option(version=__version__, prog_name="CheckConnect")
 @click.command()
 # @click.pass_context
 def checkconnect(ntp_data: str, url_data: str, pdf_output: str) -> int:
-  r"""cli, generate separate files from datafile.
+    r"""cli, generate separate files from datafile.
 
-  Args:
-  ----
-      ntp_data: the file contents the URLs to be tested
-      url_data: the file contents the NTP servers to be tested
-      pdf_output: the path and the name of the output file
+    Args:
+    ----
+        ntp_data: the file contents the URLs to be tested
+        url_data: the file contents the NTP servers to be tested
+        pdf_output: the path and the name of the output file
 
-  Returns:
-  -------
-      Status as int (0 is good)
+    Returns:
+    -------
+        Status as int (0 is good)
 
-  """
-  app = Application()
+    """
 
-  config = configparser.ConfigParser()
+    # app = Application()
 
-  config['Path'] = {'url_file_name': 'url.csv', 'ntp_file_name': 'ntp.csv', 'pdf_file_name': 'result.pdf'}
+    config = configparser.ConfigParser()
 
-  with open('checkconnect.ini', 'w', encoding='utf-8') as configfile:
-    config.write(configfile)
+    config["Path"] = {"url_file_name": "url.csv", "ntp_file_name": "ntp.csv", "pdf_file_name": "result.pdf"}
 
-  url_data = config.get('Path', 'url_file_name', fallback='url.csv')
-  ntp_data = config.get('Path', 'ntp_file_name', fallback='ntp.csv')
-  pdf_output = config.get('Path', 'pdf_file_name', fallback='output.csv')
+    with open("checkconnect.ini", "w", encoding="utf-8") as configfile:
+        config.write(configfile)
 
-  pdf = create_pdf()
+    url_data = config.get("Path", "url_file_name", fallback="url.csv")
+    ntp_data = config.get("Path", "ntp_file_name", fallback="ntp.csv")
+    pdf_output = config.get("Path", "pdf_file_name", fallback="output.csv")
 
-  # Make the tests
-  test_urls(url_data, pdf)
-  test_ntp(ntp_data, pdf)
+    pdf = create_pdf()
 
-  # Save PDF file
-  pdf.output(pdf_output)
+    # Make the tests
+    test_urls(url_data, pdf)
+    test_ntp(ntp_data, pdf)
 
-  # Return status
-  return 0
+    # Save PDF file
+    pdf.output(pdf_output)
+
+    # Return status
+    return 0
 
 
 def main():  # no cov
-  """Entry point for the module."""
-  return checkconnect(sys.argv[1:])
+    """Entry point for the module."""
+    return checkconnect(sys.argv[1:])
+
+
 if __name__ == "__main__":
     typer.run(main)

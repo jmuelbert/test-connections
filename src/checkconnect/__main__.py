@@ -1,5 +1,5 @@
-# Copyright (C) 2023-2024 Jürgen Mülbert.
-# SPDX-FileCopyrightText: 2023-2024 Jürgen Mülbert <juergen.muelbert@outlook.de>.
+# SPDX-FileCopyrightText: © 2023-2024 Jürgen Mülbert
+#
 # SPDX-License-Identifier: EUPL-1.2
 
 """Main entry point for the module.
@@ -13,13 +13,13 @@ Calls the main function from the module
 
 import sys
 
-if __name__ == '__main__':
-  from checkconnect.cli import main
+if __name__ == "__main__":
+    from checkconnect.cli import main
 
-  sys.exit(main())
+    sys.exit(main())
 
 
-if getattr(sys, 'frozen', False):
-  """Check if the script is frozen (e.g. pyinstaller executable)."""
+if getattr(sys, "frozen", False):
+    """Check if the script is frozen (e.g. pyinstaller executable)."""
 
-  sys.exit(main(sys.argv[1:]))
+    sys.exit(main(sys.argv[1:]))

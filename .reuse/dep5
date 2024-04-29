@@ -1,24 +1,34 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: jmbde-QT
+Upstream-Name: checkconnect
 Upstream-Contact: <juergen.muelbert@outlook.de>
-source: https://www.github.com/jmuelbert/jmbde-QT
+source: https://www.github.com/jmuelbert/checkconnect
 
-#misc source code
-Files: *.ui *.qrc *.json CMakePresets.json app/data/io.github.jmuelbert.jmbde.appdata.xml app/data/io.github.jmuelbert.jmbde.desktop app/data/MacOSXBundleInfo.plist.in docs/collection/about.txt *.frag *.geom *.vert *.ts *.qm *.map cmake/jmbde.rc.cmake
-Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
-License: GPL-2.0-or-later
-
-#misc documentation
-Files: CHANGES CONTRIBUTORS.txt INSTALL.md README.md docs/manual/style/* ui/resources/gammaray/ui/icons/classes/*/* docs/api/*.dox docs/api/*.html docs/man/*.pod docs/*.pdf
-Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
-License: GPL-2.0-or-later
-
-#misc config files
-Files: 3rdparty/*/qt_attribution.json .clang-format .clang-tidy .clangd .clazy .cmake-format.py .codespellrc .emacs-dirvars .git-blame-ignore-revs .gitattributes .gitignore .kateconfig .krazy .mdlrc .mdlrc.rb .pep8 .pre-commit-config.yaml .pylintrc .qmake.conf .tag .travis.yml appveyor.ini appveyor.yml distro/* format.config.uncrustify.4_spaces *.qdocconf format_sources docs/collection/gammaray.qhcp.cmake examples/yocto/gammaray_git*.bb probe/gammaray_probe-android-dependencies.xml docs/api/Doxyfile.cmake .github/*
+#misc source config
+Files: *.json logging.conf src/checkconnect/*.csv
 Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
 License: BSD-3-Clause
 
-#artwork
-Files: ui/resources/gammaray/*.png plugins/guisupport/images/*.png ui/resources/gammaray/ui/icons/classes/*/*.png  ui/resources/gammaray/ui/*/*/*.png docs/manual/*/*.png docs/api/*.png tests/manual/*.png plugins/positioning/*.png plugins/quickinspector/textureextension/resources/*.png launcher/ui/resources/launcher/*.png ui/resources/svg/*.svg ui/resources/svg/*.svgz plugins/positioning/direction_marker.svg ui/resources/gammaray/GammaRay.icns ui/resources/gammaray/GammaRay.ico
+#misc test-source config
+Files: tests/config/settings_to_test.conf
 Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
-License: GPL-2.0-or-later
+License: BSD-3-Clause
+
+#misc documentation
+Files: AUTHORS.md CHANGELOG.md README.md SECURITY.md *.txt docs/.snippets/*.txt docs/.overrides/partials/*.html docs/*.md docs/**/*.md
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: CC-BY-4.0
+
+#misc documentation code
+Files: docs/js/*.js docs/css/*.css
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: BSD-3-Clause
+
+#misc config files
+Files:  .codespellrc .editorconfig  *.toml *.yml *.yaml .git-blame-ignore-revs .gitattributes .github/* .gitignore  .gitlint .prettierignore .prettierrc .pylintrc .python-version
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: EUPL-1.2
+
+#artwork
+Files: docs/assets/*.jpg docs/assets/images/*.svg
+Copyright: Jürgen Mülbert <juergen.muelbert@outlook.de>
+License: EUPL-1.2
