@@ -1,0 +1,84 @@
+---
+# SPDX-FileCopyrightText: GitHub, Inc. and contributors
+#
+# SPDX-License-Identifier: MIT
+#
+# This workflow will triage pull requests and apply a label based on the
+# paths that are modified in the pull request.
+#
+# To use this workflow, you will need to set up a .github/labeler.yml
+# file with configuration.  For more information, see:
+# https://github.com/actions/labeler
+
+name: "Pull Request auto-label"
+
+on: # yamllint disable-line rule:truthy
+  push:
+    branches: [main, develop, release]
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+concurrency:
+  group: ${{ format('pr-label-{0}', github.event.pull_request.number || github.sha) }}
+  cancel-in-progress: true
+
+jobs:
+  conflicts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: "Update PRs with conflict labels"
+        uses: eps1lon/actions-label-merge-conflict@e62d7a53ff8be8b97684bffb6cfbbf3fc1115e2e # v3.0.0
+        with:
+          dirtyLabel: "conflicts"
+          #removeOnDirtyLabel: "PR: ready to ship"
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          commentOnDirty: "This pull request has conflicts with the base branch, please resolve those so we can evaluate the pull request."
+          commentOnClean: "Conflicts have been resolved! 🎉 A maintainer will review the pull request shortly."
+
+  size:
+    if: ${{ github.event_name == 'pull_request_target' }}
+    permissions:
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: codelytv/pr-size-labeler@f2aafc4d8735009c6de18acefe15eecbfbfae56f # v1.9.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          xs_label: "size/xs"
+          xs_max_size: "10"
+          s_label: "size/s"
+          s_max_size: "100"
+          m_label: "size/m"
+          m_max_size: "500"
+          l_label: "size/l"
+          l_max_size: "1000"
+          xl_label: "size/xl"
+          fail_if_xl: "false"
+          message_if_xl: >
+            This PR exceeds the recommended size of 1000 lines.
+            Please make sure you are NOT addressing multiple issues with one PR.
+            Note this PR might be rejected due to its size.
+          github_api_url: "https://api.github.com"
+          files_to_ignore: ""
+
+  scope:
+    if: ${{ github.event_name == 'pull_request_target' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Use PR Labeler Action
+        uses: actions/labeler@8558fd74291d67161a8a78ce36a881fa63b766a9 # v5.0.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          configuration-path: .github/labeler.yml
+          sync-labels: true

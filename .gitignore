@@ -70,6 +70,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+doc/_build/
 
 # PyBuilder
 .pybuilder/
@@ -186,3 +187,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+pyproject.toml.hatch
+
+node_modules/

@@ -1,7 +1,8 @@
-# Contributing to test-connections
+# Contributing to checkconnect
 
-We would love for you to contribute to test-connections and help make it even better than it is
-today! As a contributor, here are the guidelines we would like you to follow:
+We would love for you to contribute to checkconnect and help make it even
+better than it is today! As a contributor, here are the guidelines we would
+like you to follow:
 
 <!--* [Code of Conduct](#coc)-->
 
@@ -15,48 +16,66 @@ today! As a contributor, here are the guidelines we would like you to follow:
   <!-- - [Signing the CLA](#cla) -->
 
 <!-- ## <a name="coc"></a> Code of Conduct
-Help us keep test-connections open and inclusive. Please read and follow our [Code of Conduct][coc]. -->
+Help us keep checkconnect open and inclusive. Please read and follow our [Code of Conduct][coc]. -->
 
 ## <a name="question"></a> Got a Question or Problem?
 
-**Do not open issues for general support questions as we want to keep GitHub issues for bug reports and feature requests.** You've got much better chances of getting your question answered on [Stack Overflow][stackoverflow] where the questions should be tagged with tag `test-connections`.
+**Do not open issues for general support questions as we want to keep
+GitHub issues for bug reports and feature requests.** You've got much
+better chances of getting your question answered on
+[Stack Overflow][stackoverflow] where the questions should be tagged with
+tag `checkconnect`.
 
 Stack Overflow is a much better place to ask questions since:
 
 <!-- - there are thousands of people willing to help on Stack Overflow [maybe one day] -->
 
-- questions and answers stay available for public viewing so your question / answer might help someone else
-- Stack Overflow's voting system assures that the best answers are prominently visible.
+- questions and answers stay available for public viewing so your question
+  / answer might help someone else
+- Stack Overflow's voting system assures that the best answers are
+  prominently visible.
 
-To save your and our time, we will systematically close all issues that are requests for general support and redirect people to Stack Overflow.
+To save your and our time, we will systematically close all issues that are
+requests for general support and redirect people to Stack Overflow.
 
 ## <a name="issue"></a> Found a Bug?
 
 If you find a bug in the source code, you can help us by
-[submitting an issue](#submit-issue) to our [GitHub Repository][github]. Even better, you can
-[submit a Pull Request](#submit-pr) with a fix.
+[submitting an issue](#submit-issue) to our [GitHub Repository][github].
+Even better, you can [submit a Pull Request](#submit-pr) with a fix.
 
 ## <a name="feature"></a> Missing a Feature?
 
-You can _request_ a new feature by [submitting an issue](#submit-issue) to our GitHub
-Repository. If you would like to _implement_ a new feature, please submit an issue with
-a proposal for your work first, to be sure that we can use it.
-Please consider what kind of change it is:
+You can _request_ a new feature by [submitting an issue](#submit-issue) to
+our GitHub Repository. If you would like to _implement_ a new feature,
+please submit an issue with a proposal for your work first, to be sure that
+we can use it. Please consider what kind of change it is:
 
-- For a **Major Feature**, first open an issue and outline your proposal so that it can be
-  discussed. This will also allow us to better coordinate our efforts, prevent duplication of work,
-  and help you to craft the change so that it is successfully accepted into the project. For your issue name, please prefix your proposal with `[discussion]`, for example "[discussion]: your feature idea".
-- **Small Features** can be crafted and directly [submitted as a Pull Request](#submit-pr).
+- For a **Major Feature**, first open an issue and outline your proposal so
+  that it can be discussed. This will also allow us to better coordinate
+  our efforts, prevent duplication of work, and help you to craft the
+  change so that it is successfully accepted into the project. For your
+  issue name, please prefix your proposal with `[discussion]`, for example
+  "\[discussion\]: your feature idea".
+- **Small Features** can be crafted and directly
+  [submitted as a Pull Request](#submit-pr).
 
 ## <a name="submit"></a> Submission Guidelines
 
 ### <a name="submit-issue"></a> Submitting an Issue
 
-Before you submit an issue, please search the issue tracker, maybe an issue for your problem already exists and the discussion might inform you of workarounds readily available.
+Before you submit an issue, please search the issue tracker, maybe an issue
+for your problem already exists and the discussion might inform you of
+workarounds readily available.
 
-We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. In order to reproduce bugs we will systematically ask you to provide a minimal reproduction scenario using a repository or [Gist](https://gist.github.com/). Having a live, reproducible scenario gives us wealth of important information without going back & forth to you with additional questions like:
+We want to fix all the issues as soon as possible, but before fixing a bug
+we need to reproduce and confirm it. In order to reproduce bugs we will
+systematically ask you to provide a minimal reproduction scenario using a
+repository or [Gist](https://gist.github.com/). Having a live, reproducible
+scenario gives us wealth of important information without going back &
+forth to you with additional questions like:
 
-- version of test-connections used
+- version of checkconnect used
 - 3rd-party libraries and their versions
 - and most importantly - a use-case that fails
 
@@ -65,9 +84,13 @@ We want to fix all the issues as soon as possible, but before fixing a bug we ne
 
 A minimal reproduce scenario using a repository or Gist allows us to quickly confirm a bug (or point out coding problem) as well as confirm that we are fixing the right problem. If neither of these are not a suitable way to demonstrate the problem (for example for issues related to our npm packaging), please create a standalone git repository demonstrating the problem. -->
 
-<!-- We will be insisting on a minimal reproduce scenario in order to save maintainers time and ultimately be able to fix more bugs. Interestingly, from our experience users often find coding problems themselves while preparing a minimal plunk. We understand that sometimes it might be hard to extract essentials bits of code from a larger code-base but we really need to isolate the problem before we can fix it. -->
+<!-- We will be insisting on a minimal reproduce scenario in order to save maintainers time and ultimately be able to fix more bugs.
 
-Unfortunately, we are not able to investigate / fix bugs without a minimal reproduction, so if we don't hear back from you we are going to close an issue that doesn't have enough info to be reproduced.
+Interestingly, from our experience users often find coding problems themselves while preparing a minimal plunk. We understand that sometimes it might be hard to extract essentials bits of code from a larger code-base but we really need to isolate the problem before we can fix it. -->
+
+Unfortunately, we are not able to investigate / fix bugs without a minimal
+reproduction, so if we don't hear back from you we are going to close an
+issue that doesn't have enough info to be reproduced.
 
 You can file new issues by filling out our [new issue form][new_issue].
 
@@ -82,9 +105,11 @@ To the first point
 We cannot accept code without this.
 -->
 
-1. Search [GitHub Pull Requests][gh_prs] for an open or closed PR
-   that relates to your submission. You don't want to duplicate effort.
+1. Search [GitHub Pull Requests][gh_prs] for an open or closed PR that
+   relates to your submission. You don't want to duplicate effort.
+
 1. Fork this repository.
+
 1. Make your changes in a new git branch:
 
    ```shell
@@ -92,18 +117,22 @@ We cannot accept code without this.
    ```
 
 1. Create your patch, **including appropriate test cases**.
+
 1. Follow our [Coding Rules](#rules).
-1. Run the full test-connections test suite
-   and ensure that all tests pass.
+
+1. Run the full checkconnect test suite and ensure that all tests pass.
+
 1. Commit your changes using a descriptive commit message that follows our
-   [commit message conventions](#commit). Adherence to these conventions
-   is necessary because release notes are automatically generated from these messages.
+   [commit message conventions](#commit). Adherence to these conventions is
+   necessary because release notes are automatically generated from these
+   messages.
 
    ```shell
    git commit -a
    ```
 
-   Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
+   Note: the optional commit `-a` command line option will automatically
+   "add" and "rm" edited files.
 
 1. Push your branch to GitHub:
 
@@ -111,27 +140,33 @@ We cannot accept code without this.
    git push origin my-fix-branch
    ```
 
-1. In GitHub, send a pull request to `test-connections:main`.
+1. In GitHub, send a pull request to `checkconnect:main`.
 
 - If we suggest changes then:
 
   - Make the required updates.
-  - Re-run the test-connections test suites to ensure tests are still passing.
-  - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
+  - Re-run the checkconnect test suites to ensure tests are still passing.
+
+  - Rebase your branch and force push to your GitHub repository (this will
+    update your Pull Request):
+
+    ````bash
     ```shell
     git rebase main -i
     git push -f
     ```
+    ````
 
 That's it! Thank you for your contribution!
 
 #### After your pull request is merged
 
-After your pull request is merged, you can safely delete your branch and pull the changes
-from the main (upstream) repository:
+After your pull request is merged, you can safely delete your branch and
+pull the changes from the main (upstream) repository:
 
-- Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
+- Delete the remote branch on GitHub either through the GitHub web UI or
+  your local shell as follows:
 
   ```shell
   git push origin --delete my-fix-branch
@@ -162,20 +197,22 @@ You will need [Python](https://www.python.org) version >= 3.8.
 1. After cloning the repo, run:
 
 ```bash
-$ pipx install poetry
-$ pipx install nox
-$ pipx inject nox nox-poetry 
+pipx install poetry
+pipx install nox
+pipx inject nox nox-poetry
 ```
 
 2.In order to prepare your environment run `poetry build` shell script:
 
 ```bash
-$ poetry install
+poetry install
 ```
-x
-That will compile fresh packages and afterward, move them all to `sample` directories.
+
+x That will compile fresh packages and afterward, move them all to `sample`
+directories.
 
 3. Linting an Tests
+
 ### <a name="linitig-tests"></a>Liniting and Tests
 
 ```bash
@@ -191,28 +228,32 @@ nox -s pre-commit -- install
 
 ## <a name="rules"></a> Coding Rules
 
-To ensure consistency throughout the source code, keep these rules in mind as you are working:
+To ensure consistency throughout the source code, keep these rules in mind
+as you are working:
 
 <!--
 // We're working on auto-documentation.
 * All public API methods **must be documented**. (Details TBC). -->
 
-- All features or bug fixes **must be tested** by one or more specs (unit-tests).
-- We follow [Google's Python Style Guide][python-style-guide], but wrap all code at
-  **100 characters**. 
+- All features or bug fixes **must be tested** by one or more specs
+  (unit-tests).
+- We follow [Google's Python Style Guide][python-style-guide], but wrap all
+  code at **100 characters**.
 
 ## <a name="commit"></a> Commit Message Guidelines
 
-We have very precise rules over how our git commit messages can be formatted. This leads to **more
-readable messages** that are easy to follow when looking through the **project history**. But also,
-we use the git commit messages to **generate the test-connections change log**.
+We have very precise rules over how our git commit messages can be
+formatted. This leads to **more readable messages** that are easy to follow
+when looking through the **project history**. But also, we use the git
+commit messages to **generate the checkconnect change log**.
 
 ### Commit Message Format
 
-Each commit message consists of a **header**, a **body** and a **footer**. The header has a special
-format that includes a **type**, a **scope** and a **subject**:
+Each commit message consists of a **header**, a **body** and a **footer**.
+The header has a special format that includes a **type**, a **scope** and a
+**subject**:
 
-```
+```bash
 <type>(<scope>): <subject>
 <BLANK LINE>
 <body>
@@ -222,34 +263,44 @@ format that includes a **type**, a **scope** and a **subject**:
 
 The **header** is mandatory and the **scope** of the header is optional.
 
-Any line of the commit message cannot be longer than 100 characters! This allows the message to be easier
-to read on GitHub as well as in various git tools.
+Any line of the commit message cannot be longer than 100 characters! This
+allows the message to be easier to read on GitHub as well as in various git
+tools.
 
-Footer should contain a [closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/) if any.
+Footer should contain a
+[closing reference to an issue](https://help.github.com/articles/closing-issues-via-commit-messages/)
+if any.
 
 ### Revert
 
-If the commit reverts a previous commit, it should begin with `revert:`, followed by the header of the reverted commit. In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
+If the commit reverts a previous commit, it should begin with `revert:`,
+followed by the header of the reverted commit. In the body it should say:
+`This reverts commit <hash>.`, where the hash is the SHA of the commit
+being reverted.
 
 ### Type
 
 Must be one of the following:
 
-- **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- **build**: Changes that affect the build system or external dependencies
+  (example scopes: gulp, broccoli, npm)
 - **chore**: Updating tasks etc; no production code change
-- **ci**: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- **ci**: Changes to our CI configuration files and scripts (example
+  scopes: Travis, Circle, BrowserStack, SauceLabs)
 - **docs**: Documentation only changes
 - **feat**: A new feature
 - **fix**: A bug fix
 - **perf**: A code change that improves performance
 - **refactor**: A code change that neither fixes a bug nor adds a feature
-- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **style**: Changes that do not affect the meaning of the code
+  (white-space, formatting, missing semi-colons, etc)
 - **test**: Adding missing tests or correcting existing tests
 - **sample**: A change to the samples
 
 ### Scope
 
-The scope should have the name of the npm package affected (as perceived by person reading changelog generated from commit messages).
+The scope should have the name of the npm package affected (as perceived by
+person reading changelog generated from commit messages).
 
 The following is the list of supported scopes:
 
@@ -258,14 +309,19 @@ The following is the list of supported scopes:
 - **sample**: for changes made on `sample` directory
 - **testing**: for changes made on `testing` directory
 
-If your change affect more than one package, separate the scopes with a comma (e.g. `common,core`).
+If your change affect more than one package, separate the scopes with a
+comma (e.g. `common,core`).
 
 There are currently a few exceptions to the "use package name" rule:
 
-- **packaging**: used for changes that change the npm package layout in all of our packages, e.g. public path changes, package.json changes done to all packages, d.ts file/format changes, changes to bundles, etc.
+- **packaging**: used for changes that change the npm package layout in all
+  of our packages, e.g. public path changes, package.json changes done to
+  all packages, d.ts file/format changes, changes to bundles, etc.
 - **changelog**: used for updating the release notes in CHANGELOG.md
-- **sample/#**: for the example apps directory, replacing # with the example app number
-- none/empty string: useful for `style`, `test` and `refactor` changes that are done across all packages (e.g. `style: add missing semicolons`)
+- **sample/#**: for the example apps directory, replacing # with the
+  example app number
+- none/empty string: useful for `style`, `test` and `refactor` changes that
+  are done across all packages (e.g. `style: add missing semicolons`)
 
 ### Subject
 
@@ -277,17 +333,21 @@ The subject contains succinct description of the change:
 
 ### Body
 
-Just as in the **subject**, use the imperative, present tense: "change" not "changed" nor "changes".
-The body should include the motivation for the change and contrast this with previous behavior.
+Just as in the **subject**, use the imperative, present tense: "change" not
+"changed" nor "changes". The body should include the motivation for the
+change and contrast this with previous behavior.
 
 ### Footer
 
-The footer should contain any information about **Breaking Changes** and is also the place to
-reference GitHub issues that this commit **Closes**.
+The footer should contain any information about **Breaking Changes** and is
+also the place to reference GitHub issues that this commit **Closes**.
 
-**Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines. The rest of the commit message is then used for this.
+**Breaking Changes** should start with the word `BREAKING CHANGE:` with a
+space or two newlines. The rest of the commit message is then used for
+this.
 
-A detailed explanation can be found in this [document][commit-message-format].
+A detailed explanation can be found in this
+[document][commit-message-format].
 
 <!-- ## <a name="cla"></a> Signing the CLA
 
@@ -302,11 +362,13 @@ changes to be accepted, the CLA must be signed. It's a quick process, we promise
 
 <!-- [coc]: https://github.com/angular/code-of-conduct/blob/main/CODE_OF_CONDUCT.md -->
 
-[commit-message-format]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#
 <!-- [individual-cla]: http://code.google.com/legal/individual-cla-v1.0.html -->
+
 <!-- [corporate-cla]: http://code.google.com/legal/corporate-cla-v1.0.html -->
-[github]: https://github.com/jmuelbert/test-connections
-[stackoverflow]: https://stackoverflow.com/questions/tagged/test-connectionsjs
+
+[commit-message-format]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#
+[gh_prs]: https://github.com/jmuelbert/checkconnect/pulls
+[github]: https://github.com/jmuelbert/checkconnect
+[new_issue]: https://github.com/jmuelbert/checkconnect/issues/new
 [python-style-guide]: https://google.github.io/styleguide/pyguide.html
-[new_issue]: https://github.com/jmuelbert/test-connections/issues/new
-[gh_prs]: https://github.com/jmuelbert/test-connections/pulls
+[stackoverflow]: https://stackoverflow.com/questions/tagged/checkconnectjs

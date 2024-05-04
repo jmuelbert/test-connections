@@ -1,0 +1,11 @@
+^attache$
+^bellow$
+benefitting
+occurrences?
+^dependan.*
+^oer$
+Sorce
+^[Ss]pae.*
+^until$
+^untilling$
+^wether.*
