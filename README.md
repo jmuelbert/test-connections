@@ -2,7 +2,7 @@
 
 <div align="center">
 <!-- markdownlint-disable MD034 -->
-<img src="https://raw.githubusercontent/checkconnect/jmuelbert/main/docs/assets/images/logo.svg alt="checkconnect logo" width="500" role="img">
+<img src="https://raw.githubusercontent.com/checkconnect/jmuelbert/main/docs/assets/images/logo.svg alt="checkconnect logo" width="500" role="img">
 
 |               |                                                                                                                                                                                                 |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
