@@ -38,7 +38,7 @@ jobs:
     steps:
       # Checkout the repository to the GitHub Actions runner
       - name: "🧰 Checkout Source Code"
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
 
       - name: "Set up Python"
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
@@ -74,7 +74,7 @@ jobs:
     steps:
       # Checkout the repository to the GitHub Actions runner
       - name: "🧰 Checkout Source Code"
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
 
       - name: "Set up Python ${{ matrix.python-version }}"
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
@@ -115,7 +115,7 @@ jobs:
     steps:
       # Checkout the repository to the GitHub Actions runner
       - name: "🧰 Checkout Source Code"
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
 
       - name: "Set up Python"
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
@@ -178,6 +178,6 @@ jobs:
 
     steps:
       - name: "Decide whether the needed jobs succeeded or failed"
-        uses: re-actors/alls-green@f57443819f4642df61343a4b44cf48a3d977cc14 # v1.2.2
+        uses: re-actors/alls-green@223e4bb7a751b91f43eda76992bcfbf23b8b0302 # v1.2.2
         with:
           jobs: ${{ toJSON(needs) }}

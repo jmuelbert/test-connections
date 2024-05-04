@@ -52,7 +52,7 @@ jobs:
 
     steps:
       - name: "🧰 Checkout Source Code"
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
 
       # Ensure a compatible version of dotnet is installed.
       # The [Microsoft Security Code Analysis CLI](https://aka.ms/mscadocs) is built with dotnet v3.1.201.
@@ -65,11 +65,11 @@ jobs:
       #     dotnet-version: '3.1.x'
       # Run open source static analysis tools
       - name: "Run OSSAR"
-        uses: github/ossar-action@fae13e456b9973657a670eef6bccc3a4c2b5153d # main
+        uses: github/ossar-action@4e96c4f6e591eb4b991abfd459e40b136a317aea # main
         id: ossar
 
       # Upload the results to GitHub's code scanning dashboard.
       - name: "Upload to code-scanning"
-        uses: github/codeql-action/upload-sarif@1b1aada464948af03b950897e5eb522f92603cc2 # v3.24.9
+        uses: github/codeql-action/upload-sarif@d39d31e687223d841ef683f52467bd88e9b21c14 # v3.25.3
         with:
           sarif_file: ${{ steps.ossar.outputs.sarifFile }}
