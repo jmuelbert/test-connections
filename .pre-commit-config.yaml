@@ -22,13 +22,15 @@ repos:
         exclude: docs/.*
       - id: check-merge-conflict
       - id: check-case-conflict
+      # - id: check-illegal-windows-names
       - id: check-json
         exclude: (\.devcontainer/devcontainer.json|\.vscode/)
       - id: check-toml
       - id: check-yaml
-        args: [--unsafe]
+        args: [--unsafe, --allow-multiple-documents]
       - id: check-ast
       - id: debug-statements
+      - id: destroyed-symlinks
       - id: check-docstring-first
       - id: check-added-large-files
         args: ['--maxkb=710']
@@ -44,16 +46,22 @@ repos:
         args: [--ignore-case]
       - id: no-commit-to-branch
         args:
-          - --branch=develop
           - --branch=main
           - --branch=release
       - id: detect-private-key
+      - id: name-tests-test
 
-  - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.2
+  - repo: https://github.com/mxr/sync-pre-commit-deps
+    rev: v0.0.1
     hooks:
-      - id: check-github-workflows
-        args: ['--verbose']
+      - id: sync-pre-commit-deps
+
+  - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+    rev: v9.16.0
+    hooks:
+      - id: commitlint
+        stages: [commit-msg]
+        additional_dependencies: ['@commitlint/config-angular']
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.4.2
@@ -71,12 +79,6 @@ repos:
       - id: commitlint
         stages: [commit-msg]
         additional_dependencies: ['@commitlint/config-angular']
-
-  - repo: https://github.com/executablebooks/mdformat
-    rev: 0.7.17
-    hooks:
-      - id: mdformat
-        additional_dependencies: [mdformat-gfm, mdformat-frontmatter, mdformat-footnote]
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v4.0.0-alpha.8
@@ -121,8 +123,18 @@ repos:
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.28.2
     hooks:
+      - id: check-dependabot
+      # - id: check-github-actions
       - id: check-github-workflows
+      - id: check-gitlab-ci
+      - id: check-readthedocs
+        # - id: check-taskfile
         args: ['--verbose']
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.2
+    hooks:
+      - id: gitleaks
 
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.35.1
@@ -131,6 +143,17 @@ repos:
         args:
           - -d
           - '{extends: relaxed, rules: {line-length: {max: 90}}}'
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.40.0
+    hooks:
+      - id: markdownlint
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.28.2
+    hooks:
+      - id: check-github-workflows
+        args: ['--verbose']
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.6
