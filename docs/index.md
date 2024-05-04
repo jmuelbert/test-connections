@@ -1,22 +1,20 @@
-______________________________________________________________________
-
 # CheckConnect
 
 <div class="grid" markdown>
 ![Checkconnect Logo](assets/images/logo.svg){ role="img" }
 
-|         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CI/ CD  | [![CI -Test](https://github.com/jmuelbert/checkconnect/actions/workflows/test.yml/badge.svg){ loading=lazy .off-glb }](https://github.com/jmuelbert/checkconnect/actions/workflows/test.yml) [![CI - Build CheckConnect](https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml/badge.svg){ loading=lazy .off-glb }](https://github.com/jmuelbert/checkconnect/action/workflows/ci.yml)                                                                                                                                                                                                                                      |
-| Docs    | [![Docs - Release](https://github.com/jmuelbert/checkconnect/actions/workflows/docs-release.yml/badge.svg){ loading=lazy .off-glb }](https://github.com/jmuelbert/checkconnect/actions/workflows/docs-release.yml) [![Docs - Dev](https://github.com/jmuelbert/checkconnect/actions/workflows/docs-dev.yml/badge.svg){ loading=lazy .off-glb }](https://github.com/jmuelbert/checkconnect/actions/workflows/docs-dev.yml)                                                                                                                                                                                                                |
-| Package | [![PyPI - Version](https://img.shields.io/jmuelbert/v/checkconnect.svg?logo=pypi&label=PyPI&logoColor=gold){ loading=lazy .off-glb }](https://pypi.org/project/checkconnect/) [![PyPI - Downloads](https://img.shields.io/jmuelbert/dm/checkconnect.svg?color=blue&label=Downloads&logo=pypi&logoColor=gold){ loading=lazy .off-glb }](https://github.com/jmuelbert/checkconnct)                                                                                                                                                                                                                                                         |
-| Meta    | [![CheckConnect Project](https://img.shields.io/badge/%F0%9F%A5%9A-CheckConnect-4051b5.svg){ loading=lazy .off-glb }](https://github.com/jmuelbert/checkconnect) [![linting - Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json){ loading=lazy .off-glb }](https://github.com/astral-sh/ruff) [![types - Mypy](https://img.shields.io/badge/types-Mypy-blue.svg){ loading=lazy .off-glb }](https://github.com/python/mypy) [![License - EUPL-1.2](https://img.shields.io/github/license/jmuelbert/checkconnect){ loading=lazy .off-glb }](https://spdx.org/licenses/) |
+|         |                                                                                                                                                                                                                                                  |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| CI/ CD  | [![test][test-badge]{ loading=lazy .off-glb }][test-wf-url] [![CI - Build CheckConnect][ci-cd-badge]{ loading=lazy .off-glb }][ci-cd-wf-url]                                                                                                     |
+| Docs    | [![Docs][docs-badge]{ loading=lazy .off-glb }][docs-wf-url]                                                                                                                                                                                      |
+| Package | [![PyPI - Version][pypi-version-badge]{ loading=lazy .off-glb }][pypi-version-url] [![PyPI - Downloads][pypi-downloads-badge]{ loading=lazy .off-glb }][pypi-downloads-url] [![PyPI - Python Version][python-version-badge]][python-version-url] |
+| Meta    | [![linting - Ruff][ruff-badge]{ loading=lazy .off-glb }][ruff-url] [![types - Mypy][mypy-badge]{ loading=lazy .off-glb }][mypy-url] [![GitHub license][github_license_badge]{ loading=lazy .off-glb }][license]                         |
 
 </div>
 
 ______________________________________________________________________
 
-checkconnect i a tool to check the availability of a website or ntp-server.
+checkconnect is a tool to check the availability of a website or ntp-server.
 
 <div class="grid cards" markdown>
 
@@ -31,7 +29,7 @@ checkconnect i a tool to check the availability of a website or ntp-server.
 ## License
 
 checkconnect is distributed under the terms of the
-[EUPL-1.2](https://spdx.org/licenses/EUPL-1.2.html) license.
+[European Public License V1.2][license].
 
 ## Navigation
 
@@ -44,3 +42,23 @@ that have not yet been released.
 | <ul><li><kbd>,</kbd> (comma)</li><li><kbd>p</kbd></li></ul>  | Navigate to the "previous" page |
 | <ul><li><kbd>.</kbd> (period)</li><li><kbd>n</kbd></li></ul> | Navigate to the "next" page     |
 | <ul><li><kbd>/</kbd></li><li><kbd>s</kbd></li></ul>          | Display the search modal        |
+
+
+[test-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/test.yml/badge.svg
+[test-wf-url]: https://github.com/jmuelbert/checkconnect/actions/workflows/test.yml
+[ci-cd-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml/badge.svg
+[ci-cd-wf-url]: https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml
+[docs-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/mkdocs-pages.yml/badge.svg
+[docs-wf-url]: https://github.com/jmuelbert/checkconnect/actions/workflows/mkdocs-pages.yml
+[pypi-version-badge]: https://img.shields.io/jmuelbert/v/checkconnect.svg?logo=pypi&label=PyPI&logoColor=gold
+[pypi-version-url]: https://pypi.org/project/checkconnect/
+[pypi-downloads-badge]: https://img.shields.io/jmuelbert/dm/checkconnect.svg?color=blue&label=Downloads&logo=pypi&logoColor=gold
+[pypi-downloads-url]: https://github.com/jmuelbert/checkconnect
+[ruff-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+[ruff-url]: https://github.com/astral-sh/ruff
+[mypy-badge]: https://img.shields.io/badge/types-Mypy-blue.svg
+[mypy-url]: https://github.com/python/mypy
+[license]: https://joinup.ec.europa.eu/page/eupl-text-11-12
+[github_license_badge]: https://img.shields.io/badge/license-EUPL-blue.svg
+[python-version-badge]: https://img.shields.io/pypi/pyversions/hatch.svg?logo=python&label=Python&logoColor=gold
+[python-version-url]: https://github.com/jmuelbert/checkconnect

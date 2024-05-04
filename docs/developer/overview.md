@@ -4,6 +4,6 @@ ______________________________________________________________________
 
 Auto-generates reference documentation for the following components:
 
-- **[Core](./core)**
-- **[CLI](./cli)**
-- **[Config](./config)**
+- **[Core](./core.md)**
+- **[CLI](./cli.md)**
+- **[Config](./configuration.md)**

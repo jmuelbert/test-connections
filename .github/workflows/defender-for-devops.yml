@@ -22,7 +22,7 @@
 
 name: "Microsoft Defender For Devops"
 
-on:
+on: # yamllint disable-line rule:truthy
   push:
     branches: [main, develop, release]
 

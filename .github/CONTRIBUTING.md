@@ -84,7 +84,9 @@ forth to you with additional questions like:
 
 A minimal reproduce scenario using a repository or Gist allows us to quickly confirm a bug (or point out coding problem) as well as confirm that we are fixing the right problem. If neither of these are not a suitable way to demonstrate the problem (for example for issues related to our npm packaging), please create a standalone git repository demonstrating the problem. -->
 
-<!-- We will be insisting on a minimal reproduce scenario in order to save maintainers time and ultimately be able to fix more bugs. Interestingly, from our experience users often find coding problems themselves while preparing a minimal plunk. We understand that sometimes it might be hard to extract essentials bits of code from a larger code-base but we really need to isolate the problem before we can fix it. -->
+<!-- We will be insisting on a minimal reproduce scenario in order to save maintainers time and ultimately be able to fix more bugs.
+
+Interestingly, from our experience users often find coding problems themselves while preparing a minimal plunk. We understand that sometimes it might be hard to extract essentials bits of code from a larger code-base but we really need to isolate the problem before we can fix it. -->
 
 Unfortunately, we are not able to investigate / fix bugs without a minimal
 reproduction, so if we don't hear back from you we are going to close an
@@ -149,7 +151,7 @@ We cannot accept code without this.
   - Rebase your branch and force push to your GitHub repository (this will
     update your Pull Request):
 
-    ````
+    ````bash
     ```shell
     git rebase main -i
     git push -f
@@ -251,7 +253,7 @@ Each commit message consists of a **header**, a **body** and a **footer**.
 The header has a special format that includes a **type**, a **scope** and a
 **subject**:
 
-```
+```bash
 <type>(<scope>): <subject>
 <BLANK LINE>
 <body>

@@ -4,8 +4,9 @@
 
 from __future__ import annotations
 
-from checkconnect.cli import checkconnect
 from click.testing import CliRunner
+
+from checkconnect.cli import checkconnect
 
 
 def test_main_succeeds() -> None:

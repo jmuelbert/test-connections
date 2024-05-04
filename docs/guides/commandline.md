@@ -1,3 +1,5 @@
+# Commandline options
+
 ::: mkdocs-click
     :module: checkconnect.cli
     :command: checkconnect

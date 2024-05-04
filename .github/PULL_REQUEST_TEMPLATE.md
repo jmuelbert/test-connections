@@ -1,8 +1,8 @@
+# Description
+
 <!--- We squash and merge pull requests, so the title of the PR will be the title of the merge commit -->
 
 <!--- Please follow https://www.conventionalcommits.org/ in the title --->
-
-## Description
 
 <!--- Describe your changes in detail -->
 

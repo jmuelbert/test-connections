@@ -166,6 +166,8 @@ dependencies = [
   "mdx-include >=1.4.1,<2.0.0",
   "mkdocs-markdownextradata-plugin >=0.1.7,<0.3.0",
   # Plugins
+  "mkdocs-autorefs>=0.3.1",
+  "mkdocs-codeinclude-plugin==0.2.1",
   "mkdocs-static-i18n>=1.2.2",
   "mkdocs-minify-plugin>=0.7.1",
   "mkdocs-git-authors-plugin>=0.8.0",
@@ -195,7 +197,7 @@ MKDOCS_CONFIG = "mkdocs.yml"
 build = "mkdocs build --config-file {env:MKDOCS_CONFIG} --clean --strict {args}"
 serve = "mkdocs serve --config-file {env:MKDOCS_CONFIG} --dev-addr localhost:8000 {args}"
 ci-build = "mike deploy --config-file {env:MKDOCS_CONFIG} --update-aliases {args}"
-validate = "linkchecker --config .linkcheckerrc site"
+validate-links = "linkchecker --config .linkcheckerrc site"
 # https://github.com/linkchecker/linkchecker/issues/678
 build-check = ["build --no-directory-urls", "validate"]
 
@@ -217,7 +219,7 @@ extend-exclude = '''
 dependecies = ["pre-commit>=3.5.0"]
 
 [tool.hatch.envs.check.scripts]
-precommit = "pre-commit run --all-files  {args}"
+precommit = "pre-commit {args}"
 
 [tool.hatch.envs.lint]
 dependencies = ["pylint"]
