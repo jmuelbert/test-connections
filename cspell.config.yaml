@@ -165,7 +165,7 @@ words:
   - webp
   - withastro
 flagWords:
-  - the
+  - xxx
 maxNumberOfProblems: 1000
 import: []
 useGitignore: true
