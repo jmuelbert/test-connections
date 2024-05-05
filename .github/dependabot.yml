@@ -15,21 +15,30 @@ updates:
         patterns:
           - "*"
     open-pull-requests-limit: 10
+    commit-message:
+      include: scope
+      prefix: "fix(gha)"
 
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "monthly"
+    commit-message:
+      prefix: "fix(docker)"
 
   - package-ecosystem: "bundler"
     directory: "/"
     schedule:
       interval: "monthly"
+    commit-message:
+      prefix: "fix(bundler)"
 
   - package-ecosystem: "npm"
     directory: "/docs"
     schedule:
       interval: "monthly"
+    commit-message:
+      prefix: "fix(npm+docs)"
 
   - package-ecosystem: "pip"
     directory: "/"
@@ -39,3 +48,7 @@ updates:
       python-requirements:
         patterns:
           - "*"
+    commit-message:
+      prefix: "fix(pip prod)"
+      prefix-development: "fix(pip dev)"
+      include: "scope"

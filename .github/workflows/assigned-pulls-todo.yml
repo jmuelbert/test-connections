@@ -24,11 +24,11 @@ jobs:
         uses: srggrs/assign-one-project-github-action@65a8ddab497df42ef268001e67bbf976f8fd39e1 # v1.3.1
         if: github.event.action == 'opened'
         with:
-          project: "9"
+          project: "https://github.com/users/jmuelbert/projects/9" #checkconnect
 
       - name: Assign issues and pull requests with `bug` label to project checkconnect # 9
         uses: srggrs/assign-one-project-github-action@65a8ddab497df42ef268001e67bbf976f8fd39e1 # v1.3.1
         if: contains(github.event.pull_request.labels.*.name, 'bug')
         with:
-          project: "9"
+          project: "https://github.com/users/jmuelbert/projects/9" #checkconnect
           column_name: "Labeled"
