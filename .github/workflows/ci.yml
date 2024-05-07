@@ -94,9 +94,9 @@ jobs:
     needs:
       - release
     runs-on: ubuntu-latest
+
     steps:
-      - name: Decide whether the needed jobs succeeded or failed
-        uses: re-actors/alls-green@release/v1
+      - name: "Decide whether the needed jobs succeeded or failed"
+        uses: re-actors/alls-green@223e4bb7a751b91f43eda76992bcfbf23b8b0302 # v1.2.2
         with:
           jobs: ${{ toJSON(needs) }}
-          allowed-skips: release
