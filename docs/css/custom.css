@@ -1,7 +1,7 @@
 div.autodoc-docstring {
 	padding-left: 20px;
 	margin-bottom: 30px;
-	border-left: 5px solid rgba(230, 230, 230);
+	border-left: 5px solid rgb(230 230 230);
 }
 
 div.autodoc-members {

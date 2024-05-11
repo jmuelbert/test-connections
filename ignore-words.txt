@@ -1,2 +1,2 @@
-releas
+release
 master
