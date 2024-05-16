@@ -8,7 +8,7 @@ automated updates to minimize the time between vulnerability publication
 and patch release.
 
 | Version       | Supported          |
-| :------------ | :----------------- |
+|:--------------|:-------------------|
 | master        | :white_check_mark: |
 | other commits | :x:                |
 

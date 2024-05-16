@@ -12,7 +12,7 @@ There are many ways you can contribute to the project:
 ## Reporting Bugs or Other Issues
 
 Found something that checkconnect should support?
-Stumbled upon some unexpected behaviour?
+Stumbled upon some unexpected behavior?
 
 Contributions should generally start out with [a discussion](https://github.com/jmuelbert/checkconnect/discussions).
 Possible bugs may be raised as a "Potential Issue" discussion, feature requests may

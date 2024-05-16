@@ -6,10 +6,20 @@
     "**/.git/**",
     "**/.rbenv/**",
     "**/.venv/**",
-    "**/*cache*/**",
-    "**/.github/**",
-    "**/.idea/**",
     "**/report/**",
-    "**/*.svg"
+    "**/megalinter-reports/**",
+    "**/*cache*/**",
+    "**/*.json",
+    "**/*.yaml",
+    "**/*.yml",
+    "**/*.md",
+    "**/*.html",
+    "**/*.xml",
+    "**/*.jpg",
+    "**/*.png",
+    "**/*.svg",
+    "**/*.zip",
+    "**/*.bin",
+    "**/LICENSES/**"
   ]
 }

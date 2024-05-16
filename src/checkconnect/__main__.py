@@ -20,6 +20,6 @@ if __name__ == "__main__":
 
 
 if getattr(sys, "frozen", False):
-    """Check if the script is frozen (e.g. pyinstaller executable)."""
+    # Check if the script is frozen (e.g. pyinstaller executable).
 
-    sys.exit(main(sys.argv[1:]))
+    sys.exit(main())

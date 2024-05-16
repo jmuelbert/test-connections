@@ -11,11 +11,14 @@
 
 name: "Add issue header"
 
-on:
+on: # yamllint disable-line rule:truthy
   issues:
     types:
       # Only ever run once
       - opened
+
+permissions:
+  contents: read
 
 jobs:
   add-header:

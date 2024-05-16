@@ -190,3 +190,9 @@ Temporary Items
 pyproject.toml.hatch
 
 node_modules/
+
+# mega-linter
+megalinter-reports/
+
+# cspell
+.cspellcache

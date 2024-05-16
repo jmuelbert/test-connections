@@ -41,9 +41,9 @@ repos:
       # - id: check-executables-have-shebangs
       # - id: check-shebang-scripts-are-executable
       - id: fix-byte-order-marker
-      - id: file-contents-sorter
-        files: dictionary.*\.txt$|\.wordlist$
-        args: [--ignore-case]
+      # - id: file-contents-sorter
+      #  files: dictionary.*\.txt$|\.wordlist$
+      #  args: [--ignore-case]
       - id: no-commit-to-branch
         args:
           - --branch=main
@@ -62,6 +62,12 @@ repos:
       - id: commitlint
         stages: [commit-msg]
         additional_dependencies: ['@commitlint/config-angular']
+
+  # - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+  #   rev: v2.7.2
+  #   hooks:
+  #     - id: editorconfig-checker
+  #       alias: ec
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.4.2
@@ -126,7 +132,7 @@ repos:
       - id: check-dependabot
       # - id: check-github-actions
       - id: check-github-workflows
-      - id: check-gitlab-ci
+      # - id: check-gitlab-ci
       - id: check-readthedocs
         # - id: check-taskfile
         args: ['--verbose']

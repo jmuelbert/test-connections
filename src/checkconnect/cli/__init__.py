@@ -55,10 +55,25 @@ def create_pdf() -> fpdf:
 # @click.group(
 #  context_settings={'help_option_names': ['-h', '--help'], 'max_content_width': 120}, invoke_without_command=True
 # )
-@click.option("-u", "--url-data", default="url.csv", help="the file contents the URLs to be tested")
-@click.option("-n", "--ntp-data", default="ntp.csv", help="the file contents the NTP servers to be tested")
+@click.option(
+    "-u",
+    "--url-data",
+    default="url.csv",
+    help="the file contents the URLs to be tested",
+)
+@click.option(
+    "-n",
+    "--ntp-data",
+    default="ntp.csv",
+    help="the file contents the NTP servers to be tested",
+)
 @click.option("-o", "--pdf_output", default="output.pdf", help="the name of the output file")
-@click.option("--config", "config_file", default="./config/settings.conf", help="the configuration file to use")
+@click.option(
+    "--config",
+    "config_file",
+    default="./config/settings.conf",
+    help="the configuration file to use",
+)
 @click.version_option(version=__version__, prog_name="CheckConnect")
 @click.command()
 # @click.pass_context
@@ -81,7 +96,11 @@ def checkconnect(ntp_data: str, url_data: str, pdf_output: str) -> int:
 
     config = configparser.ConfigParser()
 
-    config["Path"] = {"url_file_name": "url.csv", "ntp_file_name": "ntp.csv", "pdf_file_name": "result.pdf"}
+    config["Path"] = {
+        "url_file_name": "url.csv",
+        "ntp_file_name": "ntp.csv",
+        "pdf_file_name": "result.pdf",
+    }
 
     with open("checkconnect.ini", "w", encoding="utf-8") as configfile:
         config.write(configfile)
@@ -103,7 +122,7 @@ def checkconnect(ntp_data: str, url_data: str, pdf_output: str) -> int:
     return 0
 
 
-def main():  # no cov
+def main() -> int:  # no cov
     """Entry point for the module."""
     return checkconnect(sys.argv[1:])
 
