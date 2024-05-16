@@ -149,12 +149,6 @@ full = ["test-cov", "cov-report"]
 [[tool.hatch.envs.all.matrix]]
 python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
-[tool.hatch.envs.types]
-dependencies = ["mypy>=1.0.0"]
-
-[tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/checkconnect tests}"
-
 [tool.hatch.envs.docs]
 dependencies = [
   "mkdocs>=1.5.3",
@@ -201,6 +195,10 @@ validate-links = "linkchecker --config .linkcheckerrc site"
 # https://github.com/linkchecker/linkchecker/issues/678
 build-check = ["build --no-directory-urls", "validate"]
 
+
+#####
+# Typing
+#####
 [tool.black]
 target-version = ['py36', 'py37', 'py38', 'py39', 'py310']
 include = '''
@@ -216,7 +214,7 @@ extend-exclude = '''
 '''
 
 [tool.hatch.envs.check]
-dependecies = ["pre-commit>=3.5.0"]
+dependencies = ["pre-commit>=3.5.0"]
 
 [tool.hatch.envs.check.scripts]
 precommit = "pre-commit {args}"

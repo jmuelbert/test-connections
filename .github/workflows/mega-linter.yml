@@ -49,9 +49,9 @@ jobs:
       pull-requests: write
 
     env:
-      APPLY_FIXES_IF_PR: FALSE
-      APPLY_FIXES_IF_COMMIT: FALSE
-      APPLY_FIXES_IF: FALSE
+      APPLY_FIXES_IF_PR: false
+      APPLY_FIXES_IF_COMMIT: false
+      APPLY_FIXES_IF: false
 
     # Skip any PR created by dependabot to avoid permission issues:
     if: (github.actor != 'dependabot[bot]')
@@ -95,15 +95,15 @@ jobs:
       - name: Set APPLY_FIXES_IF var
         run: |
           printf 'APPLY_FIXES_IF=%s\n' "${{
-           steps.ml.outputs.has_updated_sources == 1 &&
-          (
-             env.APPLY_FIXES_EVENT == 'all' ||
-             env.APPLY_FIXES_EVENT == github.event_name
-          ) &&
-          (
-            github.event_name == 'push' ||
-            github.event.pull_request.head.repo.full_name == github.repository
-          )
+            steps.ml.outputs.has_updated_sources == 1 &&
+            (
+              env.APPLY_FIXES_EVENT == 'all' ||
+              env.APPLY_FIXES_EVENT == github.event_name
+            ) &&
+            (
+              github.event_name == 'push' ||
+              github.event.pull_request.head.repo.full_name == github.repository
+            )
           }}" >> "${GITHUB_ENV}"
 
       # Set APPLY_FIXES_IF_* vars for use in future steps

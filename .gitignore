@@ -195,4 +195,4 @@ node_modules/
 megalinter-reports/
 
 # cspell
-# .cspellcache
+.cspellcache

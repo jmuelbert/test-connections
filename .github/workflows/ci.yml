@@ -83,10 +83,10 @@ jobs:
           draft: false
           prerelease: steps.check-version.outputs.prerelease == 'true'
 
-      # - name: Publish to PyPI
-      #  env:
-      #    POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
-      #  run: poetry publish
+      - name: Publish to PyPI
+        env:
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
+        run: hatch publish
 
   # https://github.com/marketplace/actions/alls-green#why
   release-all-green: # This job does nothing and is only used for the branch protection

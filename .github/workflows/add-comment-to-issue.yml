@@ -3,10 +3,16 @@
 # SPDX-License-Identifier: MIT
 #
 name: "Add Comment to Issue"
-on:
+
+# trunk-ignore(yamllint/truthy)
+on: # yamllint disable-line rule:truth
   issues:
     types:
       - labeled
+
+permissions:
+  contents: read
+
 jobs:
   add-comment-to-help-wanted:
     if: github.event.label.name == 'help wanted'

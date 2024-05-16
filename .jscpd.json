@@ -8,7 +8,6 @@
     "**/.venv/**",
     "**/report/**",
     "**/megalinter-reports/**",
-    "**/hardis-report/**",
     "**/*cache*/**",
     "**/*.json",
     "**/*.yaml",

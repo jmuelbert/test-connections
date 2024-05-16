@@ -13,3 +13,6 @@ indent_size = 4
 [*.{yml,yaml,toml,json}]
 indent_style = space
 indent_size = 2
+
+[*.{md,mdx,adoc}]
+insert_final_newline = false

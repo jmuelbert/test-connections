@@ -1,3 +1,4 @@
+---
 version: '0.2'
 language: en,de-DE,it,es-ES
 ignorePaths:
@@ -31,8 +32,57 @@ words:
   - jmuelbert
   - Jürgen
   - Mülbert
+  - abbrs
+  - adoc
+  - aiohttp
+  - arithmatex
+  - Armin
+  - armv
+  - Codacy
+  - codehilite
+  - codeql
+  - codelytv
+  - colab
+  - cpes
+  - cyclonedx
+  - DALL
+  - devskim
+  - dessant
+  - esbenp
+  - fsfe
+  - glightbox
+  - grype
+  - htmlcov
+  - htmlhintrc
+  - inlinehilite
+  - Italiano
+  - Licence
+  - linenums
+  - linkcheckerrc
+  - mkapi
+  - mkautodoc
+  - MKDOCS
+  - mkdocstrings
+  - mshick
+  - ncipollo
+  - ossar
+  - ossf
+  - Pintaldi
+  - pkgs
+  - pymdownx
+  - returntocorp
+  - rubocop
+  - sarif
+  - srggrs
+  - Signup
+  - stefanzweifel
+  - tomwhross
+  - unindexed
+  - wagoid
+  - xbps
+  - xunit
 flagWords:
-  - the
+  - hxe
 maxNumberOfProblems: 1000
 import: []
 useGitignore: true

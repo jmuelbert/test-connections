@@ -15,7 +15,12 @@ APPLY_FIXES: all
 # default
 # ENABLE_LINTERS:
 DISABLE_LINTERS:
-  - CSHARP_DOTNET_FORMAT
+  - PYTHON_BANDIT
+  - PYTHON_BLACK
+  - PYTHON_FLAKE8
+  - PYTHON_ISORT
+  - PYTHON_PYLINT
+  - PYTHON_PYRIGHT
 
 # DISABLE:
 # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes

@@ -1,11 +1,13 @@
-esbenp
 fpdf
 gradio
+ipynb
 ntplib
 ntps
 phoenisx
 pyinstaller
 pylance
 pylintrc
+PYTHONUNBUFFERED
+spack
 toolsai
 typer
