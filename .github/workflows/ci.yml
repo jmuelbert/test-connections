@@ -12,15 +12,19 @@ on: # yamllint disable-line rule:truthy
   push:
     branches: [main, develop, release]
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, synchronize]
 
   release:
     types: [published]
 
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 permissions:
-  contents: read
+  contents: read  # to fetch code (actions/checkout)
 
 defaults:
   run:
@@ -28,10 +32,6 @@ defaults:
 
 env:
   FORCE_COLOR: "1"
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   release:
@@ -64,8 +64,9 @@ jobs:
         run: |
           echo version="$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")" >> "$GITHUB_OUTPUT"
 
-      - name: "🧰 Install Hatch"
-        run: pip install --upgrade hatch
+      - name: "🧰 Install Requirements"
+        run: |
+          pip install --upgrade hatch
 
       - name: "⚙️️ Check Version"
         id: check-version

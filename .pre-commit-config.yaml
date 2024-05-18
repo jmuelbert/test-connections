@@ -24,7 +24,7 @@ repos:
       - id: check-case-conflict
       # - id: check-illegal-windows-names
       - id: check-json
-        exclude: (\.devcontainer/devcontainer.json|\.vscode/)
+        exclude: (.devcontainer|.vscode/)
       - id: check-toml
       - id: check-yaml
         args: [--unsafe, --allow-multiple-documents]
@@ -47,6 +47,7 @@ repos:
       - id: no-commit-to-branch
         args:
           - --branch=main
+          - --branch=develop
           - --branch=release
       - id: detect-private-key
       - id: name-tests-test
@@ -68,6 +69,11 @@ repos:
   #   hooks:
   #     - id: editorconfig-checker
   #       alias: ec
+
+  - repo: https://github.com/MarcoGorelli/auto-walrus
+    rev: 0.3.4
+    hooks:
+      - id: auto-walrus
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.4.2
@@ -125,6 +131,11 @@ repos:
         files: src/
         args: ['--python-version=3.10']
         additional_dependencies: *mypy_deps
+
+  - repo: https://github.com/tox-dev/pyproject-fmt
+    rev: '2.0.4'
+    hooks:
+      - id: pyproject-fmt
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.28.2
