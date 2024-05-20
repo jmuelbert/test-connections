@@ -7,10 +7,19 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: "CI"
+run-name: "${{ github.event_name == 'workflow_dispatch' && format('CI: {0}', github.ref_name) || '' }}"
 
-on: # yamllint disable-line rule:truthy
+# yamllint disable-line rule:truthy
+on:
   push:
     branches: [main, develop, release]
+    paths:
+      - src/*
+      - docs/*
+      - .github/workflows/ci.yml
+      - mkdocs.yml
+      - pyproject.toml
+
   pull_request:
     types: [opened, reopened, synchronize]
 
@@ -19,24 +28,243 @@ on: # yamllint disable-line rule:truthy
 
   workflow_dispatch:
 
+env:
+  FORCE_COLOR: "1"
+  DEFAULT_PYTHON: "3.12"
+  ALL_PYTHON_VERSIONS: "['3.12']"
+  PRE_COMMIT_CACHE: ~/.cache/pre-commit
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 permissions:
-  contents: read  # to fetch code (actions/checkout)
+  contents: read # to fetch code (actions/checkout)
 
 defaults:
   run:
     shell: bash
 
-env:
-  FORCE_COLOR: "1"
-
 jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+
+      - name: "⚙️️ Set up Python"
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON }}
+          check-latest: true
+          cache: pip
+
+      - name: "Ensure latest pip"
+        run: python -m pip install --upgrade pip
+
+      - name: "Install Hatch"
+        run: pip install --upgrade hatch
+
+      - name: "Init hatch check cache"
+        id: python-hatch-check
+        run: echo "dir=$(hatch env show check)" >> "$GITHUB_OUTPUT"
+
+      - name: "Run pre-commit with hatch"
+        run: hatch run check:pre-commit run --all-files
+
+  lint-ruff-format:
+    name: Check ruff-format
+    runs-on: ubuntu-latest
+    needs:
+      - pre-commit
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+
+      - name: "⚙️️ Set up Python"
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON }}
+          check-latest: true
+          cache: pip
+
+      - name: "Ensure latest pip"
+        run: python -m pip install --upgrade pip
+
+      - name: "Install Hatch"
+        run: pip install --upgrade hatch
+
+      - name: "Run hatch fmt"
+        run: hatch fmt --formatter
+
+  lint-ruff:
+    name: Check ruff-format
+    runs-on: ubuntu-latest
+    needs:
+      - pre-commit
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+
+      - name: "⚙️️ Set up Python"
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON }}
+          check-latest: true
+          cache: pip
+
+      - name: "Ensure latest pip"
+        run: python -m pip install --upgrade pip
+
+      - name: "Install Hatch"
+        run: pip install --upgrade hatch
+
+      - name: "Run hatch fmt"
+        run: hatch fmt --linter
+
+  lint-pylint:
+    name: Check ruff-format
+    runs-on: ubuntu-latest
+    needs:
+      - pre-commit
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+
+      - name: "⚙️️ Set up Python"
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON }}
+          check-latest: true
+          cache: pip
+
+      - name: "Ensure latest pip"
+        run: python -m pip install --upgrade pip
+
+      - name: "Install Hatch"
+        run: pip install --upgrade hatch
+
+      - name: "Run hatch fmt"
+        run: hatch run lint:pythonlint
+
+  test-full:
+    name: "Python ${{ matrix.python-version }} on ${{ startsWith(matrix.os, 'macos-') && 'macOS' || startsWith(matrix.os, 'windows-') && 'Windows' || 'Linux' }}"
+    runs-on: ${{ matrix.os }}
+    needs:
+      - lint-ruff
+      - lint-pylint
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        environment: [staging, production]
+        exclude:
+          - os: ubuntu-latest
+            python-version: "3.12"
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+
+      - name: "Set up Python ${{ matrix.python-version }}"
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: "Ensure latest pip"
+        run: python -m pip install --upgrade pip
+
+      - name: "Install Hatch"
+        run: pip install --upgrade hatch
+
+      - name: "Run tests"
+        run: hatch test --python ${{ matrix.python-version }} --cover-quiet --randomize --parallel --retries 5 --retry-delay 3
+
+      - name: "Disambiguate coverage filename"
+        run: mv .coverage ".coverage.${{ matrix.os }}.${{ matrix.python-version }}"
+
+      - name: "Upload coverage data"
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: coverage-${{ matrix.os }}-${{ matrix.python-version }}
+          path: .coverage*
+
+      - name: "Download coverage data"
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
+        with:
+          pattern: coverage-*
+          merge-multiple: true
+
+      - name: "Combine coverage data"
+        run: hatch run coverage:combine
+
+      - name: "Export coverage reports"
+        run: |
+          hatch run coverage:report-xml
+          hatch run coverage:report-uncovered-html
+
+      - name: "Upload uncovered HTML report"
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: uncovered-html-report
+          path: htmlcov
+
+      - name: "Generate coverage summary"
+        run: hatch run coverage:generate-summary
+
+      - name: "Write coverage summary report"
+        if: github.event_name == 'pull_request'
+        run: hatch run coverage:write-summary-report
+
+      - name: "Update coverage pull request comment"
+        if: github.event_name == 'pull_request' && !github.event.pull_request.head.repo.fork
+        uses: marocchino/sticky-pull-request-comment@331f8f5b4215f0445d3c07b4967662a32a2d3e31 # v2.9.0
+        with:
+          path: coverage-report.md
+
+  test-docs:
+    name: "Test Docs"
+    runs-on: ubuntu-latest
+    needs: test-full
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: "🧰 Checkout Source Code"
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # v4.1.5
+
+      - name: "⚙️️ Set up Python"
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
+        with:
+          python-version: ${{ env.DEFAULT_PYTHON }}
+          check-latest: true
+          cache: pip
+
+      - name: "Ensure latest pip"
+        run: python -m pip install --upgrade pip
+
+      - name: "Install Hatch"
+        run: pip install --upgrade hatch
+
+      - name: "Build Docs"
+        run: hatch run docs:build
+
+      - name: "Docs build-check"
+        run: hatch run docs:build-check
+
+      - name: "Docs links check"
+        run: hatch run docs:validate-links
+
   release:
     name: Release
     runs-on: ubuntu-latest
+    needs:
+      - test-full
+      - test-docs
     permissions:
       contents: write
       packages: write
@@ -54,8 +282,7 @@ jobs:
       - name: "⚙️️ Set up Python"
         uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5.1.0
         with:
-          # Read python version from a file .python-version
-          python-version-file: ".standard-python-version"
+          python-version: ${{ env.DEFAULT_PYTHON }}
           check-latest: true
           cache: pip
 
@@ -93,6 +320,11 @@ jobs:
   release-all-green: # This job does nothing and is only used for the branch protection
     if: always()
     needs:
+      - pre-commit
+      - lint-ruff-format
+      - lint-ruff
+      - lint-pylint
+      - test-full
       - release
     runs-on: ubuntu-latest
 

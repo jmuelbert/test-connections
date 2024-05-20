@@ -124,7 +124,8 @@ def checkconnect(ntp_data: str, url_data: str, pdf_output: str) -> int:
 
 def main() -> int:  # no cov
     """Entry point for the module."""
-    return checkconnect(sys.argv[1:])
+    checkconnect(sys.argv[1:])
+    return 0
 
 
 if __name__ == "__main__":

@@ -1,12 +1,12 @@
 ---
 # SPDX-FileCopyrightText: Dr. Jan-Philip Gehrcke
 #
-# SPDX-License-Identifier: APACHE-2.0
+# SPDX-License-Identifier: Apache-2.0
 #
 
-name: 'github-repo-stats'
+name: "github-repo-stats"
 
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   schedule:
     # Run this once per day, towards the end of the day for keeping the most
     # recent data point most meaningful (hours are interpreted in UTC).
@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read  # to fetch code (actions/checkout)
+  contents: read # to fetch code (actions/checkout)
 
 jobs:
   j1:

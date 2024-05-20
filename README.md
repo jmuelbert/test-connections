@@ -7,7 +7,7 @@
 |               |                                                                                                                                                                                                 |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |               |                                                                                                                                                                                                 |
-| CI/CD         | [![test][test-badge]][test-wf-url] [![CI - Build CheckConnect][ci-cd-badge]][ci-cd-wf-url]                                                                                                      |
+| CI/CD         | [![CI - Build CheckConnect][ci-cd-badge]][ci-cd-wf-url]                                                                                                      |
 | Documentation | [![docs][docs-badge]][docs-wf-url]                                                                                                                                                              |
 | Package       | [![PyPI - Version][pypi-version-badge]][pypi-version-url] [![PyPI - Downloads] [pypi-downloads-badge]][pypi-downloads-url] [![PyPI - Python Version][python-version-badge]][python-version-url] |
 | Meta          | [![linting - Ruff][ruff-badge]][ruff-url] [![types - Mypy][mypy-badge]][mypy-url] [![GitHub license][github_license_badge]][license]                                                            |
@@ -84,8 +84,6 @@ checkconnect is distributed under the terms of the
 
 <!-- readme-pypi-ignore-after -->
 
-[test-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/test.yml/badge.svg
-[test-wf-url]: https://github.com/jmuelbert/checkconnect/actions/workflows/test.yml
 [ci-cd-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml/badge.svg
 [ci-cd-wf-url]: https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml
 [docs-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/mkdocs-pages.yml/badge.svg
