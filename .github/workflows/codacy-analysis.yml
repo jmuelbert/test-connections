@@ -31,6 +31,10 @@ on: # yamllint disable-line rule:truthy
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   codacy-security-scan:
     # Skip any PR created by dependabot to avoid permission issues:

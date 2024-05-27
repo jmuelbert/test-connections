@@ -29,8 +29,7 @@ This method modifies the Python environment in which you choose to install. Cons
 
 [pipx](https://github.com/pypa/pipx) allows for the global installation of Python applications in isolated environments.
 
-````bash
-```
+```bash
 pipx install checkconnect
 ```
 
@@ -44,4 +43,3 @@ sudo dnf install hatch
 ```bash
 xbps-install checkconnect
 ```
-````

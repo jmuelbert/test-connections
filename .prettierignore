@@ -30,8 +30,6 @@ CONTRIBUTORS
 LICENSE
 LICENSES/
 project-words.txt
-cppcheck_suppressions.txt
-conanfile.py
 out
 build
 image

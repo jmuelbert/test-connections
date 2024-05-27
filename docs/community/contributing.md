@@ -42,7 +42,8 @@ The usual process to make a contribution is to:
 
 ## Clone the repository
 
-Clone the `checkconnect` repository, `cd` into it, and create a new branch for your contribution:
+Clone the `checkconnect` repository, `cd` into it, and create a new branch
+for your contribution:
 
 ```bash
 cd checkconnect
