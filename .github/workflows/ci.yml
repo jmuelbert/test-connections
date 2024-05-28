@@ -294,6 +294,7 @@ jobs:
         run: hatch build
 
       - name: 📦 Create Release
+        if: startsWith(github.event.ref, 'refs/tags/')
         uses: ncipollo/release-action@2c591bcc8ecdcd2db72b97d6147f871fcd833ba5 # v1.14.0
         with:
           artifacts: dist/*
@@ -302,8 +303,6 @@ jobs:
           prerelease: steps.check-version.outputs.prerelease == 'true'
 
       - name: Publish to PyPI
-        env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
         run: hatch publish
 
   # https://github.com/marketplace/actions/alls-green#why
