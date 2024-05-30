@@ -1,22 +1,12 @@
 [build-system]
 build-backend = "hatchling.build"
 requires = [
-  "hatchling>=1.24.1",
-  "hatch-vcs>=0.3.0",
   "hatch-fancy-pypi-readme>=22.5",
+  "hatch-vcs>=0.3",
+  "hatchling>=1.24.1",
 ]
 
 [project]
-dependencies = [
-  "importlib_metadata;python_version<'3.8'",
-  "click>=8.0.4",
-  "typer>=0.12.3",
-  "fpdf>=1.7.2",
-  "ntplib>=0.4.0",
-  "requests>=2.27.1",
-  "pyinstaller>=4.9",
-]
-
 name = "checkconnect"
 description = "Checks the availability of web addresses and NTP servers."
 keywords = [
@@ -59,15 +49,22 @@ classifiers = [
 ]
 dynamic = ["readme", "version"]
 
-[project.urls]
-Bugtracker = "https://github.com/jmuelbert/checkconnect/issues"
-Changelog = "https://github.com/jmuelbert/checkconnect/releases"
-Documentation = "https://github.com/jmuelbert/checkconnect#readme"
-Issues = "https://github.com/jmuelbert/checkconnect/issues"
-Source = "https://github.com/jmuelbert/checkconnect"
+dependencies = [
+  "click>=8.0.4",
+  "fpdf>=1.7.2",
+  "importlib-metadata; python_version<'3.8'",
+  "ntplib>=0.4",
+  "pyinstaller>=4.9",
+  "requests>=2.27.1",
+  "typer>=0.12.3",
+]
 
-[project.scripts]
-checkconnect = "checkconnect.cli:main"
+urls.Bugtracker = "https://github.com/jmuelbert/checkconnect/issues"
+urls.Changelog = "https://github.com/jmuelbert/checkconnect/releases"
+urls.Documentation = "https://github.com/jmuelbert/checkconnect#readme"
+urls.Issues = "https://github.com/jmuelbert/checkconnect/issues"
+urls.Source = "https://github.com/jmuelbert/checkconnect"
+scripts.checkconnect = "checkconnect.cli:main"
 
 [tool.hatch.build.targets.sdist]
 exclude = ["/.github", "/backend", "/scripts"]
@@ -97,36 +94,7 @@ version-file = "src/checkconnect/_version.py"
 content-type = "text/markdown"
 
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
-text = "# checkconnect\n"
-
-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
-path = "README.md"
-start-after = "<!-- begin-short -->\n"
-end-before = "## Project Links"
-
-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
-path = "README.md"
-start-at = "## Credits"
-
-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
-text = """
-
-
-## Release Information
-
-"""
-
-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
-path = "CHANGELOG.md"
-start-after = "<!-- changelog follows -->"
-pattern = "\n(###.+?\n)## "
-
-[[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
 text = "\n---\n\n[Full changelog](https://github.com/encode/httpx/blob/master/CHANGELOG.md)\n"
-
-[[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
-pattern = '\[(.+?)\]\(((?!https?://)\S+?.\.(png|gif))\)'
-replacement = '[\1](https://raw.githubusercontent.com/hynek/doc2dash/main/\g<2>)'
 
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.substitutions]]
 # Transform GitHub callouts into bolded text.
@@ -195,10 +163,22 @@ validate-links = "linkchecker --config .linkcheckerrc site"
 # https://github.com/linkchecker/linkchecker/issues/678
 build-check = ["build --no-directory-urls", "validate"]
 
-
 #####
 # Typing
 #####
+[tool.hatch.envs.check]
+dependencies = ["pre-commit>=3.5.0"]
+
+[tool.hatch.envs.check.scripts]
+precommit = "pre-commit {args}"
+
+[tool.hatch.envs.lint]
+dependencies = ["pylint"]
+skip-install = true
+
+[tool.hatch.envs.lint.scripts]
+pythonlint = "pylint {args:src/checkconnect tests}"
+
 [tool.black]
 target-version = ['py36', 'py37', 'py38', 'py39', 'py310']
 include = '''
@@ -212,19 +192,6 @@ extend-exclude = '''
   | ^opt/
 )/
 '''
-
-[tool.hatch.envs.check]
-dependencies = ["pre-commit>=3.5.0"]
-
-[tool.hatch.envs.check.scripts]
-precommit = "pre-commit {args}"
-
-[tool.hatch.envs.lint]
-dependencies = ["pylint"]
-skip-install = true
-
-[tool.hatch.envs.lint.scripts]
-py-lint = "pylint {args:src/checkconnect tests}"
 
 [tool.ruff]
 fix = true
@@ -269,6 +236,11 @@ ignore = [
   "S603",    # `subprocess` call: check for execution of untrusted input
   "PLR2004", # Magic value used in comparison, consider replacing with a constant variable
 ]
+
+[tool.isort]
+profile = "black"
+src_paths = ["src/checkconnect", "tests"]
+honor_noqa = true
 
 [tool.codespell]
 builtin = "clear,rare,informal,usage,code,names"

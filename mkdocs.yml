@@ -11,7 +11,7 @@ site_description: >-
 # Repository
 repo_name: jmuelbert/checkconnect
 repo_url: https://github.com/jmuelbert/checkconnect/
-edit_uri: 'blob/main/docs/'
+edit_uri: blob/main/docs/
 
 # Copyright
 copyright: Copyright &copy; 2023 - 2024 Jürgen Mülbert
@@ -83,33 +83,33 @@ theme:
 
 # Page tree
 nav:
-  - Introduction: 'index.md'
-  - QuickStart: 'quickstart.md'
-  - Philosophy: 'philosophy.md'
-  - Upgrade: 'upgrade.md'
+  - Introduction: index.md
+  - QuickStart: quickstart.md
+  - Philosophy: philosophy.md
+  - Upgrade: upgrade.md
   # - Advanced:
   - Guides:
-      - Command Line: 'guides/commandline.md'
-      - Configuration: 'guides/configuration.md'
-      - Installation: 'guides/install.md'
-      - Logging: 'guides/logging.md'
-      - Troubleshooting: 'guides/troubleshooting.md'
+      - Command Line: guides/commandline.md
+      - Configuration: guides/configuration.md
+      - Installation: guides/install.md
+      - Logging: guides/logging.md
+      - Troubleshooting: guides/troubleshooting.md
   - Develop:
-      - Environment Variables: 'developer/environment_variables.md'
-      - Changelog: 'developer/changelog.md'
-      - Release Notes: 'developer/release-notes.md'
-      - API: 'developer/overview.md'
-      - CLI: 'developer/cli.md'
-      - Core: 'developer/core.md'
-      - Configuration: 'developer/configuration.md'
+      - Environment Variables: developer/environment_variables.md
+      - Changelog: developer/changelog.md
+      - Release Notes: developer/release-notes.md
+      - API: developer/overview.md
+      - CLI: developer/cli.md
+      - Core: developer/core.md
+      - Configuration: developer/configuration.md
   - Community:
-      - faq: 'community/faq.md'
-      - Contributing: 'community/contributing.md'
-      - Code of Conduct: 'community/code_of_conduct.md'
-      - Third Party Packages: 'community/third_party_packages.md'
+      - faq: community/faq.md
+      - Contributing: community/contributing.md
+      - Code of Conduct: community/code_of_conduct.md
+      - Third Party Packages: community/third_party_packages.md
   - About:
-      - Authors: 'about/authors.md'
-      - License: 'about/EUPL-1.2.md'
+      - Authors: about/authors.md
+      - License: about/EUPL-1.2.md
 
 # Plugins
 plugins:
@@ -141,11 +141,6 @@ plugins:
   glightbox: {}
   minify:
     minify_html: true
-  git-authors: {}
-  git-revision-date-localized:
-    type: date
-    strict: false
-    fallback_to_build_date: true
   table-reader: {}
   mike:
     alias_type: copy

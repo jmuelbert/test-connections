@@ -19,8 +19,6 @@ DISABLE_LINTERS:
   - PYTHON_BLACK
   - PYTHON_FLAKE8
   - PYTHON_ISORT
-  - PYTHON_PYLINT
-  - PYTHON_PYRIGHT
 
 # DISABLE:
 # - COPYPASTE # Uncomment to disable checks of excessive copy-pastes

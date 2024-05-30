@@ -67,7 +67,9 @@ def create_pdf() -> fpdf:
     default="ntp.csv",
     help="the file contents the NTP servers to be tested",
 )
-@click.option("-o", "--pdf_output", default="output.pdf", help="the name of the output file")
+@click.option(
+    "-o", "--pdf_output", default="output.pdf", help="the name of the output file"
+)
 @click.option(
     "--config",
     "config_file",
@@ -124,7 +126,8 @@ def checkconnect(ntp_data: str, url_data: str, pdf_output: str) -> int:
 
 def main() -> int:  # no cov
     """Entry point for the module."""
-    return checkconnect(sys.argv[1:])
+    checkconnect(sys.argv[1:])
+    return 0
 
 
 if __name__ == "__main__":

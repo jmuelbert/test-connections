@@ -46,16 +46,21 @@ words:
   - cpes
   - cyclonedx
   - DALL
+  - depandabot
   - devskim
   - dessant
   - esbenp
   - fsfe
+  - Gehrcke
+  - ghrs
+  - ghtoken
   - glightbox
   - grype
   - htmlcov
   - htmlhintrc
   - inlinehilite
   - Italiano
+  - jgehrcke
   - Licence
   - linenums
   - linkcheckerrc

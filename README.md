@@ -4,14 +4,15 @@
 <!-- markdownlint-disable MD034 -->
 <img src="https://raw.githubusercontent.com/jmuelbert/checkconnect/main/docs/assets/images/logo.svg" alt="checkconnect logo" width="500" role="img">
 
-|               |                                                                                                                                                                                                 |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|               |                                                                                                                                                                                                 |
-| CI/CD         | [![test][test-badge]][test-wf-url] [![CI - Build CheckConnect][ci-cd-badge]][ci-cd-wf-url]                                                                                                      |
-| Documentation | [![docs][docs-badge]][docs-wf-url]                                                                                                                                                              |
-| Package       | [![PyPI - Version][pypi-version-badge]][pypi-version-url] [![PyPI - Downloads] [pypi-downloads-badge]][pypi-downloads-url] [![PyPI - Python Version][python-version-badge]][python-version-url] |
-| Meta          | [![linting - Ruff][ruff-badge]][ruff-url] [![types - Mypy][mypy-badge]][mypy-url] [![GitHub license][github_license_badge]][license]                                                            |
-| Dependencies  | [![Dependabot auto-merge] [dependabot_merge_action_badge]][depandabot_merge_action] [![Dependency Review] [dependency_review_action_badge]][dependency_review_action]                           |
+|               |                                                                                                                                                                                                                                                                                                       |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|               |                                                                                                                                                                                                                                                                                                       |
+| CI/CD         | [![CI - Build CheckConnect][ci-cd-badge]][ci-cd-wf-url]                                                                                                                                                                                                                                               |
+| Documentation | [![docs][docs-badge]][docs-wf-url]                                                                                                                                                                                                                                                                    |
+| Package       | [![PyPI - Version][pypi-version-badge]][pypi-version-url] \[!\[PyPI - Downloads] [pypi-downloads-badge]][pypi-downloads-url] [![PyPI - Python Version][python-version-badge]][python-version-url]                                                                                                     |
+| Meta          | [![linting - Ruff][ruff-badge]][ruff-url] [![types - Mypy][mypy-badge]][mypy-url] [![GitHub license][github_license_badge]][license]                                                                                                                                                                  |
+| Dependencies  | \[!\[Dependabot auto-merge] [dependabot\_merge\_action\_badge][dependabot_merge_action_badge]][depandabot\_merge\_action][depandabot_merge_action] \[!\[Dependency Review] [dependency\_review\_action\_badge][dependency_review_action_badge]][dependency\_review\_action][dependency_review_action] |
+
 </div>
 
 <!-- begin-short -->
@@ -32,7 +33,6 @@ can output the results of the check in a file or on the screen.
 ## Requirements
 
 Python 3.8+ Works on all Desktop Platform with Python
-
 
 ## Options
 
@@ -84,39 +84,70 @@ checkconnect is distributed under the terms of the
 
 <!-- readme-pypi-ignore-after -->
 
-[test-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/test.yml/badge.svg
-[test-wf-url]: https://github.com/jmuelbert/checkconnect/actions/workflows/test.yml
 [ci-cd-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml/badge.svg
+
 [ci-cd-wf-url]: https://github.com/jmuelbert/checkconnect/actions/workflows/ci.yml
+
 [docs-badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/mkdocs-pages.yml/badge.svg
+
 [docs-wf-url]: https://github.com/jmuelbert/checkconnect/actions/workflows/mkdocs-pages.yml
+
 [pypi-version-badge]: https://img.shields.io/jmuelbert/v/checkconnect.svg?logo=pypi&label=PyPI&logoColor=gold
+
 [pypi-version-url]: https://pypi.org/project/checkconnect/
+
 [pypi-downloads-badge]: https://img.shields.io/jmuelbert/dm/checkconnect.svg?color=blue&label=Downloads&logo=pypi&logoColor=gold
+
 [pypi-downloads-url]: https://github.com/jmuelbert/checkconnect
+
 [python-version-badge]: https://img.shields.io/pypi/pyversions/hatch.svg?logo=python&label=Python&logoColor=gold
+
 [python-version-url]: https://github.com/jmuelbert/checkconnect
+
 [ruff-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+
 [ruff-url]: https://github.com/astral-sh/ruff
+
 [mypy-badge]: https://img.shields.io/badge/types-Mypy-blue.svg
+
 [mypy-url]: https://github.com/python/mypy
+
 [codacy_action]: https://app.codacy.com/gh/jmuelbert/checkconnect/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
+
 [codacy_action_badge]: https://app.codacy.com/project/badge/Grade/5540e367f8564b249334da47b20a6953
+
 [codeql_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/codeql-analysis.yml
+
 [codeql_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/codeql-analysis.yml/badge.svg
+
 [contribution_guide]: https://github.com/jmuelbert/checkconnect/blob/main/.github/CONTRIBUTING.md
+
 [depandabot_merge_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependabot-merge.yml
+
 [dependabot_merge_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependabot-merge.yml/badge.svg
+
 [dependency_review_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependency-review.yml
+
 [dependency_review_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/dependency-review.yml/badge.svg
+
 [devskim_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/devskim-analysis.yml
+
 [devskim_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/devskim-analysis.yml/badge.svg
+
 [license]: https://joinup.ec.europa.eu/page/eupl-text-11-12
+
 [github_license_badge]: https://img.shields.io/badge/license-EUPL-blue.svg
+
 [reuse_compliance_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/reuse-check.yml
+
 [reuse_compliance_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/reuse-check.yml/badge.svg
+
 [writegood_action]: https://github.com/jmuelbert/checkconnect/actions/workflows/write-good.yml
+
 [writegood_action_badge]: https://github.com/jmuelbert/checkconnect/actions/workflows/write-good.yml/badge.svg
+
 [documentation-url]: https://jmuelbert.github.io/checkconnect/
+
 [mkdocs-material-url]: https://github.com/squidfunk/mkdocs-material
+
 [github-pages-doc-url]: https://docs.github.com/en/pages
