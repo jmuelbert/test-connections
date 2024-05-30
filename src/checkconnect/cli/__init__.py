@@ -67,9 +67,7 @@ def create_pdf() -> fpdf:
     default="ntp.csv",
     help="the file contents the NTP servers to be tested",
 )
-@click.option(
-    "-o", "--pdf_output", default="output.pdf", help="the name of the output file"
-)
+@click.option("-o", "--pdf_output", default="output.pdf", help="the name of the output file")
 @click.option(
     "--config",
     "config_file",

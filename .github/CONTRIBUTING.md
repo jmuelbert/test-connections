@@ -1,11 +1,11 @@
-# Contributing to AnniversaryReminder
+# Contributing to checkconnect
 
-dotNetty is a large project and contributions are more than welcome, so thank you for wanting to
-contribute to dotNetty!
+checkconnect is a large project and contributions are more than welcome, so thank you for wanting to
+contribute to checkconnect!
 
 ---
 
-### Checklist before creating a Pull Request
+## Checklist before creating a Pull Request
 
 Submit only relevant commits. We don't mind many commits in a pull request, but they must be
 relevant as explained below.
@@ -13,7 +13,7 @@ relevant as explained below.
 - **Use a feature branch** The pull request should be created from a feature branch, and not from
   _develop_. See below for why.
 - **No merge-commits** If you have commits that looks like this _"Merge branch 'my-branch' into
-  develop"_ or _"Merge branch 'develop' of <https://github.com/jmuelbert/anniversaryreminder> into
+  develop"_ or _"Merge branch 'develop' of <https://github.com/jmuelbert/checkconnect> into
   develop"_ you're probably using merge instead of
   [rebase](https://help.github.com/articles/about-git-rebase) locally. See below on _Handling
   updates from upstream_.
@@ -27,7 +27,7 @@ relevant as explained below.
   Security.Claims header from FSM, which broke Mono build per #62"_. Don't be afraid to write long
   messages, if needed. Try to explain _why_ you've done the changes. The Erlang repo has some info
   on
-  [writing good commit messages](https://github.com/erlang/otp/wiki/Writing-good-commit-messages).
+  [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 - **No one-commit-to-rule-them-all** Large commits that changes too many things at the same time are
   very hard to review. Split large commits into smaller. See this
   [StackOverflow question](https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits)
@@ -39,7 +39,7 @@ relevant as explained below.
 After reviewing a Pull request, we might ask you to fix some commits. After you've done that you
 need to force push to update your branch in your local fork.
 
-#### Title and Description for the Pull Request
+### Title and Description for the Pull Request
 
 Give the PR a descriptive title and in the description field describe what you have done in general
 terms and why. This will help the reviewers greatly, and provide a history for the future.
@@ -53,30 +53,30 @@ you just intend to reorder the code? Justify why the changes are needed.
 
 Make sure you have a [GitHub](https://github.com/) account.
 
-- Fork, clone, add upstream to the dotNetty repository. See
+- Fork, clone, add upstream to the checkconnect repository. See
   [Fork a repo](https://help.github.com/articles/fork-a-repo) for more detailed instructions or
   follow the instructions below.
 
-- Fork by clicking _Fork_ on <https://github.com/jmuelbert/anniversaryreminder>
+- Fork by clicking _Fork_ on <https://github.com/jmuelbert/checkconnect>
 - Clone your fork locally.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/anniversaryreminder
+git clone https://github.com/jmuelbert/checkconnect
 ```
 
 - Add an upstream remote.
 
 ```bash
-git remote add upstream https://github.com/jmuelbert/anniversaryreminder
+git remote add upstream https://github.com/YOUR-USERNAME/checkconnect
 ```
 
-You now have two remotes: _upstream_ points to <https://github.com/jmuelbert/anniversaryreminder>,
+You now have two remotes: _upstream_ points to <https://github.com/jmuelbert/checkconnect>,
 and _origin_ points to your fork on GitHub.
 
 - Make changes. See below.
 
 Unsure where to start? Issues marked with
-[_up for grabs_](https://github.com/jmuelbert/anniversaryreminder/labels/up%20for%20grabs) are
+[_up for grabs_](https://github.com/jmuelbert/checkconnect/labels/up%20for%20grabs) are
 things we want help with.
 
 See also:
@@ -87,10 +87,10 @@ New to Git? See
 
 ### Making changes
 
-**Never** work directly on _dev_ or _master_ and you should never send a pull request from master -
+**Never** work directly on _dev_ or _main_ and you should never send a pull request from main -
 always from a feature branch created by you.
 
-- Pick an [issue](https://github.com/jmuelbert/anniversaryreminder/issues). If no issue exists
+- Pick an [issue](https://github.com/jmuelbert/checkconnect/issues). If no issue exists
   (search first) create one.
 - Get any changes from _upstream_.
 
@@ -125,7 +125,7 @@ git push origin my-new-branch-123
   branch.
 
 See also: [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/) (we're using
-`develop` as our master branch)
+`develop` as our main branch)
 
 ### Handling updates from upstream
 
@@ -203,10 +203,7 @@ git branch develop upstream/develop   #create a new dev
 ## Code guidelines
 
 See our
-[C# Coding Style](https://github.com/dotnet/runtime/blob/main/docs/coding-guidelines/coding-style.md)
+[Python Style Guide](https://www.python.org/doc/essays/styleguide/) and the [Python Naming Convention](https://github.com/naming-convention/naming-convention-guides/blob/master/python/README.md) on GitHub
 for more information on following the project's conventions.
 
 ---
-
-Props to [Akka.NET](http://getakka.net/) and [NancyFX](https://github.com/NancyFx/Nancy) from which
-we've "borrowed" this text.
