@@ -62,6 +62,7 @@ issues.
 [![Codacy Security Scan][codacy_action_badge]][codacy_action]
 [![CodeQL][codeql_action_badge]][codeql_action]
 [![DevSkim][devskim_action_badge]][devskim_action]
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjmuelbert%2Fcheckconnect.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjmuelbert%2Fcheckconnect?ref=badge_shield)
 
 ## Linter and spell checking
 
@@ -120,3 +121,6 @@ checkconnect is distributed under the terms of the
 [documentation-url]: https://jmuelbert.github.io/checkconnect/
 [mkdocs-material-url]: https://github.com/squidfunk/mkdocs-material
 [github-pages-doc-url]: https://docs.github.com/en/pages
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjmuelbert%2Fcheckconnect.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjmuelbert%2Fcheckconnect?ref=badge_large)
