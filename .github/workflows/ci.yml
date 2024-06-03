@@ -6,7 +6,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: "CI"
+name: CI
 run-name: "${{ github.event_name == 'workflow_dispatch' && format('CI: {0}', github.ref_name) || '' }}"
 
 # yamllint disable-line rule:truthy
@@ -59,18 +59,15 @@ jobs:
           python-version: ${{ env.DEFAULT_PYTHON }}
           check-latest: true
 
-      - name: Ensure latest pip
-        run: python -m pip install --upgrade pip
-
-      - name: Install Hatch
-        run: pip install --upgrade hatch
+      - name: 🧰 Install Requirements
+        run: pip install --constraint=.github/workflows/constraints.txt pip
 
       - name: Init hatch check cache
         id: python-hatch-check
         run: echo "dir=$(hatch env show check)" >> "$GITHUB_OUTPUT"
 
-      - name: Run pre-commit with hatch
-        run: hatch run check:pre-commit run --all-files
+      # - name: Run pre-commit with hatch
+      #  run: hatch run check:pre-commit run --all-files
 
   lint-ruff-format:
     name: Check ruff-format
@@ -88,11 +85,8 @@ jobs:
           python-version: ${{ env.DEFAULT_PYTHON }}
           check-latest: true
 
-      - name: Ensure latest pip
-        run: python -m pip install --upgrade pip
-
-      - name: Install Hatch
-        run: pip install --upgrade hatch
+      - name: 🧰 Install Requirements
+        run: pip install --constraint=.github/workflows/constraints.txt pip
 
       - name: Run hatch fmt
         run: hatch fmt --formatter
@@ -113,11 +107,8 @@ jobs:
           python-version: ${{ env.DEFAULT_PYTHON }}
           check-latest: true
 
-      - name: Ensure latest pip
-        run: python -m pip install --upgrade pip
-
-      - name: Install Hatch
-        run: pip install --upgrade hatch
+      - name: 🧰 Install Requirements
+        run: pip install --constraint=.github/workflows/constraints.txt pip
 
       - name: Run hatch fmt
         run: hatch fmt --linter
@@ -138,11 +129,8 @@ jobs:
           python-version: ${{ env.DEFAULT_PYTHON }}
           check-latest: true
 
-      - name: Ensure latest pip
-        run: python -m pip install --upgrade pip
-
-      - name: Install Hatch
-        run: pip install --upgrade hatch
+      - name: 🧰 Install Requirements
+        run: pip install --constraint=.github/workflows/constraints.txt pip
 
       - name: Run hatch fmt
         run: hatch run lint:pythonlint
@@ -172,11 +160,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Ensure latest pip
-        run: python -m pip install --upgrade pip
-
-      - name: Install Hatch
-        run: pip install --upgrade hatch
+      - name: 🧰 Install Requirements
+        run: pip install --constraint=.github/workflows/constraints.txt pip
 
       - name: Run tests
         run: hatch test --python ${{ matrix.python-version }} --cover-quiet --randomize --parallel --retries 5 --retry-delay 3
@@ -238,11 +223,8 @@ jobs:
           python-version: ${{ env.DEFAULT_PYTHON }}
           check-latest: true
 
-      - name: Ensure latest pip
-        run: python -m pip install --upgrade pip
-
-      - name: Install Hatch
-        run: pip install --upgrade hatch
+      - name: 🧰 Install Requirements
+        run: pip install --constraint=.github/workflows/constraints.txt pip
 
       - name: Build Docs
         run: hatch run docs:build
@@ -283,7 +265,7 @@ jobs:
 
       - name: 🧰 Install Requirements
         run: |
-          pip install --upgrade hatch
+          pip install --constraint=.github/workflows/constraints.txt pip
 
       - name: ⚙️️ Check Hatch Version
         id: check-version

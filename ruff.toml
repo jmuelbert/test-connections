@@ -10,8 +10,8 @@ docstring-code-format = true
 
 [lint]
 ignore = [
-    # Allow lazy imports for responsive CLI
-    "PLC0415",
+  # Allow lazy imports for responsive CLI
+  "PLC0415",
 ]
 
 [lint.pydocstyle]

@@ -57,7 +57,7 @@ body:
     id: system-info
     attributes:
       label: System Info
-      description: Please ensure you are running the latest version of checkconnct. You can get the checkconnect version and all its dependencies.
+      description: Please ensure you are running the latest version of checkconnect. You can get the checkconnect version and all its dependencies.
       render: shell
     validations:
       required: true

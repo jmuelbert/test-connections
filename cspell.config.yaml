@@ -1,13 +1,12 @@
----
-version: '0.2'
+version: "0.2"
 language: en,de-DE,it,es-ES
 ignorePaths:
-  - '**/node_modules/**'
-  - '**/vscode_extension/**'
-  - '**/.git/**'
-  - '**/.pnpm-lock.json'
-  - '**/pnpm-lock.yaml'
-  - '**/yarn.lock'
+  - "**/node_modules/**"
+  - "**/vscode_extension/**"
+  - "**/.git/**"
+  - "**/.pnpm-lock.json"
+  - "**/pnpm-lock.yaml"
+  - "**/yarn.lock"
   - dist/
   - out/
   - build/
@@ -15,95 +14,48 @@ ignorePaths:
   - package-lock.json
   - megalinter-reports
   - .devcontainer/.dockerignore
-  - .gitattributes
-  - .gitignore
+  - .git*
   - .prettierignore
   - CHANGELOG.md
   - LICENSE
-  - '**/report/**'
-  - '**/site/**'
-  - '**/LICENSES/**'
-  - '**/docs/about/EUPL-1.2.md'
+  - "**/report/**"
+  - "**/site/**"
+  - "**/LICENSES/**"
+  - "**/docs/about/EUPL-1.2.md"
   - cspell.config.yaml
 files:
-  - '*/**'
+  - "*/**"
 words:
-  - checkconnct
   - jmuelbert
   - Jürgen
   - Mülbert
-  - abbrs
-  - adoc
-  - aiohttp
-  - arithmatex
-  - Armin
-  - armv
-  - Codacy
-  - codehilite
-  - codeql
-  - codelytv
-  - colab
-  - cpes
-  - cyclonedx
+  - checkconnect
   - DALL
-  - depandabot
-  - devskim
-  - dessant
-  - esbenp
-  - fsfe
-  - Gehrcke
-  - ghrs
-  - ghtoken
-  - glightbox
-  - grype
-  - htmlcov
-  - htmlhintrc
-  - inlinehilite
-  - Italiano
-  - jgehrcke
-  - Licence
-  - linenums
-  - linkcheckerrc
-  - mkapi
-  - mkautodoc
-  - MKDOCS
-  - mkdocstrings
-  - mshick
-  - ncipollo
-  - ossar
-  - ossf
-  - Pintaldi
-  - pkgs
-  - pymdownx
-  - returntocorp
-  - rubocop
-  - sarif
-  - srggrs
-  - Signup
-  - stefanzweifel
-  - tomwhross
-  - unindexed
-  - wagoid
-  - xbps
-  - xunit
+  - fpdf
+  - ntplib
+  - ntps
+  - typer
 flagWords:
-  - hxe
+  - xxx
 maxNumberOfProblems: 1000
 import: []
 useGitignore: true
 overrides:
-  - filename: '**/de_DE/**'
+  - filename: "**/de_DE/**"
     language: en,de
-  - filename: '**/nl_NL/**'
+  - filename: "**/nl_NL/**"
     language: en,nl
-  - filename: '**/ru_RU/samples/**'
+  - filename: "**/ru_RU/samples/**"
     language: ru,en
-  - filename: '**/sv/**'
+  - filename: "**/sv/**"
     language: en,sv
   - filename: package.json
     ignoreWords:
       - color
       - cannot
+  - filename: pyproject.toml
+    ignoreWords:
+      - LICENSE
 allowCompoundWords: true
 enableGlobDot: true
 cache:
@@ -112,13 +64,49 @@ cache:
 enableFiletypes:
   - shellscript
 dictionaryDefinitions:
-  - name: ./project-words
+  - name: project-words
     addWords: true
     scope:
       - workspace
-    path: ./project-words.txt
+    path: ./config/project-words.txt
+  - name: local-german
+    addWords: true
+    scope:
+      - workspace
+    path: ./config/german-words.txt
+  - name: local-spanish
+    addWords: true
+    scope:
+      - workspace
+    path: ./config/spanish-words.txt
+  - name: local-italiano
+    addWords: true
+    scope:
+      - workspace
+    path: ./config/italian-words.txt
+  - name: local-ruby
+    addWords: false
+    scope:
+      - workspace
+    path: ./config/ruby-words.txt
+  - name: local-python
+    addWords: false
+    scope:
+      - workspace
+    path: ./config/python-words.txt
+  - name: local-github-actions
+    addWords: false
+    scope:
+      - workspace
+    path: ./config/github-actions.txt
 dictionaries:
-  - ./project-words
+  - project-words
+  - local-german
+  - local-spanish
+  - local-italiano
+  - local-ruby
+  - local-python
+  - local-github-actions
   - bash
   - companies
   - csharp

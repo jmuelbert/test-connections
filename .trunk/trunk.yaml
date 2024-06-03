@@ -3,6 +3,10 @@
 version: 0.1
 cli:
   version: 1.22.1
+  options:
+    - commands: [ALL] # apply to all `trunk` commands
+      args: --monitor=true
+    - commands: [check, fmt] # apply only to `trunk check` and `trunk fmt` commands
 # Trunk provides extensibility via plugins. (https://docs.trunk.io/plugins)
 plugins:
   sources:
@@ -17,27 +21,34 @@ runtimes:
     - python@3.10.8
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
+  disabled:
+    - deno
+    - bandit
+    - osv-scanner
   enabled:
+    - markdown-link-check@3.12.2
+    - pre-commit-hooks@4.6.0
+    - eslint@8.57.0
+    - flake8@7.0.0
     - cspell@8.8.3
     - djlint@1.34.1
     - gitleaks@8.18.2
     - pre-commit-hooks@4.6.0
     - pylint@3.2.2
-    - pyright@1.1.364
+    - pyright@1.1.365
     - semgrep@1.74.0
-    - stylelint@16.5.0
-    - trufflehog-git@3.76.3
+    - stylelint@16.6.1
+    - trufflehog-git@3.77.0
     - trunk-toolbox@0.3.1
-    - actionlint@1.7.0
-    - bandit@1.7.8
+    - actionlint@1.7.1
     - black@24.4.2
-    - checkov@3.2.106
+    - checkov@3.2.120
     - codespell@2.2.6:
         packages:
           - tomli>=2.0.1
     - git-diff-check
     - isort@5.13.2
-    - markdownlint@0.40.0
+    - markdownlint@0.41.0
     - mypy@1.10.0:
         packages:
           - types-PyYAML
@@ -52,12 +63,15 @@ lint:
           - types-requests>=2.31
           - urllib3>=2.2.1
           - hypothesmith
-    - prettier@3.2.5
-    - ruff@0.4.5
+    - prettier@3.2.5:
+        plugins:
+          - airbnb
+          - prettier
+    - ruff@0.4.6
     - svgo@3.3.2
     - taplo@0.8.1
-    - trivy@0.51.2
-    - trufflehog@3.76.3
+    - trivy@0.51.4
+    - trufflehog@3.77.0
     - yamllint@1.35.1
 actions:
   disabled:

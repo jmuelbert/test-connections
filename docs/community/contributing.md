@@ -1,9 +1,10 @@
 # Contributing
 
-Thank you for being interested in contributing to checkconnect.
-There are many ways you can contribute to the project:
+Thank you for being interested in contributing to checkconnect. There are many
+ways you can contribute to the project:
 
-- Try checkconnect and [report bugs/issues you find](https://github.com/jmuelbert/checkconnect/issues/new)
+- Try checkconnect and
+  [report bugs/issues you find](https://github.com/jmuelbert/checkconnect/issues/new)
 - [Implement new features](https://github.com/jmuelbert/checkconnect/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 - [Review Pull Requests of others](https://github.com/jmuelbert/checkconnect/pulls)
 - Write documentation
@@ -11,16 +12,17 @@ There are many ways you can contribute to the project:
 
 ## Reporting Bugs or Other Issues
 
-Found something that checkconnect should support?
-Stumbled upon some unexpected behavior?
+Found something that checkconnect should support? Stumbled upon some unexpected
+behavior?
 
-Contributions should generally start out with [a discussion](https://github.com/jmuelbert/checkconnect/discussions).
-Possible bugs may be raised as a "Potential Issue" discussion, feature requests may
-be raised as an "Ideas" discussion. We can then determine if the discussion needs
+Contributions should generally start out with
+[a discussion](https://github.com/jmuelbert/checkconnect/discussions). Possible
+bugs may be raised as a "Potential Issue" discussion, feature requests may be
+raised as an "Ideas" discussion. We can then determine if the discussion needs
 to be escalated into an "Issue" or not, or if we'd consider a pull request.
 
-Try to be more descriptive as you can and in case of a bug report,
-provide as much information as possible like:
+Try to be more descriptive as you can and in case of a bug report, provide as
+much information as possible like:
 
 - OS platform
 - Python version
@@ -42,8 +44,8 @@ The usual process to make a contribution is to:
 
 ## Clone the repository
 
-Clone the `checkconnect` repository, `cd` into it, and create a new branch
-for your contribution:
+Clone the `checkconnect` repository, `cd` into it, and create a new branch for
+your contribution:
 
 ```bash
 cd checkconnect

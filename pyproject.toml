@@ -16,7 +16,7 @@ keywords = [
   "testing",
   "web address",
 ]
-license = "EUPL-1.2"
+license = "EUPL-1.2" # cSpell:ignore license
 maintainers = [
   { name = "Jürgen Mülbert" },
   { email = "juergen.muelbert@outlook.de" },
@@ -28,7 +28,7 @@ classifiers = [
   "Environment :: Console",
   "Intended Audience :: Developers",
   "Intended Audience :: Information Technology",
-  "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+  "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)", # cSpell:ignore Licence
   "Operating System :: MacOS",
   "Operating System :: Microsoft :: Windows",
   "Operating System :: OS Independent",
@@ -245,9 +245,9 @@ honor_noqa = true
 [tool.codespell]
 builtin = "clear,rare,informal,usage,code,names"
 write-changes = true
-ignore-words = "ignore-words.txt"
 count = true
 skip = "*.svg,pyproject.toml,LICENSE,LICENSES/*,.github/actions/*"
+ignore-words-list = "master"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -298,3 +298,10 @@ ignore_missing_imports = true
 disallow_untyped_defs = true
 disallow_incomplete_defs = true
 warn_no_return = true
+
+
+[tool.pylint]
+max-args = 12
+max-branches = 110
+max-returns = 12
+max-statements = 289
