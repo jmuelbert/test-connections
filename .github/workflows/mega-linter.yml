@@ -59,7 +59,7 @@ jobs:
     steps:
       # Git Checkout
       - name: "🧰 Checkout Source Code"
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0 # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
@@ -69,7 +69,7 @@ jobs:
         id: ml
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
-        uses: oxsecurity/megalinter@03986e6993ccf699a22451118520680b438e7d2a # v7.11.1
+        uses: oxsecurity/megalinter@5199c6377b4cb7faff749a1971636f3343db9fe6 # v7.12.0
 
         # All available variables are described in documentation
         # https://megalinter.io/configuration/
@@ -123,7 +123,7 @@ jobs:
       - name: Create Pull Request with applied fixes
         id: cpr
         if: env.APPLY_FIXES_IF_PR == 'true'
-        uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6.0.5
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "[MegaLinter] Apply linters automatic fixes"
